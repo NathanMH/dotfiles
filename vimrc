@@ -42,7 +42,7 @@ setlocal spell spelllang=en_ca
 
 " Theme
 
-colorscheme vividchalk
+colorscheme monokai 
 set guifont=Consolas:h11:cANSI
 
 " Indent settings
