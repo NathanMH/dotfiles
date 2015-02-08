@@ -21,9 +21,6 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
 
-    " Airline Status bar
-set laststatus=2                            " Opens Airline Status Bar from the get go
-
 " General Settings
 
 set t_Co=256                                " Enable 256-colour mode
