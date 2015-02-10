@@ -85,7 +85,7 @@ let mapleader=","							" Set <leader> to ,
 
     " Miscellaneous Mappings
         " Toggle NERDTree with , + ne
-        nnoremap <leader>ne :NERDTree<CR>
+        nnoremap <leader>ne :NERDTree GitHub<CR>
 
         " Map Normal mode to nn
         inoremap nn <Esc>
