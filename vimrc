@@ -36,10 +36,14 @@ set softtabstop=4							" Allows backspace to delete tabs
 set cursorline								" Highlight the current line
 setlocal spell spelllang=en_ca
 
+" Smooth Scrolling
+:map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+:map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+
 " Theme
 
 colorscheme molokai 
-set guifont=Monaco:h11
+set guifont=Source_Code_Pro:h11
 
 " Indent settings
 
@@ -51,9 +55,10 @@ set viewdir=~/vimfiles/view					" Change vim view default location
 
 " Searching
 
-set nohlsearch								" Don't continue to highlight searches
-set incsearch								" Highlight as you search
+set hlsearch								" Highlight searches
+set noincsearch								" Highlight as you search
 set ignorecase								" Make searches not case-sensitive
+nnoremap <leader>/ :let @/=""<CR>
 
 " Custom Mappings
 
@@ -61,7 +66,7 @@ let mapleader=","							" Set <leader> to ,
 
     " Move left/right between windows with Ctrl+H or L
     nnoremap <C-L> <C-W><C-L>
-    nnoremap <C-H> <C-W><C-H>
+    nnoremap <C-H> <C-w><C-H>
 
     " Set extreme focus mode to , + l
     noremap <leader>l :Limelight!! <bar> :Goyo<CR> <bar> <Esc>:setlocal spell! spelllang=en_ca<CR>
@@ -72,6 +77,11 @@ let mapleader=","							" Set <leader> to ,
     inoremap { {<CR><BS>}<Esc>ko
     inoremap ' ''<Esc>i
     inoremap " ""<Esc>i
+
+    " Show matching parentheses in colours
+    let g:rainbow#max_level = 16
+    let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+    let g:rainbow#blacklist = [233, 234, 245, 241, 225, 244]
 
     " Simple move one space right while in insert mode (useful for escaping brackets)
     inoremap <leader>m <Esc>la
@@ -85,7 +95,7 @@ let mapleader=","							" Set <leader> to ,
 
     " Miscellaneous Mappings
         " Toggle NERDTree with , + ne
-        nnoremap <leader>ne :NERDTree GitHub<CR>
+        nnoremap <leader>ne :NERDTree C:\Users\Nate\Documents\GitHub\<CR>
 
         " Map Normal mode to nn
         inoremap nn <Esc>
@@ -94,17 +104,15 @@ let mapleader=","							" Set <leader> to ,
         nnoremap <leader>tt <Esc>:w<CR>
         inoremap <leader>tt <Esc>:w<CR>
 
-        " Get out of brackets quickly with , + m
-        inoremap <leader>m <Esc>la
-
-        " Move to next tab
+        " Open new tab / Move to next tab
+        nnoremap <C-t> :tabnew<CR>
         nnoremap <C-tab> :tabnext<CR>
 
         " Move cursor naturally if there are line breaks
         nnoremap j gj
         nnoremap k gk
 
-        " Move to beggining and end more easily
+        " Move to beginning and end more easily
         nnoremap H 0
         nnoremap L $
 
@@ -113,3 +121,26 @@ let mapleader=","							" Set <leader> to ,
 
         " Close HTML tags
         imap <leader>/ </<C-X><C-O><C-X>
+
+" Scripts
+
+    " Highlight all instances of word under cursor, when idle
+    nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+    function! AutoHighlightToggle()
+        let @/ = ''
+        if exists('#auto_highlight')
+            au! auto_highlight
+            augroup! auto_highlight
+            setl updatetime=4000
+            echo 'Highlight current word: off'
+            return 0
+        else
+            augroup auto_highlight
+                au!
+                au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+            augroup end
+            setl updatetime=500
+            echo 'Highlight current word: ON'
+            return 1
+        endif
+    endfunction
