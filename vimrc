@@ -43,7 +43,7 @@ setlocal spell spelllang=en_ca
 " Theme
 
 colorscheme molokai 
-set guifont=Source_Code_Pro:h11
+set guifont=Source_Code_Pro:h13
 
 " Indent settings
 
@@ -95,7 +95,7 @@ let mapleader=","							" Set <leader> to ,
 
     " Miscellaneous Mappings
         " Toggle NERDTree with , + ne
-        nnoremap <leader>ne :NERDTree C:\Users\Nate\Documents\GitHub\<CR>
+        nnoremap <leader>ne :NERDTree C:\Users\Nathan\Documents\GitHub\<CR>
 
         " Map Normal mode to nn
         inoremap nn <Esc>
@@ -132,7 +132,7 @@ let mapleader=","							" Set <leader> to ,
             au! auto_highlight
             augroup! auto_highlight
             setl updatetime=4000
-            echo 'Highlight current word: off'
+            echo 'Highlight current word: OFF'
             return 0
         else
             augroup auto_highlight
