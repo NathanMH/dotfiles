@@ -60,3 +60,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Automatically install packages
+
+; List of packages to install
+(setq package-list '(evil package2))
+
+; List of repositories needed
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("elpa" . "http://gnu.elpa.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; Install the packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
