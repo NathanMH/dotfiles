@@ -3,24 +3,6 @@
 set nocompatible							" We don't need legacy right?
 filetype off
 
-" Pathogen
-execute pathogen#infect()
-filetype plugin indent on
-
-" Plugin Settings
-
-    " NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q
-let NERDTreeShowLineNumbers=1
-let NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=0
-
-    " EasyMotion
-nmap s <Plug>(easymotion-s)
-let g:EasyMotion_use_upper = 1
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_use_smartsign_us = 1
-
 " General Settings
 
 set t_Co=256                                " Enable 256-colour mode
@@ -68,20 +50,12 @@ let mapleader=","							" Set <leader> to ,
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-w><C-H>
 
-    " Set extreme focus mode to , + l
-    noremap <leader>l :Limelight!! <bar> :Goyo<CR> <bar> <Esc>:setlocal spell! spelllang=en_ca<CR>
-
     " Autocomplete all brackets and quotes
     inoremap ( ()<Esc>i
     inoremap [ []<Esc>i
     inoremap { {<CR><BS>}<Esc>ko
     inoremap ' ''<Esc>i
     inoremap " ""<Esc>i
-
-    " Show matching parentheses in colours
-    let g:rainbow#max_level = 16
-    let g:rainbow#pairs = [['(', ')'], ['[', ']']]
-    let g:rainbow#blacklist = [233, 234, 245, 241, 225, 244]
 
     " Simple move one space right while in insert mode (useful for escaping brackets)
     inoremap <leader>m <Esc>la
@@ -94,9 +68,6 @@ let mapleader=","							" Set <leader> to ,
     nnoremap <leader>sp :setlocal spell! spelllang=en_ca<CR>
 
     " Miscellaneous Mappings
-        " Toggle NERDTree with , + ne
-        nnoremap <leader>ne :NERDTree C:\Users\Nathan\Documents\GitHub\<CR>
-
         " Map Normal mode to nn
         inoremap nn <Esc>
 
@@ -122,25 +93,3 @@ let mapleader=","							" Set <leader> to ,
         " Close HTML tags
         imap <leader>/ </<C-X><C-O><C-X>
 
-" Scripts
-
-    " Highlight all instances of word under cursor, when idle
-    nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-    function! AutoHighlightToggle()
-        let @/ = ''
-        if exists('#auto_highlight')
-            au! auto_highlight
-            augroup! auto_highlight
-            setl updatetime=4000
-            echo 'Highlight current word: OFF'
-            return 0
-        else
-            augroup auto_highlight
-                au!
-                au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-            augroup end
-            setl updatetime=500
-            echo 'Highlight current word: ON'
-            return 1
-        endif
-    endfunction
