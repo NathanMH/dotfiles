@@ -6,4 +6,4 @@
 
 	(powerline-center-evil-theme)
 
-(provide 'user-init-powerline)
+(provide 'init-powerline)

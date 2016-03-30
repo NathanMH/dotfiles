@@ -33,4 +33,4 @@
 ;		(global-set-key (kbd "<backspace>") 'backspace-soft-tab)
 ;		(global-set-key (kbd "<deletechar>") 'delete-forward-soft-tab)
 ;		(setq-default tab-width 4)
-(provide 'user-init-settings)
+(provide 'init-settings)

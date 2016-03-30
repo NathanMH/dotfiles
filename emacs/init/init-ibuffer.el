@@ -63,5 +63,5 @@
 	(setq ibuffer-show-empty-filter-groups nil)
 	(ad-activate 'ibuffer)
 
-(provide 'user-init-ibuffer)
+(provide 'init-ibuffer)
 

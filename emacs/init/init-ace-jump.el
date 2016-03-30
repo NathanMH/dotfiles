@@ -1,4 +1,4 @@
-; EasyMotion
+; Ace-Jump
 
 	(require 'ace-jump-mode)
 	(autoload 'ace-jump-char-mode "ace-jump-char-mode" "Emacs quick move minor mode" t)
@@ -8,4 +8,4 @@
 
 	(define-key evil-normal-state-map (kbd "s") 'ace-jump-char-mode)
 
-(provide 'user-init-easymotion)
+(provide 'init-ace-jump)

@@ -6,4 +6,4 @@
 
 (global-flycheck-mode)
 
-(provide user-init-flycheck)
+(provide 'init-flycheck)
