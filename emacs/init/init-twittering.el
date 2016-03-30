@@ -11,4 +11,4 @@
 	(define-key evil-normal-state-map (kbd ",twit") 'twit)
     (define-key twittering-mode-map (kbd ",b") 'ibuffer)
 
-(provide 'user-init-twittering)
+(provide 'init-twittering)

@@ -9,10 +9,10 @@
 	(define-key evil-normal-state-map (kbd",fetch") 'mu4e-get-mail-command)
 	(setq
 		mu4e-maildir		"/home/musicnate/.emacs.d/mail"
-		mu4e-set-folder		"/sent"
-		mu4e-drafts-folder	"/drafts"
-		mu4e-trash-folder	"/trash"
-		mu4e-refile-folder	"/archive"
+		mu4e-set-folder		"/home/musicnate/.emacs.d/mail/sent"
+		mu4e-drafts-folder	"/home/musicnate/.emacs.d/mail/drafts"
+		mu4e-trash-folder	"/home/musicnate/.emacs.d/mail/trash"
+		mu4e-refile-folder	"/home/musicnate/.emacs.d/mail/archive"
 		mu4e-get-mail-command   "offlineimap"
 		mu4e-update-interval 600)
 	(setq message-send-mail-function 	'smtpmail-send-it

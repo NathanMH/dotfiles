@@ -21,4 +21,4 @@
 	; Start ERC
 		(define-key evil-normal-state-map (kbd ",erc") 'djcb-erc-start-or-switch)
 
-(provide 'user-init-erc)
+(provide 'init-erc)

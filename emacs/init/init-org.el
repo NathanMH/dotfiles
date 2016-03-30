@@ -17,4 +17,4 @@
 	(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 	(setq org-return-follows-link t)
 
-(provide 'user-init-org)
+(provide 'init-org)

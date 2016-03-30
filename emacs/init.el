@@ -1,52 +1,70 @@
+; List of packages to install
+(setq package-list '(evil 
+                     colemak-evil 
+                     evil-leader 
+                     evil-org 
+                     evil-nerd-commenter 
+                     evil-surround 
+                     evil-terminal-cursor-changer 
+                     ace-jump-mode
+                     centered-cursor-mode
+                     key-chord
+                     flycheck
+                     rainbow-delimiters
+                     company
+                     company-jedi
+                     neotree 
+                     calfw 
+                     powerline 
+                     twittering-mode))
+
+; List of repositories needed
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; Install the packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+
 ; Load Paths
 
 (add-to-list 'custom-theme-load-path "/home/musicnate/.emacs.d/themes/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/init/")
-;(add-to-list 'load-path "/home/musicnate/.emacs.d/evil-addons")	
-(add-to-list 'load-path "/home/musicnate/.emacs.d/evil")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/neotree/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/calfw/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/powerline/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/twittering/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/mu4e/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/yasnippet/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/magit/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/magit/lisp")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins/emmet/")
+(add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/")
 
 ; Load Package Repos
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-; Add user-init files
+; Add init files
 
-(require 'user-init-evil)
-(require 'user-init-calendar)
-(require 'user-init-centered)
-(require 'user-init-easymotion)
-(require 'user-init-erc)
-(require 'user-init-keychord)
-(require 'user-init-neotree)
-(require 'user-init-parens)
-(require 'user-init-surround)
-(require 'user-init-minimap)
-(require 'user-init-powerline)
-(require 'user-init-twittering)
-(require 'user-init-org)
-(require 'user-init-mu4e)
-(require 'user-init-ibuffer)
-(require 'user-init-evil-org-mode)
-(require 'user-init-softtab)
-(require 'user-init-yasnippet)
-(require 'user-init-emmet)
-(require 'user-init-flycheck)
-(require 'user-init-hl-tags)
-(require 'user-init-magit)
-(require 'user-init-company)
-(require 'user-init-settings)
+(require 'init-evil-leader)
+(require 'init-evil)
+(require 'init-evil-addons)
+(require 'init-calendar)
+(require 'init-centered)
+(require 'init-company)
+(require 'init-ace-jump)
+(require 'init-erc)
+(require 'init-keychord)
+(require 'init-neotree)
+(require 'init-rainbow-delimiters)
+(require 'init-powerline)
+(require 'init-twittering)
+(require 'init-org)
+(require 'init-ibuffer)
+(require 'init-flycheck)
+(require 'init-settings)
+(require 'init-hl-tags)
+(require 'init-mu4e)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -61,21 +79,4 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Automatically install packages
 
-; List of packages to install
-(setq package-list '(evil package2))
-
-; List of repositories needed
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("elpa" . "http://gnu.elpa.org/packages/")))
-
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-
-; Install the packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))

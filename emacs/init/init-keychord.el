@@ -9,4 +9,4 @@
 	(key-chord-define evil-insert-state-map (kbd ",m") 'right-char)
 	(setq key-chord-delay 0.1)
 
-(provide 'user-init-keychord)
+(provide 'init-keychord)

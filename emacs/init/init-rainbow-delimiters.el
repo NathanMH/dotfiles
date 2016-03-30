@@ -1,6 +1,7 @@
-; Parens
+; Rainbow-Delimiters
 
 	(require 'paren)
+    (require 'rainbow-delimiters)
 
 ; Settings
 
@@ -10,4 +11,4 @@
 		(show-paren-mode 1)
 		(setq show-paren-delay 0)
 
-(provide 'user-init-parens)
+(provide 'init-rainbow-delimiters)

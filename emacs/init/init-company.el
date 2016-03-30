@@ -7,4 +7,4 @@
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
-(provide 'user-init-company)
+(provide 'init-company)
