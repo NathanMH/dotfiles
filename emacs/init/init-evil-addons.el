@@ -7,9 +7,9 @@
 ; Settings
 
 (global-evil-surround-mode 1)
-(setq evil-visual-state-cursor '("red" hbar))
+(setq evil-visual-state-cursor '("purple" hbar))
 (setq evil-normal-state-cursor '("green" box))
-(setq evil-insert-state-cursor '("blue" bar))
+(setq evil-insert-state-cursor '("red" bar))
 
 
 (provide 'init-evil-addons)
