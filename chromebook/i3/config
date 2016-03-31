@@ -118,7 +118,8 @@ bar {
 # My Additions
 focus_follows_mouse no
 workspace_layout tabbed
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper1.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+bindsym Control+Shift+x [class="^.*"] border toggle
 
 # Media Keys
 
