@@ -28,7 +28,9 @@
 		(tooltip-mode 0)
 	; Scratch buffer
 		(setq initial-scratch-message nil)
-	; Make tab work...
+	; Make tab work/folding...
+                (define-globalized-minor-mode global-hs-minor-mode hs-minor-mode hs-minor-mode)
+                (global-hs-minor-mode 1)
 ;		(global-set-key (kbd "TAB") 'self-insert-command)
 ;		(global-set-key (kbd "<backspace>") 'backspace-soft-tab)
 ;		(global-set-key (kbd "<deletechar>") 'delete-forward-soft-tab)
