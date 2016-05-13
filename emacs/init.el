@@ -64,6 +64,7 @@
 (require 'init-flycheck)
 (require 'init-settings)
 (require 'init-hl-tags)
+(require 'init-latex-preview-pane)
 (require 'init-mu4e)
 
 (custom-set-variables
