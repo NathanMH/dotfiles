@@ -6,6 +6,9 @@
 
 	; Allow y or n instead of yes or no
 		(defalias 'yes-or-no-p 'y-or-n-p)
+    ; Auto complete ignore case
+        (setq read-file-name-completion-ignore-case t)
+        (setq read-buffer-name-completion-ignore-case t)
 	; Stop making shitty backup files
 		(setq make-backup-files nil)
 	; Shutup about compile saving
