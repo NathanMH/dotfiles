@@ -118,6 +118,9 @@ fi
 
 # My Additions
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 alias py=python3
 alias ..="cd .."
 alias ...="cd ../.."
