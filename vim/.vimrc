@@ -1,21 +1,21 @@
 " Nathan's Portable Vim Settings
 
-set nocompatible						" We don't need legacy right?
+set nocompatible							" We don't need legacy right?
 filetype off
 
 " General Settings
 
-set t_Co=256							" Enable 256-colour mode
-syntax on							" Enable syntax highlighting
-set number 						    	" Line numbers
-set relativenumber                          			" Show relative numbers to current
-set ruler						   	" Show cursor at all times
-set showmode							" Shows which mode vim is in (bottom right)
-set scrolloff=999                           			" Keeps the cursor centered when scrolling
-set showmatch							" Highlights matching brackets
-set backspace=2							" Allows backspace to delete lines
-set softtabstop=4						" Allows backspace to delete tabs
-set cursorline							" Highlight the current line
+set t_Co=256                                " Enable 256-colour mode
+syntax on							    	" Enable syntax highlighting
+set number 							    	" Line numbers
+set relativenumber                          " Show relative numbers to current
+set ruler								    " Show cursor at all times
+set showmode								" Shows which mode vim is in (bottom right)
+set scrolloff=999                           " Keeps the cursor centered when scrolling
+set showmatch								" Highlights matching brackets
+set backspace=2								" Allows backspace to delete lines
+set softtabstop=4							" Allows backspace to delete tabs
+set cursorline								" Highlight the current line
 setlocal spell spelllang=en_ca
 
 " Smooth Scrolling
@@ -29,22 +29,36 @@ set guifont=Source_Code_Pro:h13
 
 " Indent settings
 
-set tabstop=4							" Tab spacing equals 4 spaces
-set shiftwidth=4						" Indent by 4 columns
-set expandtab							" Use spaces instead of tabs
-set shiftround							" Round to the nearest tab
+set tabstop=4								" Tab spacing equals 4 spaces
+set shiftwidth=4							" Indent by 4 columns
+set expandtab								" Use spaces instead of tabs
+set shiftround								" Round to the nearest tab
 set viewdir=~/vimfiles/view					" Change vim view default location
 
 " Searching
 
-set hlsearch							" Highlight searches
-set noincsearch							" Highlight as you search
-set ignorecase							" Make searches not case-sensitive
+set hlsearch								" Highlight searches
+set noincsearch								" Highlight as you search
+set ignorecase								" Make searches not case-sensitive
 nnoremap <leader>/ :let @/=""<CR>
+
+" Netrw
+
+let g:netrw_banner = 0
+let g:netrw_list_hide = '.*\.swp$,\.DS_Store'
+let g:netrw_liststyle = 3
+let g:netrw_sort_sequence = '[\/]$'
+let g:netrw_sort_options = 'i'
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+let g:netrw_browse_split = 4
 
 " Custom Mappings
 
-let mapleader=","						" Set <leader> to ,
+let mapleader=","							" Set <leader> to ,
+
+    " Open Netrw
+    nnoremap <leader>ne :Vexplore ~/Documents/<CR>
 
     " Move left/right between windows with Ctrl+H or L
     nnoremap <C-L> <C-W><C-L>
@@ -67,6 +81,9 @@ let mapleader=","						" Set <leader> to ,
     " Toggle Spellcheck
     nnoremap <leader>sp :setlocal spell! spelllang=en_ca<CR>
 
+    " Quick close window/tab
+    nnoremap <leader>q :q<CR>
+
     " Miscellaneous Mappings
         " Map Normal mode to nn
         inoremap nn <Esc>
@@ -77,7 +94,7 @@ let mapleader=","						" Set <leader> to ,
 
         " Open new tab / Move to next tab
         nnoremap <C-t> :tabnew<CR>
-        nnoremap <C-tab> :tabnext<CR>
+        nnoremap <C-g> :tabnext<CR>
 
         " Move cursor naturally if there are line breaks
         nnoremap j gj
