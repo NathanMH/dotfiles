@@ -3,6 +3,10 @@
 set nocompatible							" We don't need legacy right?
 filetype off
 
+" Pathogen & Plugins
+
+execute pathogen#infect()
+
 " General Settings
 
 set t_Co=256                                " Enable 256-colour mode
@@ -16,11 +20,20 @@ set showmatch								" Highlights matching brackets
 set backspace=2								" Allows backspace to delete lines
 set softtabstop=4							" Allows backspace to delete tabs
 set cursorline								" Highlight the current line
+set nowrap
 setlocal spell spelllang=en_ca
 
 " Smooth Scrolling
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 :map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+
+" Cursor shape 
+
+if has("autocmd")
+  au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
+  au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
+  au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
+endif
 
 " Theme
 
@@ -35,7 +48,9 @@ set expandtab								" Use spaces instead of tabs
 set shiftround								" Round to the nearest tab
 set viewdir=~/vimfiles/view					" Change vim view default location
 
-" Searching
+" Searching/EasyMotion
+nmap <Leader><Leader>s <Plug>(easymotion-bd-f)
+let g:EasyMotion_smartcase = 1
 
 set hlsearch								" Highlight searches
 set noincsearch								" Highlight as you search
