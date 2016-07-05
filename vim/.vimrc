@@ -1,21 +1,21 @@
 " Nathan's Portable Vim Settings
 
-set nocompatible							" We don't need legacy right?
+set nocompatible						" We don't need legacy right?
 filetype off
 
 " General Settings
 
-set t_Co=256                                " Enable 256-colour mode
-syntax on							    	" Enable syntax highlighting
-set number 							    	" Line numbers
-set relativenumber                          " Show relative numbers to current
-set ruler								    " Show cursor at all times
-set showmode								" Shows which mode vim is in (bottom right)
-set scrolloff=999                           " Keeps the cursor centered when scrolling
-set showmatch								" Highlights matching brackets
-set backspace=2								" Allows backspace to delete lines
-set softtabstop=4							" Allows backspace to delete tabs
-set cursorline								" Highlight the current line
+set t_Co=256							" Enable 256-colour mode
+syntax on							" Enable syntax highlighting
+set number 						    	" Line numbers
+set relativenumber                          			" Show relative numbers to current
+set ruler						   	" Show cursor at all times
+set showmode							" Shows which mode vim is in (bottom right)
+set scrolloff=999                           			" Keeps the cursor centered when scrolling
+set showmatch							" Highlights matching brackets
+set backspace=2							" Allows backspace to delete lines
+set softtabstop=4						" Allows backspace to delete tabs
+set cursorline							" Highlight the current line
 setlocal spell spelllang=en_ca
 
 " Smooth Scrolling
@@ -29,22 +29,22 @@ set guifont=Source_Code_Pro:h13
 
 " Indent settings
 
-set tabstop=4								" Tab spacing equals 4 spaces
-set shiftwidth=4							" Indent by 4 columns
-set expandtab								" Use spaces instead of tabs
-set shiftround								" Round to the nearest tab
+set tabstop=4							" Tab spacing equals 4 spaces
+set shiftwidth=4						" Indent by 4 columns
+set expandtab							" Use spaces instead of tabs
+set shiftround							" Round to the nearest tab
 set viewdir=~/vimfiles/view					" Change vim view default location
 
 " Searching
 
-set hlsearch								" Highlight searches
-set noincsearch								" Highlight as you search
-set ignorecase								" Make searches not case-sensitive
+set hlsearch							" Highlight searches
+set noincsearch							" Highlight as you search
+set ignorecase							" Make searches not case-sensitive
 nnoremap <leader>/ :let @/=""<CR>
 
 " Custom Mappings
 
-let mapleader=","							" Set <leader> to ,
+let mapleader=","						" Set <leader> to ,
 
     " Move left/right between windows with Ctrl+H or L
     nnoremap <C-L> <C-W><C-L>
