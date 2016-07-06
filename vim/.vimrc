@@ -69,15 +69,12 @@ let g:netrw_browse_split = 4
 
 let mapleader=","							" Set <leader> to ,
 
-    " Plugins
-        " EasyMotion
-        nmap <Leader>se <Plug>(easymotion-bd-f)
-        let g:EasyMotion_smartcase = 1
-        
-        " Vim-Commentary
-        nmap <Leader>comm <Plug>CommentaryLine
-
-    nnoremap <leader>/ :let @/=""<CR>
+    " EasyMotion
+    nmap <Leader>se <Plug>(easymotion-bd-f)
+    let g:EasyMotion_smartcase = 1
+    
+    " Vim-Commentary
+    nmap <Leader>comm <Plug>CommentaryLine
 
     " Open Netrw
     nnoremap <leader>ne :Vexplore ~/Documents/<CR>
@@ -89,7 +86,7 @@ let mapleader=","							" Set <leader> to ,
     " Autocomplete all brackets and quotes
     inoremap ( ()<Esc>i
     inoremap [ []<Esc>i
-    inoremap { {<CR><BS>}<Esc>ko
+    inoremap { {}<Esc>hr<CR>O
     inoremap ' ''<Esc>i
     inoremap " ""<Esc>i
 
@@ -107,6 +104,9 @@ let mapleader=","							" Set <leader> to ,
     nnoremap <leader>q :q<CR>
 
     " Miscellaneous Mappings
+
+        nnoremap <leader>indent gg=G
+
         " Map Normal mode to nn
         inoremap nn <Esc>
 
