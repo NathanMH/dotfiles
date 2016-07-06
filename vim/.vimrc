@@ -48,14 +48,11 @@ set expandtab								" Use spaces instead of tabs
 set shiftround								" Round to the nearest tab
 set viewdir=~/vimfiles/view					" Change vim view default location
 
-" Searching/EasyMotion
-nmap <Leader><Leader>s <Plug>(easymotion-bd-f)
-let g:EasyMotion_smartcase = 1
+" Searching
 
 set hlsearch								" Highlight searches
 set noincsearch								" Highlight as you search
 set ignorecase								" Make searches not case-sensitive
-nnoremap <leader>/ :let @/=""<CR>
 
 " Netrw
 
@@ -71,6 +68,16 @@ let g:netrw_browse_split = 4
 " Custom Mappings
 
 let mapleader=","							" Set <leader> to ,
+
+    " Plugins
+        " EasyMotion
+        nmap <Leader>se <Plug>(easymotion-bd-f)
+        let g:EasyMotion_smartcase = 1
+        
+        " Vim-Commentary
+        nmap <Leader>comm <Plug>CommentaryLine
+
+    nnoremap <leader>/ :let @/=""<CR>
 
     " Open Netrw
     nnoremap <leader>ne :Vexplore ~/Documents/<CR>
