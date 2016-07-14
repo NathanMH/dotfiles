@@ -9,17 +9,18 @@ execute pathogen#infect()
 
 " General Settings
 
-set t_Co=256                                " Enable 256-colour mode
+set t_Co=256                              " Enable 256-colour mode
 syntax on							    	" Enable syntax highlighting
 set number 							    	" Line numbers
 set relativenumber                          " Show relative numbers to current
 set ruler								    " Show cursor at all times
 set showmode								" Shows which mode vim is in (bottom right)
-set scrolloff=999                           " Keeps the cursor centered when scrolling
+set scrolloff=999                         " Keeps the cursor centered when scrolling
 set showmatch								" Highlights matching brackets
-set backspace=2								" Allows backspace to delete lines
+set backspace=2							" Allows backspace to delete lines
 set softtabstop=4							" Allows backspace to delete tabs
 set cursorline								" Highlight the current line
+set clipboard=unnamedplus                 " Use system clipboard for copy/paste
 set nowrap
 setlocal spell spelllang=en_ca
 
@@ -46,13 +47,18 @@ set tabstop=4								" Tab spacing equals 4 spaces
 set shiftwidth=4							" Indent by 4 columns
 set expandtab								" Use spaces instead of tabs
 set shiftround								" Round to the nearest tab
-set viewdir=~/vimfiles/view					" Change vim view default location
+set viewdir=~/vimfiles/view				" Change vim view default location
 
 " Searching
 
 set hlsearch								" Highlight searches
 set noincsearch								" Highlight as you search
 set ignorecase								" Make searches not case-sensitive
+
+" Calendar
+
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
 
 " Netrw
 
@@ -78,6 +84,13 @@ let mapleader=","							" Set <leader> to ,
 
     " Open Netrw
     nnoremap <leader>ne :Vexplore ~/Documents/<CR>
+
+    " Rainbow Parentheses
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+    au Syntax * RainbowParenthesesLoadChevrons
 
     " Move left/right between windows with Ctrl+H or L
     nnoremap <C-L> <C-W><C-L>
