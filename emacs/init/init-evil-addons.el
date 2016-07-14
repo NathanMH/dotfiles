@@ -3,6 +3,7 @@
 (require 'evil-surround)
 (require 'evil-terminal-cursor-changer)
 (require 'evil-org)
+(require 'evil-mu4e)
 
 ; Settings
 
