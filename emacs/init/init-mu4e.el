@@ -5,57 +5,12 @@
 
 ; Settings
 
-	(define-key evil-normal-state-map (kbd ",mail") 'mu4e)
+	;(define-key evil-normal-state-map (kbd ",mail") 'mu4e)
 	(define-key evil-normal-state-map (kbd",fetch") 'mu4e-get-mail-command)
-	(setq
-		mu4e-maildir		"/home/musicnate/.emacs.d/mail"
-		mu4e-set-folder		"/home/musicnate/.emacs.d/mail/sent"
-		mu4e-drafts-folder	"/home/musicnate/.emacs.d/mail/drafts"
-		mu4e-trash-folder	"/home/musicnate/.emacs.d/mail/trash"
-		mu4e-refile-folder	"/home/musicnate/.emacs.d/mail/archive"
-		mu4e-get-mail-command   "offlineimap"
-		mu4e-update-interval 600)
-	(setq message-send-mail-function 	'smtpmail-send-it
-		  smtpmail-smtp-server 			"hp93.hostpapa.com"
-		  smtpmail-stream-type			'ssl
-		  smtpmail-smtp-service			465)
-
+    (setq mu4e-get-mail-command "fetchmail"); Command to get mail
 	(setq mu4e-view-show-images t)
-	(add-hook 'mu4e-view-mode-hook 'visual-line-mode)
+	(add-hook 'mu4e-view-mode-hook 'visual-line-mode) ; No text wrap
 	;(setq mu4e-view-prefer-html t)
-
-	; Add hjkl keys to mu4e
-	(eval-after-load 'mu4e
-		'(progn
-			; Start with normal mode
-			(add-hook 'mu4e-view-mode-hook 'evil-normal-state)
-			(add-hook 'mu4e-main-mode-hook 'evil-normal-state)
-			(add-hook 'mu4e-headers-mode-hook 'evil-normal-state)
-
-			; Use the standard bindings as a base
-			(evil-make-overriding-map mu4e-view-mode-map 'normal t)
-			(evil-make-overriding-map mu4e-main-mode-map 'normal t)
-			(evil-make-overriding-map mu4e-headers-mode-map 'normal t)
-
-			(evil-add-hjkl-bindings mu4e-view-mode-map 'normal
-				"J" 'mu4e-headers-jump-to-maildir
-				"j" 'evil-next-line
-				"k" '<up>
-				"C" 'mu4e-compose-new
-				"o" 'mu4e-view-go-to-url
-				"Q" 'mu4e-raw-view-quit-buffer)
-
-			(evil-add-hjkl-bindings mu4e-headers-mode-map 'normal
-				"J" 'mu4e-headers-jump-to-maildir
-				"j" 'evil-next-line
-				"k" 'mu4e-headers-prev
-				"C" 'mu4e-compose-new
-				"o" 'mu4e-view-message)
-
-			(evil-add-hjkl-bindings mu4e-main-mode-map 'normal
-				"J" 'mu4e-headers-jump-to-maildir
-				"j" 'evil-next-line
-				"RET" 'mu4e-view-message)))
 
 	; Set the headers to show in inbox
 	(setq mu4e-headers-fields
@@ -63,8 +18,65 @@
 			(:from-or-to 	.  22)
 			(:subject		.  nil)))
 
+    (setq mu4e-maildir "/home/musicnate/mail/")    ; Set top-level mail directory
+
+    ; Default account
+	(setq
+		mu4e-sent-folder            	"/INBOX.Sent"
+		mu4e-drafts-folder	            "/INBOX.Drafts"
+		mu4e-trash-folder           	"/INBOX.Trash"
+		mu4e-refile-folder	            "/INBOX.Archive"
+        user-mail-address               "nathan@musicnate.ca"
+        smtpmail-smtp-server 			"hp93.hostpapa.com"
+        smtpmail-stream-type			'ssl
+        smtpmail-smtp-service			465
+		mu4e-update-interval 600
+        message-send-mail-function 	'smtpmail-send-mail)
+
 	(setq mu4e-maildir-shortcuts
 		'(("/INBOX"				.				?j)
-		("/INBOX.Programming"	.				?p)))
+            ("/INBOX.Family"    .               ?p)
+            ("/INBOX.Lara"      .               ?l)))
 
-(provide 'user-init-mu4e)
+	; Custom keybindings for mu4e (vim bindings)
+    (with-eval-after-load "mu4e"
+        (evil-make-overriding-map mu4e-main-mode-map 'normal t)
+        (evil-define-key 'normal mu4e-main-mode-map
+            "," nil     ; Ensure my leader works properly
+            "j" nil     ; Remove jump to maildir binding
+            "gt" 'mu4e~headers-jump-to-maildir)    
+
+        (evil-make-overriding-map mu4e-headers-mode-map 'normal t)
+        (evil-define-key 'normal mu4e-headers-mode-map
+            "j" 'evil-next-line
+            "k" 'evil-previous-line
+            "r" 'mu4e-compose-reply
+            "c" 'mu4e-compose-new
+            "ESC" nil
+            "d" 'mu4e-headers-mark-for-trash
+            "o" 'mu4e-headers-view-message
+            "gt" 'mu4e~headers-jump-to-maildir)
+
+        (evil-make-overriding-map mu4e-view-mode-map 'normal t)
+        (evil-define-key 'normal mu4e-view-mode-map
+            "j" 'evil-next-line
+            "k" 'evil-previous-line
+            "r" 'mu4e-compose-reply
+            "c" 'mu4e-compose-new
+            "ESC" nil
+            "d" 'mu4e-view-mark-for-trash
+            "n" 'mu4e-view-headers-next
+            "p" 'mu4e-view-headers-prev
+            "gt" 'mu4e~headers-jump-to-maildir)
+        
+        (evil-make-overriding-map mu4e-compose-mode-map 'normal t)
+        (evil-define-key 'normal mu4e-compose-mode-map
+            "c" nil))
+
+(evil-set-initial-state 'mu4e-mode 'normal)
+(evil-set-initial-state 'mu4e-main-mode 'normal)
+(evil-set-initial-state 'mu4e-headers-mode 'normal)
+(evil-set-initial-state 'mu4e-view-mode 'normal)
+(evil-set-initial-state 'mu4e-compose-mode 'normal)
+
+(provide 'init-mu4e)
