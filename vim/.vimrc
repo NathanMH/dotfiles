@@ -9,18 +9,18 @@ execute pathogen#infect()
 
 " General Settings
 
-set t_Co=256                              " Enable 256-colour mode
+set t_Co=256                                " Enable 256-colour mode
 syntax on							    	" Enable syntax highlighting
 set number 							    	" Line numbers
 set relativenumber                          " Show relative numbers to current
 set ruler								    " Show cursor at all times
 set showmode								" Shows which mode vim is in (bottom right)
-set scrolloff=999                         " Keeps the cursor centered when scrolling
+set scrolloff=999                           " Keeps the cursor centered when scrolling
 set showmatch								" Highlights matching brackets
-set backspace=2							" Allows backspace to delete lines
+set backspace=2							    " Allows backspace to delete lines
 set softtabstop=4							" Allows backspace to delete tabs
 set cursorline								" Highlight the current line
-set clipboard=unnamedplus                 " Use system clipboard for copy/paste
+set clipboard=unnamedplus                   " Use system clipboard for copy/paste
 set nowrap
 setlocal spell spelllang=en_ca
 
@@ -47,7 +47,7 @@ set tabstop=4								" Tab spacing equals 4 spaces
 set shiftwidth=4							" Indent by 4 columns
 set expandtab								" Use spaces instead of tabs
 set shiftround								" Round to the nearest tab
-set viewdir=~/vimfiles/view				" Change vim view default location
+set viewdir=~/vimfiles/view				    " Change vim view default location
 
 " Searching
 
