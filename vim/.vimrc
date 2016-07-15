@@ -34,10 +34,11 @@ cabbrev help tab help
 
 " Cursor shape 
 
-if has("autocmd")
-  au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-  au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-  au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
+if has('autocmd')
+    augroup cursor_shape
+        au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
+        au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
+        au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
 endif
 
 " Theme
@@ -77,7 +78,7 @@ let g:netrw_browse_split = 4
 
 " Custom Mappings
 
-let mapleader=","							" Set <leader> to ,
+let mapleader=','							" Set <leader> to ,
 
     " EasyMotion
     nmap <Leader>se <Plug>(easymotion-bd-f)
@@ -100,9 +101,8 @@ let mapleader=","							" Set <leader> to ,
     let g:lightline = {
         \   'colorscheme': 'landscape',
         \   'active': {
-        \       'left': [ [ 'mode', 'paste' ], 
-        \                 [ 'readonly', 'filename', 'modified' ] ],
-        \       'right': [ [ 'filetype', 'percent' ] ]
+        \       'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+        \       'right': [['percent'], ['syntastic'], ['filetype']]
         \   },
         \   'component': {
         \   },
@@ -128,6 +128,19 @@ let mapleader=","							" Set <leader> to ,
             endif
         endfunction
         nnoremap <S-s> :call ToggleHiddenAll()<CR>
+
+    " Syntastic
+
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 0
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_loc_list_height = 4
+    let g:syntastic_vim_checkers = ['vint']
 
     " Keybind for Calendar
 
