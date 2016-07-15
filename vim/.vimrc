@@ -10,6 +10,8 @@ execute pathogen#infect()
 " General Settings
 
 set t_Co=256                                " Enable 256-colour mode
+set encoding=utf-8
+scriptencoding utf-8
 syntax on							    	" Enable syntax highlighting
 set number 							    	" Line numbers
 set relativenumber                          " Show relative numbers to current
@@ -24,6 +26,7 @@ set clipboard=unnamedplus                   " Use system clipboard for copy/past
 set nowrap                                  " No linewraping
 set noshowmode                              " Don't show mode (airline)
 set laststatus=2                            " Start with lightline/airline/powerline active
+cabbrev help tab help
 
 " Smooth Scrolling
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
@@ -100,7 +103,11 @@ let mapleader=","							" Set <leader> to ,
         \       'left': [ [ 'mode', 'paste' ], 
         \                 [ 'readonly', 'filename', 'modified' ] ],
         \       'right': [ [ 'filetype', 'percent' ] ]
-        \    }
+        \   },
+        \   'component': {
+        \   },
+        \   'separator': {'left': '', 'right': ''},
+        \   'subseparator': {'left': '', 'right': ''}
         \}
 
         " Hide/Show Lightline/Airline/Powerline
