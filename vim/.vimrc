@@ -21,8 +21,9 @@ set backspace=2							    " Allows backspace to delete lines
 set softtabstop=4							" Allows backspace to delete tabs
 set cursorline								" Highlight the current line
 set clipboard=unnamedplus                   " Use system clipboard for copy/paste
-set nowrap
-setlocal spell spelllang=en_ca
+set nowrap                                  " No linewraping
+set noshowmode                              " Don't show mode (airline)
+set laststatus=2                            " Start with lightline/airline/powerline active
 
 " Smooth Scrolling
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
@@ -92,9 +93,44 @@ let mapleader=","							" Set <leader> to ,
     au Syntax * RainbowParenthesesLoadBraces
     au Syntax * RainbowParenthesesLoadChevrons
 
+    " Lightline/Airline/Powerline
+    let g:lightline = {
+        \   'colorscheme': 'landscape',
+        \   'active': {
+        \       'left': [ [ 'mode', 'paste' ], 
+        \                 [ 'readonly', 'filename', 'modified' ] ],
+        \       'right': [ [ 'filetype', 'percent' ] ]
+        \    }
+        \}
+
+        " Hide/Show Lightline/Airline/Powerline
+        let s:hidden_all = 0
+        function! ToggleHiddenAll()
+            if s:hidden_all == 0
+                let s:hidden_all = 1
+                set noshowmode
+                set noruler
+                set laststatus=0
+                set noshowcmd
+            else
+                let s:hidden_all = 0
+                set showmode
+                set ruler
+                set laststatus=2
+                set showcmd
+            endif
+        endfunction
+        nnoremap <S-s> :call ToggleHiddenAll()<CR>
+
+    " Keybind for Calendar
+
+    nnoremap <Leader>cal :Calendar<CR>
+
     " Move left/right between windows with Ctrl+H or L
+    nnoremap <C-H> <C-W><C-H>
+    nnoremap <C-J> <C-W><C-J>
+    nnoremap <C-K> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
-    nnoremap <C-H> <C-w><C-H>
 
     " Autocomplete all brackets and quotes
     inoremap ( ()<Esc>i
@@ -123,7 +159,7 @@ let mapleader=","							" Set <leader> to ,
         " Map Normal mode to nn
         inoremap nn <Esc>
 
-        " Map quick save to tt 
+        " Map quick save to ,tt 
         nnoremap <leader>tt <Esc>:w<CR>
         inoremap <leader>tt <Esc>:w<CR>
 
@@ -144,4 +180,6 @@ let mapleader=","							" Set <leader> to ,
 
         " Close HTML tags
         imap <leader>/ </<C-X><C-O><C-X>
+
+
 
