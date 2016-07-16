@@ -32,7 +32,7 @@ cabbrev help tab help
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 :map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
-" Cursor shape 
+" Change cursor shape based on mode
 
 if has('autocmd')
     augroup cursor_shape
@@ -81,7 +81,7 @@ let g:netrw_browse_split = 4
 let mapleader=','							" Set <leader> to ,
 
     " EasyMotion
-    nmap <Leader>se <Plug>(easymotion-bd-f)
+    map <Leader>s <Plug>(easymotion-bd-f)
     let g:EasyMotion_smartcase = 1
     
     " Vim-Commentary
@@ -98,36 +98,21 @@ let mapleader=','							" Set <leader> to ,
     au Syntax * RainbowParenthesesLoadChevrons
 
     " Lightline/Airline/Powerline
+    " Keep this simple (no patched fonts)
     let g:lightline = {
         \   'colorscheme': 'landscape',
         \   'active': {
         \       'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
         \       'right': [['percent'], ['syntastic'], ['filetype']]
         \   },
-        \   'component': {
+        \
+        \   'component_function': {
+        \       'syntastic': 'SyntasticStatuslineFlag',
         \   },
+        \
         \   'separator': {'left': '', 'right': ''},
         \   'subseparator': {'left': '', 'right': ''}
         \}
-
-        " Hide/Show Lightline/Airline/Powerline
-        let s:hidden_all = 0
-        function! ToggleHiddenAll()
-            if s:hidden_all == 0
-                let s:hidden_all = 1
-                set noshowmode
-                set noruler
-                set laststatus=0
-                set noshowcmd
-            else
-                let s:hidden_all = 0
-                set showmode
-                set ruler
-                set laststatus=2
-                set showcmd
-            endif
-        endfunction
-        nnoremap <S-s> :call ToggleHiddenAll()<CR>
 
     " Syntastic
 
@@ -142,6 +127,9 @@ let mapleader=','							" Set <leader> to ,
     let g:syntastic_loc_list_height = 4
     let g:syntastic_vim_checkers = ['vint']
 
+    " Syntastic On/Off
+    nnoremap <S-s> :SyntasticToggleMode<CR>
+
     " Keybind for Calendar
 
     nnoremap <Leader>cal :Calendar<CR>
@@ -153,11 +141,12 @@ let mapleader=','							" Set <leader> to ,
     nnoremap <C-L> <C-W><C-L>
 
     " Autocomplete all brackets and quotes
-    inoremap ( ()<Esc>i
-    inoremap [ []<Esc>i
-    inoremap { {}<Esc>hr<CR>O
-    inoremap ' ''<Esc>i
-    inoremap " ""<Esc>i
+    inoremap (      ()<Left>
+    inoremap [      []<Esc>i
+    inoremap {      {}<Left><CR><Esc>O<Tab>
+    inoremap '      ''<Esc>i
+    inoremap "      ""<Esc>i
+    inoremap /*     /**/<Left><Left><Space><Left><Space>
 
     " Simple move one space right while in insert mode (useful for escaping brackets)
     inoremap <leader>m <Esc>la
@@ -200,6 +189,4 @@ let mapleader=','							" Set <leader> to ,
 
         " Close HTML tags
         imap <leader>/ </<C-X><C-O><C-X>
-
-
 
