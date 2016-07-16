@@ -80,55 +80,61 @@ let g:netrw_browse_split = 4
 
 let mapleader=','							" Set <leader> to ,
 
-    " EasyMotion
-    map <Leader>s <Plug>(easymotion-bd-f)
-    let g:EasyMotion_smartcase = 1
-    
-    " Vim-Commentary
-    nmap <Leader>comm <Plug>CommentaryLine
+    " Plugins
 
-    " Open Netrw
-    nnoremap <leader>ne :Vexplore ~/Documents/<CR>
+        " EasyMotion
+        map <Leader>s <Plug>(easymotion-bd-f)
+        let g:EasyMotion_smartcase = 1
+        
+        " Vim-Commentary
+        nmap <Leader>comm <Plug>CommentaryLine
 
-    " Rainbow Parentheses
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-    au Syntax * RainbowParenthesesLoadChevrons
+        " Open Netrw
+        nnoremap <leader>ne :Vexplore ~/Documents/<CR>
 
-    " Lightline/Airline/Powerline
-    " Keep this simple (no patched fonts)
-    let g:lightline = {
-        \   'colorscheme': 'landscape',
-        \   'active': {
-        \       'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-        \       'right': [['percent'], ['syntastic'], ['filetype']]
-        \   },
-        \
-        \   'component_function': {
-        \       'syntastic': 'SyntasticStatuslineFlag',
-        \   },
-        \
-        \   'separator': {'left': '', 'right': ''},
-        \   'subseparator': {'left': '', 'right': ''}
-        \}
+        " Rainbow Parentheses
+        au VimEnter * RainbowParenthesesToggle
+        au Syntax * RainbowParenthesesLoadRound
+        au Syntax * RainbowParenthesesLoadSquare
+        au Syntax * RainbowParenthesesLoadBraces
+        au Syntax * RainbowParenthesesLoadChevrons
 
-    " Syntastic
+        " Lightline/Airline/Powerline
+        " Keep this simple (no patched fonts)
+        let g:lightline = {
+            \   'colorscheme': 'landscape',
+            \   'active': {
+            \       'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+            \       'right': [['percent'], ['syntastic'], ['filetype']]
+            \   },
+            \
+            \   'component_function': {
+            \       'syntastic': 'SyntasticStatuslineFlag',
+            \   },
+            \
+            \   'separator': {'left': '', 'right': ''},
+            \   'subseparator': {'left': '', 'right': ''}
+            \}
 
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+        " Syntastic
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 0
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_loc_list_height = 4
-    let g:syntastic_vim_checkers = ['vint']
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
 
-    " Syntastic On/Off
-    nnoremap <S-s> :SyntasticToggleMode<CR>
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 0
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_wq = 0
+        let g:syntastic_loc_list_height = 4
+        let g:syntastic_vim_checkers = ['vint']
+        let g:syntastic_python_python_exec = '/usr/bin/python3.4'
+
+        " Syntastic On/Off
+        nnoremap <S-s> :SyntasticToggleMode<CR>
+
+        " YouCompleteMe
+        let g:ycm_seed_identifiers_with_syntax = 1        
 
     " Keybind for Calendar
 
