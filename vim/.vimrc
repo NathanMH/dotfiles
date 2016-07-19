@@ -142,6 +142,9 @@ let mapleader=','							" Set <leader> to ,
         " Indent Line
         let g:indentLine_color_term = 098
 
+        " DelimitMate
+        let delimitMate_expand_cr = 1
+
     " Keybind for Calendar
 
     nnoremap <Leader>cal :Calendar<CR>
@@ -151,14 +154,6 @@ let mapleader=','							" Set <leader> to ,
     nnoremap <C-J> <C-W><C-J>
     nnoremap <C-K> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
-
-    " Autocomplete all brackets and quotes
-    inoremap (      ()<Left>
-    inoremap [      []<Esc>i
-    inoremap {      {}<Left><CR><Esc>O<Tab>
-    inoremap '      ''<Esc>i
-    inoremap "      ""<Esc>i
-    inoremap /*     /**/<Left><Left><Space><Left><Space>
 
     " Simple move one space right while in insert mode (useful for escaping brackets)
     inoremap <leader>m <Esc>la
