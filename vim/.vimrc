@@ -143,7 +143,7 @@ let mapleader=','							" Set <leader> to ,
         let g:indentLine_color_term = 098
 
         " DelimitMate
-        let delimitMate_expand_cr = 1
+        let delimitMate_expand_cr = 2
 
     " Keybind for Calendar
 
