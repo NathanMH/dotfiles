@@ -145,6 +145,9 @@ let mapleader=','							" Set <leader> to ,
         " DelimitMate
         let delimitMate_expand_cr = 2
 
+        " Startify
+        " TODO
+
     " Keybind for Calendar
 
     nnoremap <Leader>cal :Calendar<CR>
