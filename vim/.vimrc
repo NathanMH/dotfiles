@@ -146,7 +146,14 @@ let mapleader=','							" Set <leader> to ,
         let delimitMate_expand_cr = 2
 
         " Startify
-        " TODO
+        let books = {
+                \ 'ev': '   ~/Documents/dotfiles/vim/.vimrc',
+                \ 'vim': '  ~/Documents/scripts/vim_setup.sh',
+                \ 'emacs': '~/Documents/scripts/emacs_setup.sh'}
+        let g:startify_bookmarks = [books]
+
+""        let g:startify_bookmarks = [' ~/Documents/dotfiles/vim.vimrc', ' ~/Documents/scripts/vim_setup.sh', ' ~/Documents/scripts/emacs_setup.sh', ' ~/Documents/scripts/linux_package_installer.sh']
+        let g:startify_list_order = [['  Bookmarks'], 'bookmarks', ['  Recent Files'], 'files']
 
     " Keybind for Calendar
 
