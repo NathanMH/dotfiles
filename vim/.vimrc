@@ -87,7 +87,9 @@ let mapleader=','							" Set <leader> to ,
         let g:EasyMotion_smartcase = 1
         
         " Vim-Commentary
+        autocmd FileType python set commentstring=#\ %s
         nmap <Leader>comm <Plug>CommentaryLine
+        vmap <Leader>comm <Plug>CommentaryLine
 
         " Open Netrw
         nnoremap <leader>ne :Vexplore ~/Documents/<CR>
