@@ -143,6 +143,7 @@ let mapleader=','							" Set <leader> to ,
         
         " Indent Line
         let g:indentLine_color_term = 098
+        let g:indentLine_faster = 1
 
         " DelimitMate
         let delimitMate_expand_cr = 2
