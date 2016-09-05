@@ -34,17 +34,23 @@ cabbrev help tab help
 
 " Change cursor shape based on mode
 
-if has('autocmd')
-    augroup cursor_shape
-        au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-        au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-        au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
+if has('unix')
+    if has('autocmd')
+        augroup cursor_shape
+            au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
+            au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
+            au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
+    endif
 endif
 
 " Theme
 
 colorscheme molokai 
-set guifont=Source_Code_Pro:h13
+if has("unix")
+    set guifont=Source_Code_Pro:h13
+else
+    set guifont=Consolas:h12
+endif
 
 " Indent settings
 
@@ -87,9 +93,7 @@ let mapleader=','							" Set <leader> to ,
         let g:EasyMotion_smartcase = 1
         
         " Vim-Commentary
-        autocmd FileType python set commentstring=#\ %s
         nmap <Leader>comm <Plug>CommentaryLine
-        vmap <Leader>comm <Plug>CommentaryLine
 
         " Open Netrw
         nnoremap <leader>ne :Vexplore ~/Documents/<CR>
@@ -143,20 +147,12 @@ let mapleader=','							" Set <leader> to ,
         
         " Indent Line
         let g:indentLine_color_term = 098
-        let g:indentLine_faster = 1
 
         " DelimitMate
         let delimitMate_expand_cr = 2
 
         " Startify
-        let books = {
-                \ 'ev': '   ~/Documents/dotfiles/vim/.vimrc',
-                \ 'vim': '  ~/Documents/scripts/vim_setup.sh',
-                \ 'emacs': '~/Documents/scripts/emacs_setup.sh'}
-        let g:startify_bookmarks = [books]
-
-""        let g:startify_bookmarks = [' ~/Documents/dotfiles/vim.vimrc', ' ~/Documents/scripts/vim_setup.sh', ' ~/Documents/scripts/emacs_setup.sh', ' ~/Documents/scripts/linux_package_installer.sh']
-        let g:startify_list_order = [['  Bookmarks'], 'bookmarks', ['  Recent Files'], 'files']
+        " TODO
 
     " Keybind for Calendar
 
