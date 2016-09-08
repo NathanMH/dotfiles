@@ -30,6 +30,12 @@ cabbrev help tab help
 
 if has("win32")
     let $TMP="C:/tmp"
+    if has("gui_running")
+        set guioptions-=m                  " Remove menu bar
+        set guioptions-=T                  " Remove toolbar
+        set guioptions-=r                  " Remove scrollbar
+        set guioptions-=L                  " Remove left scrollbar
+    endif
 endif
 
 " Smooth Scrolling
@@ -100,7 +106,11 @@ let mapleader=','							" Set <leader> to ,
         nmap <Leader>comm <Plug>CommentaryLine
 
         " Open Netrw
-        nnoremap <leader>ne :Vexplore ~/Documents/<CR>
+        if has("unix")
+            nnoremap <leader>ne :Vexplore ~/Documents/<CR>
+        else
+            nnoremap <leader>ne :Vexplore C:/Users/Nathan Mador-House/Documents/<CR>
+        endif
 
         " Rainbow Parentheses
         au VimEnter * RainbowParenthesesToggle
