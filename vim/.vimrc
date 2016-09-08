@@ -28,6 +28,10 @@ set noshowmode                              " Don't show mode (airline)
 set laststatus=2                            " Start with lightline/airline/powerline active
 cabbrev help tab help
 
+if has("win32")
+    let $TMP="C:/tmp"
+endif
+
 " Smooth Scrolling
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 :map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
@@ -134,7 +138,7 @@ let mapleader=','							" Set <leader> to ,
         let g:syntastic_check_on_wq = 0
         let g:syntastic_loc_list_height = 4
         let g:syntastic_vim_checkers = ['vint']
-        let g:syntastic_python_checkers = ['flake8']
+        let g:syntastic_python_checkers = ['pylint', 'flake8']
         let g:syntastic_python_python_exec = '/usr/bin/python3.4'
         let g:syntastic_error_symbol = '!'
         let g:syntastic_warning_symbol = '>'
