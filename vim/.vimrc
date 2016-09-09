@@ -140,6 +140,9 @@ let g:indentLine_color_term = 098
 " DelimitMate
 let delimitMate_expand_cr = 2
 
+" Vim-Rooter
+let g:rooter_silent_chdir = 1
+
 " Custom Mappings
 
 let mapleader=','							" Set <leader> to ,
