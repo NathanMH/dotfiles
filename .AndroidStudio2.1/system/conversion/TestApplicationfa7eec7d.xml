@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conversion>
+  <applied-converters>
+    <converter id="android-module-to-java-module" />
+    <converter id="android-proguard-options" />
+    <converter id="android-sdk-library" />
+    <converter id="groovy-modules-to-facets" />
+    <converter id="groovy-script-run-configurations" />
+  </applied-converters>
+  <project-files>
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\compiler.xml" timestamp="1474069874031" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\copyright\profiles_settings.xml" timestamp="1474069874042" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\encodings.xml" timestamp="1474069874052" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\gradle.xml" timestamp="1474149696406" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\animated_vector_drawable_24_2_1.xml" timestamp="1474149706844" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\appcompat_v7_24_2_1.xml" timestamp="1474149706860" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\hamcrest_core_1_3.xml" timestamp="1474149706860" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\junit_4_12.xml" timestamp="1474149706875" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_annotations_24_2_1.xml" timestamp="1474149706875" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_compat_24_2_1.xml" timestamp="1474149706891" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_core_ui_24_2_1.xml" timestamp="1474149706891" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_core_utils_24_2_1.xml" timestamp="1474149706891" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_fragment_24_2_1.xml" timestamp="1474149706907" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_media_compat_24_2_1.xml" timestamp="1474149706907" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_v4_24_2_1.xml" timestamp="1474149706922" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\libraries\support_vector_drawable_24_2_1.xml" timestamp="1474149706922" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\misc.xml" timestamp="1474149734306" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\modules.xml" timestamp="1474069903539" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\runConfigurations.xml" timestamp="1474069903562" />
+    <file path="C:\Documents\MyApplication\TestApplication\.idea\workspace.xml" timestamp="1474149706829" />
+    <file path="C:\Documents\MyApplication\TestApplication\TestApplication.iml" timestamp="1474069903472" />
+    <file path="C:\Documents\MyApplication\TestApplication\app\app.iml" timestamp="1474149706813" />
+  </project-files>
+</conversion>
+

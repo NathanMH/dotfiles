@@ -1,0 +1,35 @@
+<application>
+  <component name="StatisticsApplicationUsages">
+    <group name="Git">
+      <project id="Test Application" values="config.repo.sync.NOT_DECIDED,config.push.autoupdate.disabled,config.force.push.enabled,config.update.type.BRANCH_DEFAULT,config.cherry-pick.autocommit.disabled,config.warn.about.detached.enabled,config.ssh.enabled,config.push.update.all.roots.enabled,config.warn.about.crlf.enabled,config.save.policy.STASH" collectionTime="1474149863569" />
+    </group>
+    <group name="language-level">
+      <project id="Test Application" values="JDK_1_7" collectionTime="1474149863567" />
+    </group>
+    <group name="frameworks">
+      <project id="Test Application" values="android-gradle,android,java-gradle" collectionTime="1474149863527" />
+    </group>
+    <group name="run-configuration-type">
+      <project id="Test Application" values="AndroidRunConfigurationType" collectionTime="1474149863528" />
+    </group>
+    <group name="file-type">
+      <project id="Test Application" values="XML,ProGuard File,ARCHIVE,IDEA_MODULE,UNKNOWN,Images,JAVA,AIDL,PLAIN_TEXT,Properties,Groovy" collectionTime="1474149863558" />
+    </group>
+    <group name="module type">
+      <project id="Test Application" values="JAVA_MODULE" collectionTime="1474149863528" />
+    </group>
+  </component>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="ide.settings.Appearance" count="13" />
+      <entry feature="ide.settings.Colors_&amp;_Fonts" count="7" />
+      <entry feature="ide.settings.Font" count="1" />
+      <entry feature="ide.settings.General" count="1" />
+      <entry feature="ide.settings.Keymap" count="5" />
+      <entry feature="ide.settings.Plugins" count="1" />
+      <entry feature="ideaapp.started" count="19" />
+      <entry feature="tips.of.the.day.next" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.CreateNewProject" count="3" />
+    </counts>
+  </component>
+</application>

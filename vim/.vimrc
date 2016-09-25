@@ -203,7 +203,7 @@ let mapleader=','							" Set <leader> to ,
         if has("unix")
             nnoremap <leader>ne :Vexplore ~/Documents/<CR>
         else
-            nnoremap <leader>ne :Vexplore C:/Users/Nathan Mador-House/Documents/<CR>
+            nnoremap <leader>ne :Vexplore C:/Documents/<CR>
         endif
         " Syntastic On/Off
         nnoremap <S-s> :SyntasticToggleMode<CR>
