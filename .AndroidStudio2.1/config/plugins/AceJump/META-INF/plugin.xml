@@ -1,0 +1,71 @@
+<idea-plugin url="https://github.com/johnlindquist/AceJump" version="2">
+  <name>AceJump</name>
+  <id>AceJump</id>
+  <description>
+    AceJump allows you to quickly navigate the cursor to any position visible in the editor.
+    See a demo of &lt;a href="https://www.youtube.com/watch?v=yK8eM50DsAY"&gt;AceJump in action&lt;/a&gt;!
+
+    Simply hit "ctrl+;", type a character, then type the matching character to Ace Jump.
+    
+    </description>
+  <change-notes>
+        &lt;html&gt;
+        &lt;dl&gt;
+            &lt;dt&gt;2.0.12&lt;/dt&gt;
+            &lt;dd&gt;Fix ClassCastException when input letter not present: https://github.com/johnlindquist/AceJump/issues/73&lt;/dd&gt;
+            &lt;dt&gt;2.0.11&lt;/dt&gt;
+            &lt;dd&gt;One hundred percent all natural Kotlin.&lt;/dd&gt;
+            &lt;dt&gt;2.0.10&lt;/dt&gt;
+            &lt;dd&gt;Support 2016.2, remove upper version limit, update internal Kotlin version&lt;/dd&gt;
+            &lt;dt&gt;2.0.9&lt;/dt&gt;
+            &lt;dd&gt;Compile on Java 7 to address: https://github.com/johnlindquist/AceJump/issues/61&lt;/dd&gt;
+            &lt;dt&gt;2.0.8&lt;/dt&gt;
+            &lt;dd&gt;Compile on Java 6 to address: https://github.com/johnlindquist/AceJump/issues/59&lt;/dd&gt;
+            &lt;dt&gt;2.0.7&lt;/dt&gt;
+            &lt;dd&gt;Language update for Kotlin 1.0 release.&lt;/dd&gt;
+            &lt;dt&gt;2.0.6&lt;/dt&gt;
+            &lt;dd&gt;Fixing "lost focus" bugs mentioned here: https://github.com/johnlindquist/AceJump/issues/41&lt;/dd&gt;
+            &lt;dt&gt;2.0.5&lt;/dt&gt;
+            &lt;dd&gt;Fixing "backspace" bugs mentioned here: https://github.com/johnlindquist/AceJump/issues/20&lt;/dd&gt;
+            &lt;dt&gt;2.0.4&lt;/dt&gt;
+            &lt;dd&gt;Fixing "code folding" bugs mentioned here: https://github.com/johnlindquist/AceJump/issues/24&lt;/dd&gt;
+            &lt;dt&gt;2.0.3&lt;/dt&gt;
+            &lt;dd&gt;More work on Ubuntu focus bug&lt;/dd&gt;
+            &lt;dt&gt;2.0.2&lt;/dt&gt;
+            &lt;dd&gt;Fixed bug when there's only 1 search result&lt;/dd&gt;
+            &lt;dt&gt;2.0.1&lt;/dt&gt;
+            &lt;dd&gt;Fixing Ubuntu focus bug&lt;/dd&gt;
+            &lt;dt&gt;2.0.0&lt;/dt&gt;
+            &lt;dd&gt;Major release: Added "target mode", many speed increases, multi-char search implemented&lt;/dd&gt;
+            &lt;dt&gt;1.1.0&lt;/dt&gt;
+            &lt;dd&gt;Switching to Kotlin for the code base&lt;/dd&gt;
+            &lt;dt&gt;1.0.4&lt;/dt&gt;
+            &lt;dd&gt;Fixing https://github.com/johnlindquist/AceJump/issues/9 and https://github.com/johnlindquist/AceJump/issues/6&lt;/dd&gt;
+            &lt;dt&gt;1.0.3&lt;/dt&gt;
+            &lt;dd&gt;Fixed minor visual lag when removing the "jumpers" from the editor&lt;/dd&gt;
+            &lt;dt&gt;1.0.2&lt;/dt&gt;
+            &lt;dd&gt;Cleaning up minor bugs (npe when editor not in focus, not removing layers)&lt;/dd&gt;
+            &lt;dt&gt;1.0.1&lt;/dt&gt;
+            &lt;dd&gt;Adding a new jump: "Enter" will take you to the first non-whitespace char in a new line (compare to "Home" which takes you to a new line)&lt;/dd&gt;
+            &lt;dt&gt;1.0&lt;/dt&gt;
+            &lt;dd&gt;Cleaned up code base for release&lt;/dd&gt;
+        &lt;/dl&gt;
+        &lt;/html&gt;
+        
+    </change-notes>
+  <depends>com.intellij.modules.platform</depends>
+  <version>2.0.13</version>
+  <category>Navigation</category>
+  <vendor url="http://johnlindquist.com" email="johnlindquist@gmail.com">johnlindquist
+    </vendor>
+  <idea-version since-build="143.379"/>
+  <project-components/>
+  <actions>
+    <action id="AceJumpAction" class="com.johnlindquist.acejump.AceJumpAction" text="Ace Jump" description="Search and navigate to result">
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl SEMICOLON"/>
+      <keyboard-shortcut keymap="Mac OS X" first-keystroke="ctrl SEMICOLON"/>
+      <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="ctrl SEMICOLON"/>
+    </action>
+  </actions>
+  <extensions defaultExtensionNs="com.intellij"/>
+</idea-plugin>

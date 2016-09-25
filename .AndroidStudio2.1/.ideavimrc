@@ -1,0 +1,29 @@
+let mapleader=','
+set hlsearch
+set ignore smartcase
+set showmode
+set undolevels=100
+set mps+=<:>
+
+
+inoremap nn <ESC>
+
+" Ace Jump call
+nnoremap <Leader>s :action AceJumpAction<CR>
+
+" Remove lingering search highlight
+nnoremap <space><CR> :nohlsearch<CR>
+
+" Save
+nnoremap <Leader>tt :action SaveAll<CR>
+
+" Run app
+nnoremap <Leader>r :action Run<CR>
+
+" Move one char right while in insert mode
+inoremap <Leader>m <Esc>la
+nnoremap H ^
+nnoremap L $
+
+nnoremap <Leader>b :action Switcher<CR>
+
