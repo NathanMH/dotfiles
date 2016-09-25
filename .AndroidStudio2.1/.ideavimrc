@@ -4,6 +4,7 @@ set ignore smartcase
 set showmode
 set undolevels=100
 set mps+=<:>
+set surround
 
 
 inoremap nn <ESC>
