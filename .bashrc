@@ -125,6 +125,8 @@ alias py=python3
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 alias grep='grep --color=auto'
 alias sl='ls'
 alias cd..='cd ..'
