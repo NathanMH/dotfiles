@@ -3,3 +3,11 @@ keycode 133 = Control_L NoSymbol Control_L NoSymbol Control_L
 clear Control
 add Control = Control_L Control_R
 
+keycode 67 = XF86Back
+keycode 68 = XF86Forward
+
+keycode 72 = XF86MonBrightnessDown
+keycode 73 = XF86MonBrightnessUp
+keycode 74 = XF86AudioMute
+keycode 75 = XF86AudioLowerVolume
+keycode 76 = XF86AudioRaiseVolume
