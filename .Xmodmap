@@ -1,7 +1,4 @@
-keycode 133 = Control_L NoSymbol Control_L NoSymbol Control_L
-
-clear Control
-add Control = Control_L Control_R
+keycode 133 = Control_L
 
 keycode 67 = XF86Back
 keycode 68 = XF86Forward
