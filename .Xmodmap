@@ -1,7 +1,15 @@
-keycode 133 = Control_L
+! Swap Control and Search key for chromebook
+remove Mod4 = Super_L
+remove Control = Control_L
+keysym Control_L = Super_L
+keysym Super_L = Control_L
+add Mod4 = Super_L
+add Control = Control_L
 
 keycode 67 = XF86Back
 keycode 68 = XF86Forward
+keycode 69 = XF86Open
+keycode 70 = XF86Display
 
 keycode 72 = XF86MonBrightnessDown
 keycode 73 = XF86MonBrightnessUp
