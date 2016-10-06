@@ -121,6 +121,7 @@ workspace_layout tabbed
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
 bindsym Control+Shift+x [class="^.*"] border toggle
 new_window 1pixel
+bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 486 276; move position 862 432
 
 # Media Keys
 
