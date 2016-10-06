@@ -96,7 +96,7 @@ au Syntax * RainbowParenthesesLoadChevrons
 let g:lightline = {
     \   'colorscheme': 'landscape',
     \   'active': {
-    \       'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+    \       'left': [['mode', 'paste'], ['readonly', 'absolutepath', 'modified']],
     \       'right': [['percent'], ['syntastic'], ['filetype']]
     \   },
     \
