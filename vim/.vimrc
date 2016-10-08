@@ -198,7 +198,7 @@ let mapleader=','							" Set <leader> to ,
         map <Leader>s <Plug>(easymotion-bd-f)
         let g:EasyMotion_smartcase = 1
         " Vim-Commentary
-        nmap <Leader>comm <Plug>CommentaryLine
+        vmap <Leader>comm <Plug>CommentaryLine
         " Open Netrw
         if has("unix")
             nnoremap <leader>ne :Vexplore ~/Documents/<CR>
