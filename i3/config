@@ -112,7 +112,11 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        # Old Statusbar
+        # status_command i3status
+
+        # New Statusbar
+        status_command i3blocks
 }
 
 # My Additions
@@ -122,6 +126,9 @@ exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
 bindsym Control+Shift+x [class="^.*"] border toggle
 new_window 1pixel
 bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 486 276; move position 862 432
+bindsym $mod+Shift+n exec vim ~/Documents/notes/todo.txt floating toggle; sticky toggle; resize set 340 413; move position 1008 20
+bindsym $mod+Shift+i exec i3-sensible-terminal -e "vim ~/Documents/notes/todo.txt"; floating toggle; sticky toggle; resize set 340 413; move position 1008 20
+bindsym $mod+shift+o scratchpad show
 
 # Media Keys
 
@@ -140,4 +147,4 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
 
 # Set keyboard stuff up
-# exec --no-startup-id ~/Documents/scripts/change_keybindings.sh
+exec --no-startup-id ~/Documents/scripts/change_keybindings.sh
