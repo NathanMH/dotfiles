@@ -126,8 +126,10 @@ exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
 bindsym Control+Shift+x [class="^.*"] border toggle
 new_window 1pixel
 bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 486 276; move position 862 432
-bindsym $mod+Shift+n exec vim ~/Documents/notes/todo.txt floating toggle; sticky toggle; resize set 340 413; move position 1008 20
-bindsym $mod+Shift+i exec i3-sensible-terminal -e "vim ~/Documents/notes/todo.txt"; floating toggle; sticky toggle; resize set 340 413; move position 1008 20
+
+bindsym $mod+Shift+i exec i3-sensible-terminal -T "TODO LIST" -e vim -u ~/.todo.vimrc ~/Documents/notes/todo.txt
+for_window[title="TODO LIST"] move scratchpad, resize set 340 413, sticky toggle, move position 1008 20
+
 bindsym $mod+shift+o scratchpad show
 
 # Media Keys
