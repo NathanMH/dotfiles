@@ -23,6 +23,8 @@ set cmdheight=2                             " 2 lines of cmds
 set autochdir                               " Auto change dir to todo file dir
 set laststatus=0                            " Hide the statusline
 set noruler                                 " No ruler
+set swapfile
+set dir=~/tmp                               " Set swapfiles to tmp directory
 autocmd VimEnter * echo ""
 cabbrev help tab help
 
