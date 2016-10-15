@@ -16,7 +16,8 @@ set backspace=2							    " Allows backspace to delete lines
 set softtabstop=4							" Allows backspace to delete tabs
 set cursorline								" Highlight the current line
 set clipboard=unnamedplus                   " Use system clipboard for copy/paste
-set nowrap                                  " No linewraping
+set wrap                                    " No linewraping
+set linebreak
 set shortmess=a                             " Shorter messages
 set cmdheight=2                             " 2 lines of cmds
 set autochdir                               " Auto change dir to todo file dir
