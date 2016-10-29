@@ -1,0 +1,10 @@
+set mbox_type = Maildir
+set folder = ~/Mail
+set spoolfile = ~/Mail/INBOX
+
+set smtp_url = "smtp://nathan@musicnate.ca:Clar1net@hp93.hostpapa.com:467"
+# set smtp_pass = "Clar1net"
+
+mailboxes +INBOX
+
+source ~/Documents/dotfiles/monokai-mutt

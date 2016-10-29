@@ -35,10 +35,14 @@ cabbrev help tab help
 " Change cursor shape based on mode
 if has('unix')
     if has('autocmd')
-        augroup cursor_shape
-            au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-            au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-            au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
+        au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+        au InsertEnter,InsertChange *
+        \ if v:insertmode == 'i' |
+        \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+        \ endif
+        au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!  
     endif
 endif
 
