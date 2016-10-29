@@ -43,10 +43,14 @@ endif
 " Change cursor shape based on mode
 if has('unix')
     if has('autocmd')
-        augroup cursor_shape
-            au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-            au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"                                                                                          
-            au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
+        au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+        au InsertEnter,InsertChange *
+        \ if v:insertmode == 'i' |
+        \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+        \ endif
+        au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!  
     endif
 endif
 
@@ -56,6 +60,11 @@ if has("unix")
     set guifont=Source_Code_Pro:h13
 else
     set guifont=Consolas:h12
+endif
+
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE)
+    set t_ut=
 endif
 
 " Indent settings
@@ -168,7 +177,7 @@ let mapleader=','							" Set <leader> to ,
     " Quick indent entire file
     nnoremap <leader>indent gg=G
 
-    " Map Normal mode to nn
+    " Map Esc to nn
     inoremap nn <Esc>
 
     " Map quick save to ,tt 
