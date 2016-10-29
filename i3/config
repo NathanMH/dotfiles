@@ -122,13 +122,12 @@ bar {
 # My Additions
 focus_follows_mouse no
 workspace_layout tabbed
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/wallpaper.jpg
 bindsym Control+Shift+x [class="^.*"] border toggle
-new_window 1pixel
 
-bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 486 276; move position 869 428
+bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888
 bindsym $mod+Shift+i exec i3-sensible-terminal -T "TODO LIST" -e vim -u ~/.todo.vimrc ~/Documents/notes/todo.txt
-for_window[title="TODO LIST"] move scratchpad, resize set 340 413, sticky toggle, move position 1008 20
+for_window[title="TODO LIST"] move scratchpad, resize set 540 700, sticky toggle, move position 2002 86
 
 bindsym $mod+shift+o scratchpad show
 
@@ -142,11 +141,8 @@ bindsym $mod+shift+o scratchpad show
 
 bindsym XF86Open exec --no-startup-id i3-dmenu-desktop
 bindsym XF86Display exec --no-startup-id i3-msg 'fullscreen'
-bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 10
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
-
-# Set keyboard stuff up
-exec --no-startup-id ~/Documents/scripts/change_keybindings.sh
