@@ -8,3 +8,6 @@ set smtp_url = "smtp://nathan@musicnate.ca:Clar1net@hp93.hostpapa.com:467"
 mailboxes +INBOX
 
 source ~/Documents/dotfiles/monokai-mutt
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
