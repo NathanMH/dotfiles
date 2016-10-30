@@ -28,12 +28,13 @@ cabbrev help tab help
 
 if has("win32")
     let $TMP="C:/tmp"
-    if has("gui_running")
-        set guioptions-=m                  " Remove menu bar
-        set guioptions-=T                  " Remove toolbar
-        set guioptions-=r                  " Remove scrollbar
-        set guioptions-=L                  " Remove left scrollbar
-    endif
+endif
+
+if has("gui_running")
+    set guioptions-=m                  " Remove menu bar
+    set guioptions-=T                  " Remove toolbar
+    set guioptions-=r                  " Remove scrollbar
+    set guioptions-=L                  " Remove left scrollbar
 endif
 
 " Smooth Scrolling
@@ -72,6 +73,7 @@ set tabstop=4								" Tab spacing equals 4 spaces
 set shiftwidth=4							" Indent by 4 columns
 set expandtab								" Use spaces instead of tabs
 set shiftround								" Round to the nearest tab
+set autoindent                              " Auto indent
 set viewdir=~/vimfiles/view				    " Change vim view default location
 
 " Searching
