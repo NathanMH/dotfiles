@@ -35,6 +35,7 @@ bindkey -M vicmd "j" down-line-or-history # history-search-forward
 bindkey -M viins "^L" clear-screen
 bindkey -M vicmd "/" history-incremental-search-backward
 bindkey -M vicmd "?" history-incremental-search-forward
+bindkey -M viins "^h" forward-char
 
 # Movement
 bindkey -M vicmd "H" beginning-of-line
