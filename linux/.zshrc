@@ -22,6 +22,7 @@ source ~/Documents/dotfiles/linux/.zsh/prompt.zsh
 source ~/Documents/dotfiles/linux/.zsh/colors.zsh
 source ~/Documents/dotfiles/linux/.zsh/zle.zsh
 source ~/Documents/dotfiles/linux/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/Documents/dotfiles/linux/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_HIGHLIGHT_STYLES[default]='none'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'

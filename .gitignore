@@ -50,3 +50,5 @@ authentication.py
 py_to_file.py
 *.swp
 test.txt
+/linux/.zsh/zsh-autosuggestions/*
+/linux/.zsh/zsh-syntax-highlighting/*
