@@ -11,7 +11,8 @@ font pango:DejaVu Sans Mono 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -125,9 +126,9 @@ workspace_layout tabbed
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/wallpaper.jpg
 bindsym Control+Shift+x [class="^.*"] border toggle
 
-bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888
+bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888, border none
 bindsym $mod+Shift+i exec i3-sensible-terminal -T "TODO LIST" -e vim -u ~/.todo.vimrc ~/Documents/notes/todo.txt
-for_window[title="TODO LIST"] move scratchpad, resize set 540 700, sticky toggle, move position 2002 86
+for_window[title="TODO LIST"] move scratchpad, resize set 540 700, sticky toggle, move position 2002 86, border pixel
 
 bindsym $mod+shift+o scratchpad show
 
