@@ -2,12 +2,14 @@ set mbox_type = Maildir
 set folder = ~/Mail
 set spoolfile = ~/Mail/INBOX
 
-set smtp_url = "smtp://nathan@musicnate.ca:Clar1net@hp93.hostpapa.com:467"
-# set smtp_pass = "Clar1net"
+set my_pass = '$EMAIL_PASS'
+set my_username = 'nathan@musicnate.ca'
+set smtp_url = smtp://mail.musicnate.ca
+set ssl_force_tls = yes
 
 mailboxes +INBOX
 
-source ~/Documents/dotfiles/monokai-mutt
+source ~/Documents/dotfiles/linux/monokai-mutt
 
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
