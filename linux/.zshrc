@@ -1,4 +1,4 @@
-# The following lines were added by compinstall
+setopt correctall
 
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' list-colors ''
@@ -8,7 +8,6 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle :compinstall filename '/home/musicnate/.zshrc'
 
 autoload -Uz compinit colors && colors
-
 
 HISTFILE=~/.bash_history
 HISTSIZE=1000
