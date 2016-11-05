@@ -52,3 +52,4 @@ py_to_file.py
 test.txt
 /linux/.zsh/zsh-autosuggestions/*
 /linux/.zsh/zsh-syntax-highlighting/*
+.bash_secret
