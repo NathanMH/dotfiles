@@ -16,6 +16,5 @@ alias sl='ls'
 alias cd..='cd ..'
 alias :q='exit'
 alias ,q='exit'
-alias !='!!'
 
 alias sudo='sudo -s'

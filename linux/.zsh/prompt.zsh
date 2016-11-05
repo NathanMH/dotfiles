@@ -9,4 +9,3 @@ else # root!
 fi
 
 PS1="%{$USER_LEVEL%}%~ %{$fg_bold[red]%}» %{$reset_color%}"
-

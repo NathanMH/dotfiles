@@ -40,5 +40,3 @@ bindkey -M viins "^h" forward-char
 # Movement
 bindkey -M vicmd "H" beginning-of-line
 bindkey -M vicmd "L" end-of-line
-
-
