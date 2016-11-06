@@ -129,6 +129,9 @@ bindsym Control+Shift+x [class="^.*"] border toggle
 bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888, border none
 bindsym $mod+Shift+i exec i3-sensible-terminal -T "TODO LIST" -e vim -u ~/.todo.vimrc ~/Documents/notes/todo.txt
 for_window[title="TODO LIST"] move scratchpad, resize set 540 700, sticky toggle, move position 2002 86, border pixel
+exec --no-startup-id i3-msg "workspace 10:Zeal; exec /usr/bin/zeal"
+exec --no-startup-id i3-msg "workspace 9:Weechat; exec urxvt -e weechat"
+exec --no-startup-id i3-msg "workspace 9:Cmus; exec urxvt -e cmus"
 
 bindsym $mod+shift+o scratchpad show
 

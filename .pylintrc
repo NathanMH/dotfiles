@@ -1,0 +1,7 @@
+[MESSAGES CONTROL]
+# C0111 Missing docstring
+# W0141 Builtin function
+# C0301 Line too long
+# C0325 Parens after print
+
+disable=C0111, W0141, C0301, C0325

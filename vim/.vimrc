@@ -131,6 +131,7 @@ let g:syntastic_loc_list_height = 4
 let g:syntastic_vim_checkers = ['vint']
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_python_python_exec = '/usr/bin/python3.4'
+let g:syntastic_python_pylint_rcfile='~/.pylintrc'
 let g:syntastic_error_symbol = '!'
 let g:syntastic_warning_symbol = '>'
 
@@ -154,7 +155,13 @@ let delimitMate_expand_cr = 2
 " Vim-Rooter
 let g:rooter_silent_chdir = 1
 
+" Vim-Startify
+let g:startify_list_order = [ ["Bookmarks"], 'bookmarks', ["Recent"], 'files' ]
+let g:startify_bookmarks = ["~/Documents/notes/", "~/Documents/dotfiles/", "~/Documents/scripts/", "~/Documents/ComputerClub/"]
+
 " Custom Mappings
+
+command W w !sudo tee % > /dev/null
 
 let mapleader=','							" Set <leader> to ,
     " Move left/right between windows with Ctrl+H or L
