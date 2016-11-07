@@ -1,7 +1,7 @@
 " Nathan's Portable Vim Settings
 
 set nocompatible							" We don't need legacy right?
-filetype off
+filetype on
 
 " Pathogen
 execute pathogen#infect()
@@ -40,6 +40,10 @@ endif
 " Smooth Scrolling
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 :map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+
+" Remove syntax highlighting for markdown (makes it too slow)
+autocmd FileType markdown setlocal wrap linebreak
+set synmaxcol=128
 
 " Change cursor shape based on mode
 if has('unix')
@@ -218,6 +222,4 @@ let mapleader=','							" Set <leader> to ,
         nnoremap <S-s> :SyntasticToggleMode<CR>
         " Keybind for Calendar
         nnoremap <Leader>cal :Calendar<CR>
-        " UltiSnips
-        nnoremap <Leader><Tab> <esc>:call UltiSnips#ExpandSnippet()<cr>
 
