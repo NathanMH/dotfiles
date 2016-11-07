@@ -137,23 +137,14 @@ let g:syntastic_warning_symbol = '>'
 
 " YouCompleteMe
 let g:ycm_seed_identifiers_with_syntax = 1        
-
-" UltiSnips
-" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " Indent Line
 let g:indentLine_color_term = 098
 
 " DelimitMate
 let delimitMate_expand_cr = 2
-
-" Vim-Rooter
-let g:rooter_silent_chdir = 1
 
 " Vim-Startify
 let g:startify_list_order = [ ["Bookmarks"], 'bookmarks', ["Recent"], 'files' ]
@@ -206,7 +197,7 @@ let mapleader=','							" Set <leader> to ,
     nnoremap L $
 
     " Code Completion
-    set omnifunc=syntaxcomplete#Complete
+    " set omnifunc=syntaxcomplete#Complete
 
     " Close HTML tags
     imap <leader>/ </<C-X><C-O><C-X>
