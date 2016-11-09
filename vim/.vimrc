@@ -1,7 +1,7 @@
 " Nathan's Portable Vim Settings
 
 set nocompatible							" We don't need legacy right?
-filetype on
+filetype plugin on
 
 " Pathogen
 execute pathogen#infect()
