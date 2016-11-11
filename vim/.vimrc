@@ -136,6 +136,7 @@ let g:syntastic_vim_checkers = ['vint']
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_python_python_exec = '/usr/bin/python3.4'
 let g:syntastic_python_pylint_rcfile='~/.pylintrc'
+let g:syntastic_c_compiler="gcc"
 let g:syntastic_error_symbol = '!'
 let g:syntastic_warning_symbol = '>'
 
