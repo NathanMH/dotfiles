@@ -1,7 +1,7 @@
 " Nathan's Portable Vim Settings
 
 set nocompatible							" We don't need legacy right?
-filetype off
+filetype plugin on
 
 " Pathogen
 execute pathogen#infect()
@@ -16,7 +16,7 @@ set backspace=2							    " Allows backspace to delete lines
 set softtabstop=4							" Allows backspace to delete tabs
 set cursorline								" Highlight the current line
 set clipboard=unnamedplus                   " Use system clipboard for copy/paste
-set wrap                                    " No linewraping
+set nowrap                                    " No linewraping
 set linebreak
 set shortmess=a                             " Shorter messages
 set cmdheight=2                             " 2 lines of cmds

@@ -17,4 +17,6 @@ alias cd..='cd ..'
 alias :q='exit'
 alias ,q='exit'
 
+alias vim-py2='vim.gnome-py2'
+
 alias sudo='sudo -s'
