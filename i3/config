@@ -135,6 +135,9 @@ exec --no-startup-id i3-msg "workspace 9; exec urxvt -e weechat"
 
 bindsym $mod+shift+o scratchpad show
 
+# External monitor enable
+bindsym $mod+shift+d exec --no-startup-id /home/musicnate/Documents/scripts/i3-screen-toggle.sh
+
 # Media Keys
 
 # Don't seem to need these...
