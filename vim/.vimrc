@@ -77,7 +77,7 @@ set tabstop=4								" Tab spacing equals 4 spaces
 set shiftwidth=4							" Indent by 4 columns
 set expandtab								" Use spaces instead of tabs
 set shiftround								" Round to the nearest tab
-set autoindent                              " Auto indent
+set cindent                                 " Auto indent
 set viewdir=~/vimfiles/view				    " Change vim view default location
 
 " Searching
