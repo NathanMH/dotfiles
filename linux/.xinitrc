@@ -1,2 +1,2 @@
 setxkbmap us colemak
-modmap ~/.Xmodmap
+xmodmap ~/.Xmodmap
