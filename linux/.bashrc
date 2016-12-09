@@ -117,6 +117,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias tree='tree -C'
+alias trea='tree -Ca'
+alias treedu='tree -Cah'
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
