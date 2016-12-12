@@ -135,11 +135,12 @@ bar {
     }
 }
 
-set $green      #A6E22E
-set $dark_grey  #272822
-set $light_grey #595959
-set $purple     #AE81FF
-set $magenta    #F92672
+set $green          #A6E22A
+set $light_green    #A6E22E
+set $dark_grey      #272822
+set $light_grey     #595959
+set $purple         #AE81FF
+set $magenta        #F92672
 
 # Window Colours            Border          Background      Text            Indicator
 client.focused              $dark_grey      $green          #000000         #999999
