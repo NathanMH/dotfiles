@@ -6,9 +6,13 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 font pango:DejaVu Sans Mono 10
+#font pango:FontAwesome 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Set border style
+new_window none
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
@@ -113,12 +117,35 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        # Old Statusbar
-        # status_command i3status
+    # Old Statusbar
+    # status_command i3status
 
-        # New Statusbar
-        status_command i3blocks
+    # New Statusbar
+    status_command i3blocks
+
+    colors {
+        separator #66D9EF
+        background #000000
+        #statusline #000000
+        # Item                  Border          Background      Text
+        focused_workspace       #A6E22E         #272822         #999999
+        active_workspace        #A6E22E         #272822         #000000
+        inactive_workspace      #AE81FF         #595959         #000000
+        urgent_workspace        #A6E22E         #F92672         #000000
+    }
 }
+
+set $green      #A6E22E
+set $dark_grey  #272822
+set $light_grey #595959
+set $purple     #AE81FF
+set $magenta    #F92672
+
+# Window Colours            Border          Background      Text            Indicator
+client.focused              $dark_grey      $green          #000000         #999999
+#client.focused_inactive    #999999         #999999         #999999         #999999
+client.unfocused            #000000         $light_grey     #000000         #999999
+client.urgent               #000000         $magenta        #000000         #000000
 
 # My Additions
 focus_follows_mouse no
