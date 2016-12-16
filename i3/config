@@ -145,7 +145,7 @@ set $magenta        #F92672
 # Window Colours            Border          Background      Text            Indicator
 client.focused              $dark_grey      $green          #000000         #999999
 #client.focused_inactive    #999999         #999999         #999999         #999999
-client.unfocused            #000000         $light_grey     #000000         #999999
+client.unfocused            #000000         $light_grey     #ffffff         #999999
 client.urgent               #000000         $magenta        #000000         #000000
 
 # My Additions
