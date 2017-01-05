@@ -1,0 +1,12 @@
+== Diff ==
+    - 'git diff' to see changes
+    - 'git diff myfile.txt' to see diff in added files
+    - 'git diff --cached' for already staged changes
+
+== Add ==
+    - 'git add -remove file.txt' unstages file
+
+== General ==
+    - 'git ls-files -t' show tracked files
+    - 'git ls-files --others' show untracked files
+    - 'git ls-files --others -i --exclude-standard' show all ignored files

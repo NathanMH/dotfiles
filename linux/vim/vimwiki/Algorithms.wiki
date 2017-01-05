@@ -1,0 +1,89 @@
+== Recursive Algorithms ==
+    * An algorithm that calls itself in its definition
+    * Recursive Case is the conditional statement used to trigger the recursion
+    * Base Case is the condition statement used to break the recursion
+    * Can incur a Stack Overflow/Stack too Deep error if base case is never triggered
+    * Functional languages tend to use recursion (i.e. Haskell, Lisp, Scheme, Clojure)
+
+== Iterative Algorithms ==
+    * An algorithm that is called repeatedly but for a finite amount of times
+    * Usefull in for, while, do-while, and until statements
+    * Imperative languages tend to use iteration (i.e. Ruby, Fortran, C)
+
+== Search Algorithms ==
+    === Binary Search ===
+        * Only works on sorted sets
+        * Also known as half-interval search or divide-and-conquer
+        * Steps:
+            1. Picks the median number
+            2. if number is larger, search set is reduced to the left half 
+            3. if number is smaller, search set is redeuced to the right half
+            4. repeat with smaller sets until number is found
+        * Big O:
+            * Best: O(n)
+            * Average: O(log n)
+            * Worst: O(log n)
+
+    === Breadth First Search ===
+        * An algorithm that searches a tree (or graph) by searching levels of the tree first, starting at the root
+        * Moves left to right, top to bottom
+            * Tracks child nodes while moving left to right
+        * Optimal for searching a tree that is wider than it is tall
+        * Uses a queue to store information about the tree
+            * More memory intensive than Depth First search due to queue
+        * Big O: O(Edges + Vertices)
+
+    === Depth First Search ===
+        * An algorithm that searches a tree (or graph) by searching depth of the tree first, starting at the root
+        * Moves top to bottom, left to right
+        * Optimal for searching a tree that is taller than it is wide
+        * Uses a stack to push nodes onto
+            * Less memory intensive than Breadth First due to stack being LIFO
+        * Big O: O(Edges + Vertices)
+
+== Sorting Algorithms ==
+    === Merge Sort ===
+        * A comparison based sorting algorithm
+        * One of the more basic sorting algorithms
+        * Steps:
+            1. Divides entire dataset into groups of at most 2
+            2. Compares each set and moves the smaller item to the left
+            3. Once all sets are sorted it compares the leftmost items of two sets, creating a set of 4 items with the two smallest on the left
+            4. Repeat until a sorted set is left
+        * Big O:
+            * Best: O(n)
+            * Average: O(n log n)
+            * Worst: O(n log n)
+
+    === Quick Sort ===
+        * A comparison based sorting algorithm
+        * Likely faster than Merge Sort, but with a worse Worst case
+        * Steps:
+            1. Finds the average of all items and compares each item to it, smaller items go left, larger go right
+            2. Repeats until working with 2 item sets (couplets)
+        * Big O:
+            * Best: O(n)
+            * Average: O(n log n)
+            * Worst: O(n^2)
+
+    === Bubble Sort ===
+        * A comparison based sorting algorithm
+        * Very simple but inefficient
+        * Steps:
+            1. Iterates left to right comparing every 2 items
+            2. Repeats over entire set until no items are moved
+        * Big O:
+            * Best: O(n)
+            * Average: O(n^2)
+            * Worst: O(n^2)
+
+== Greedy Algorithms ==
+    * An algorithm that, while executing, selects only the information that meets certain criteria
+    * 5 components are:
+        1. A candidate set, from which a solution is created
+        2. A selection function, which chooses the best candidate to be added to the solution
+        3. A feasibility function, that is used to determine if a candidate can be used to contribute to a solution
+        4. An objective function, which assigns a value to a solution, or partial solution 
+        5. A solution function, which will indicate when we have discovered a complete solution
+
+

@@ -1,0 +1,54 @@
+[[file:~/Documents/notes/vimwiki/assets/linux-cheatsheet.pdf]]
+
+== General Commands ==
+    - chmod +x filename.sh for executable permissions
+    - Use "!!" to invoke previous command. Useful for adding sudo
+    - 'source .profile' to reload .profile for bash changes (ie. $PATH updates)
+    - 'xdg-open' to double click on a file from terminal 
+    - 'fc-list' list all system fonts 
+    - 'du' (--summarize --human-readable) estimate file/folder size
+    - 'dpkg --get-selections | grep -v deinstall' show all installed packages
+    - 'dpkg -P $PACKAGE' uninstall dpkg
+    - 'top' see processes
+    - 'htop' interactive process management
+    - 'hdparm -y /dev/sdc1' to spin down hard drive
+    - 'ls -l | wc -l' count files in directory
+    - 'mv ~/Downloads/* ~/Destination/' to move all files/folder
+ 
+== Audio / Visual ==
+    - ImageMagick provides 'display' command to view images (or use feh)
+        -ImageMagick also provides 'import' command for screenshots
+    - 'free --mega' shows memory information in megabytes
+    - alsamixer is a visual tool for setting up audio cards. (ie. fixes muted headphone jack etc...)
+
+== cURL ==
+    * Used to fetch data from a url
+
+== grep ==
+    * Unix search command
+
+== xargs ==
+    * Runs commands multiple times
+== Connections ==
+    - Use ubuntu 'nmcli' to see and manipulate wifi/ethernet
+
+== Difference between /bins/ ==
+    === /bin/ ===
+        - Standard location for key programs like /bin/sh
+    === /usr/bin/ ===
+        - Location of distribution managed programs (apt-get goes here)
+    === /usr/local/bin/ ===
+        - Installation of normal programs which are NOT managed by the distribution
+
+== Terminal ==
+    - Use 'cd -' to go to the previous directory
+
+== Cron ==
+    * Time-based job scheduler
+    * Times: (@yearly, @monthly, @weekly, @daily, @hourly, @reboot)
+    * 'crontab -e' to edit user cron jobs
+
+== BSD ==
+    * Berkeley Software Distribution
+    * Variant of unix
+

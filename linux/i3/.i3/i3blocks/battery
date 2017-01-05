@@ -1,0 +1,35 @@
+#!/bin/bash
+
+BATTERY=0
+BATTERY_INFO=$(acpi -b | grep "Battery ${BATTERY}")
+BATTERY_STATE=$(echo "${BATTERY_INFO}" | grep -wo "Full\|Charging\|Discharging")
+BATTERY_POWER=$(echo "${BATTERY_INFO}" | grep -o '[0-9]\+%' | tr -d '%')
+BATTERY_REMAINING=$(echo "${BATTERY_INFO}" | grep -o '[0-9][0-9]:[0-9][0-9]:[0-9][0-9]')
+
+URGENT_VALUE=10
+
+if [[ "${BATTERY_STATE}" = "Charging" ]]; then
+  echo "${BATTERY_POWER}%+ (${BATTERY_REMAINING})"
+  echo "${BATTERY_POWER}%+"
+  echo "#00FF00"
+elif [[ "${BATTERY_STATE}" = "Discharging" ]]; then
+  echo "${BATTERY_POWER}%- (${BATTERY_REMAINING})"
+  echo "${BATTERY_POWER}%-"
+  if [[ ${BATTERY_POWER} -ge 80 ]]; then
+    echo "#00FF00"
+  elif [[ ${BATTERY_POWER} -lt 80 ]]; then
+    echo "#FFF600"
+  elif [[ ${BATTERY_POWER} -lt 60 ]]; then
+    echo "#FFAE00"
+  elif [[ ${BATTERY_POWER} -lt 40 ]]; then
+    echo "#FF0000"
+  fi
+else
+  echo "${BATTERY_POWER}%"
+  echo "${BATTERY_POWER}%"
+  echo ""
+fi
+
+if [[ "${BATTERY_POWER}" -le "${URGENT_VALUE}" ]]; then
+  exit 33
+fi

@@ -1,0 +1,6 @@
+== Zip Function ==
+    * Takes two iterables (usually lists or ranges) and returns an interleaved version.
+        * ie. list A = ["a", "b", "c"], list B = [1, 2, 3], zip(A,B) = [("a", 1), ("b", 2), ("c", 3)]
+
+== '__name__ == "__main__" ' ==
+    * Used to differentiate between programs called directly, so that the interpreter can allocate special variables
