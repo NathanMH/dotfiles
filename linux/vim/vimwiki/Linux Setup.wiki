@@ -1,0 +1,92 @@
+= Browser =
+* [ ] Check if dotfiles are pulled
+* [ ] Link startpage from dotfiles/browser/customHomePage.html
+    == Add-ons ==
+    * [ ] Better URL Bar
+    * [ ] Dark Background?
+    * [ ] Dark YouTube Theme
+    * [ ] H264ify
+    * [ ] Keybinder
+    * [ ] New Tab Override
+    * [ ] Privacy Badger/Ghostery/NoScript
+    * [ ] RES
+    * [ ] uBlock Origin
+    * [ ] Video DownloadHelper
+    * [ ] VimFX
+
+= Stow Directories = 
+    * [ ] bash
+        * [ ] .bashrc
+    * [ ] fonts
+        * [ ] .fonts
+            * clone source code pro
+    * [ ] i3
+        * [ ] .i3
+            * [ ] config
+            * [ ] i3blocks
+        * [ ] i3blocks.conf
+            * Possible locations: ~/i3blocks.conf, /usr/share/etc/i3blocks.conf
+    * [ ] vim
+        * [ ] vimwiki
+        * [ ] .todo.vimrc
+        * [ ] .vimrc
+        * [ ] .vim
+            * [ ] autoload
+            * [ ] bundle
+            * [ ] colors
+    * [ ] x
+        * [ ] .Xmodmap
+        * [ ] .Xresources
+        * [ ] .xsessionrc
+        * [ ] .fehbg
+    * [ ] zsh
+        * [ ] .zshrc
+        * [ ] .zsh
+            * [ ] aliases.zsh
+            * [ ] colors.zsh
+            * [ ] exports.zsh
+            * [ ] prompt.zsh
+            * [ ] zle.zsh
+            * [ ] clone zsh-autosuggesions into ~/.zsh/zsh-autosuggestions/
+            * [ ] clone zsh-syntax-highlighting into ~/.zsh/zsh-syntax-highlighting/
+    * [ ] .weechat
+
+= Files =
+* [ ] xorg.conf
+* [ ] .muttrc
+* [ ] .pylintrc
+
+= Packages =
+* [ ] build-essential
+* [ ] feh
+* [ ] git
+* [ ] htop
+* [ ] Lua 5
+* [ ] luarocks
+* [ ] i3 / i3blocks
+* [ ] OfflineIMAP
+* [ ] Python 3
+* [ ] Python3-pip
+* [ ] Ruby 2.3
+* [ ] Texlive
+* [ ] Texlive-latex-extra
+* [ ] tlp / powertop
+* [ ] tree
+* [ ] usbmount
+* [ ] Weechat-Slack (not on apt)
+* [ ] youtube-dl
+* [ ] bandcamp-dl
+
+= Applications = 
+* [ ] Cmus
+* [ ] Emacs
+* [ ] FBReader
+* [ ] Firefox
+* [ ] mutt
+* [ ] Recoll
+* [ ] rxvt-unicode
+* [ ] Vim
+* [ ] Vim-gnome-py2
+* [ ] Weechat
+* [ ] Zeal
+* [ ] Zsh

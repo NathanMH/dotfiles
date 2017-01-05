@@ -1,0 +1,3 @@
+- "Super put":  This types out whatever is in the clipboard
+    - bindsym --release $mod+p exec sleep 1 && xdotool type --clearmodifiers `xclip -selection c -out`
+- To remove horizontal/vertical status of a buffer if it is the last in a buffer, simply move the buffer

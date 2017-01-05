@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/musicnate/dotfiles/i3/.i3/i3blocks'
+let g:netrw_dirhist_2='/etc/X11/xorg.conf.d'
