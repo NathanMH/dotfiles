@@ -1,2 +1,0 @@
-- Find wifi passes with root and file explorer:
-    - /data/misc/wifi/wpa_supplicant.conf
