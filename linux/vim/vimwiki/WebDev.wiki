@@ -1,7 +1,0 @@
-[[HTML]]
-[[CSS]]
-
-== Optimization ==
-    * Use Google Fonts or other web service
-    * Minimize/Concatenate CSS & JS
-    * Optimize images (scale/compress)

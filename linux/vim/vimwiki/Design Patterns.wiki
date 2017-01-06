@@ -1,3 +1,0 @@
-== Factory Design ==
-    * Uncertain what types of objects will be required
-
