@@ -10,6 +10,16 @@
         {
             "before": ["n", "n"],
             "after": ["<Esc>"]
+        },
+        {
+            "before": ["leader", "m"],
+            "after": [],
+            "command": [
+                {
+                    "command": "right",
+                    "args": []
+                }
+            ]
         }
     ],
 
@@ -31,6 +41,6 @@
         {
             "before": ["L"],
             "after": ["$"]
-        }
+        },
     ]
 }
