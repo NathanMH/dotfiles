@@ -6,6 +6,7 @@
     "vim.easymotion": true,
     "vim.leader": ",",
     
+    // Insert Mode Bindings
     "vim.insertModeKeyBindings": [
         {
             "before": ["n", "n"],
@@ -13,21 +14,16 @@
         },
         {
             "before": ["leader", "m"],
-            "after": [],
-            "command": [
-                {
-                    "command": "right",
-                    "args": []
-                }
-            ]
+            "after": ["<Esc>", "a"]
         }
     ],
 
+    // Normal/VisualMode Bindings
     "vim.otherModesKeyBindingsNonRecursive": [
         {
-            "before": ["leader", "t"],
+            "before": ["leader", "leader", "t"],
             "after": [],
-            "command": [
+            "commands": [
                 {
                     "command": "workbench.action.files.save",
                     "args": []
@@ -41,6 +37,6 @@
         {
             "before": ["L"],
             "after": ["$"]
-        },
+        }
     ]
 }
