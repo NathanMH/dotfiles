@@ -1,0 +1,36 @@
+// Place your settings in this file to overwrite the default settings
+// Goes in $USER/AppData/Roaming/Code/User
+{
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.easymotion": true,
+    "vim.leader": ",",
+    
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["n", "n"],
+            "after": ["<Esc>"]
+        }
+    ],
+
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["leader", "t"],
+            "after": [],
+            "command": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["L"],
+            "after": ["$"]
+        }
+    ]
+}
