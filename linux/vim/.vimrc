@@ -216,7 +216,7 @@ map <Leader>s <Plug>(easymotion-bd-f)
 let g:EasyMotion_smartcase = 1
 
 " Vim-Commentary
-vmap <Leader>comm <Plug>CommentaryLine
+nnoremap <Leader>comm :Commentary<CR>
 
 " Open Netrw
 if has("unix")
