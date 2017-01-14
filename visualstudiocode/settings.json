@@ -22,7 +22,7 @@
     // Normal/VisualMode Bindings
     "vim.otherModesKeyBindingsNonRecursive": [
         {
-            "before": ["leader", "leader", "t"],
+            "before": ["leader", "t"],
             "after": [],
             "commands": [
                 {
@@ -38,6 +38,29 @@
         {
             "before": ["L"],
             "after": ["$"]
+        },
+        {
+            "before": ["leader", "q"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader", "n"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleSidebarVisibility",
+                    "args": []
+                }
+            ]
         }
-    ]
+    ],
+
+    // Python
+    "python.pythonPath": "python3"
 }

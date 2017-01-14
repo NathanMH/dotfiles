@@ -1,9 +1,9 @@
 # Zsh Aliases
 
-alias ls='ls --color=auto'
-alias ll='ls -alF --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
+alias ls='ls --color=auto -h --group-directories-first'
+alias ll='ls -alF --color=auto -h --group-directories-first'
+alias la='ls -A --color=auto -h --group-directories-first'
+alias l='ls -CF --color=auto -h --group-directories-first'
 alias py=python3
 alias pytest=pytest3
 alias ..="cd .."
