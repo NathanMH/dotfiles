@@ -61,12 +61,13 @@
         }
     ],
 
-    // External Terminal
-    "terminal.external.linuxExec": "/usr/bin/zsh",
+    // Terminal
+    "terminal.integrated.shell.linux": "bash",
+    "terminal.external.linuxExec": "urxvt",
 
     // Python
-    "python.pythonPath": "/usr/bin/python3",
-    // "python.terminal.executeInFileDir": true,
+    "python.pythonPath": "python3",
+    "python.terminal.executeInFileDir": true,
     "python.autoComplete.addBrackets": true,
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
