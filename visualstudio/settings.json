@@ -62,7 +62,7 @@
     ],
 
     // Terminal
-    "terminal.integrated.shell.linux": "bash",
+    "terminal.integrated.shell.linux": "zsh",
     "terminal.external.linuxExec": "urxvt",
 
     // Python
