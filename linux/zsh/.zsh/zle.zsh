@@ -25,7 +25,6 @@ bindkey -v
 bindkey -M vicmd v edit-command-line # ESC-v to edit in an external editor.
 
 # General
-bindkey -M viins 'nn' vi-cmd-mode
 bindkey -M viins "^n" expand-or-complete-prefix
 bindkey -M vicmd "u" undo
 
