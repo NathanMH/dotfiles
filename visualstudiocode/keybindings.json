@@ -8,5 +8,6 @@
     {"key": "ctrl+e", "command": "workbench.view.explorer"},
     {"key": "ctrl+g", "command": "workbench.view.git"},
     {"key": "ctrl+o", "command": "workbench.action.output.toggleOutput"},
-    {"key": "ctrl+r", "command": "workbench.action.debug.start"}
+    {"key": "ctrl+r", "command": "workbench.action.debug.start"},
+    {"key": "ctrl+s", "command": "workbench.action.debug.stop"}
 ]
