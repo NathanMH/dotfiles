@@ -1,0 +1,32 @@
+set hlsearch
+set ignorecase
+set autoread
+set number
+
+let mapleader=","
+
+nnoremap <leader>q :wq
+
+inoremap nn <Esc>
+
+nnoremap <leader>tt <Esc>:w<CR>
+inoremap <leader>tt <Esc>:w<CR>
+
+nnoremap H 0
+nnoremap L $
+
+inoremap <leader>m <Esc>la
+
+nnoremap <leader>comm :vsc Edit.CommentSelection<CR>
+inoremap <leader>comm :vsc Edit.CommentSelection<CR>
+vnoremap <leader>comm :vsc Edit.CommentSelection<CR>
+
+nnoremap <leader>ucom :vsc Edit.UncommentSelection<CR>
+inoremap <leader>ucom :vsc Edit.UncommentSelection<CR>
+vnoremap <leader>ucom :vsc Edit.UncommentSelection<CR>
+
+nnoremap <Ctrl>l :vsc Window.NextPane<CR>
+inoremap <Ctrl>l :vsc Window.NextPane<CR>
+
+nnoremap <Ctrl>h :vsc Window.PreviousPane<CR>
+inoremap <Ctrl>h :vsc Window.PreviousPane<CR>
