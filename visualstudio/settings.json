@@ -71,5 +71,8 @@
     "python.autoComplete.addBrackets": true,
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
-    "workbench.sideBar.location": "left"
+    "workbench.sideBar.location": "left",
+
+    // Web Dev
+    "view-in-browser.customBrowser": "mozilla"
 }
