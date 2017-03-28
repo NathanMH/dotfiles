@@ -156,11 +156,8 @@ exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/wallpaper.jpg
 bindsym Control+Shift+x [class="^.*"] border toggle
 
 bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888, border none
-bindsym $mod+Shift+i exec i3-sensible-terminal -T "TODO LIST" -e vim -u ~/.todo.vimrc ~/Documents/notes/vimwiki/ToDo.wiki
-for_window[title="TODO LIST"] move scratchpad, resize set 540 700, sticky toggle, move position 2002 86, border pixel
 assign[class="^Zeal"] 10
 assign[class="Recoll"] 10
-assign[class="^Flowkeeper"] 8
 exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/zeal"
 exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/recoll"
 exec --no-startup-id i3-msg "workspace 9; exec urxvt -e cmus"

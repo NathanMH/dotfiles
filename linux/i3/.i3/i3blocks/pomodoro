@@ -1,14 +1,7 @@
 #!/bin/bash
 set -a
 # set -ex
-SLEEPTIME=(1 5)
 THISHOUR=$(date +%H)
-if [ ${THISHOUR} -ge ${SLEEPTIME[0]} ] && [ ${THISHOUR} -le ${SLEEPTIME[1]} ]
-then
-  echo "There is no way you can healthily work at this time"
-  echo "There is no way you can healthily work at this time"
-  exit 33
-fi
 
 SPRINTS=${SPRINTS:-4}
 WORK=${WORK:-25}
@@ -22,7 +15,7 @@ write_file() {
 
 if [ ! -f ${STATUS_FILE} ]
 then
-  TYPE=${TYPE:-NOTHING}
+  TYPE=${TYPE:-OFF}
   SPRINT=${SPRINT:-0}
   STARTED=${STARTED:-$(date +%s)}
   write_file
@@ -42,16 +35,6 @@ calc_times() {
 }
 
 calc_times
-
-shorten_1min() {
-  STARTED=$((${STARTED}-60))
-  write_file
-}
-
-prolong_1min() {
-  STARTED=$((${STARTED}+60))
-  write_file
-}
 
 start_period() {
   if [ "${PERIOD_ENDED}" == 'yes' ]
@@ -101,36 +84,20 @@ reset() {
   exec $0
 }
 
-middle_button() {
-  reset
-}
-
-right_button() {
+left_button() {
   next_period
 }
 
-wheel_up() {
-  shorten_1min
-  calc_times
-}
-
-wheel_down() {
-  prolong_1min
-  calc_times
+right_button() {
+  reset
 }
 
 case ${BLOCK_BUTTON} in
-    2)
-      middle_button
+    1)
+      left_button
     ;;
     3)
       right_button
-    ;;
-    4)
-      wheel_up
-    ;;
-    5)
-      wheel_down
     ;;
 esac
 
