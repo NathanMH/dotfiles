@@ -1,0 +1,34 @@
+" IntelliJ Vim Settings
+
+set hlsearch
+set ignorecase
+set autoread
+set relativenumber                                          " Use relative line numbers
+set surround                                                " Enable vim-surround
+set clipboard=unamedplus,unamed                             " Integrate with system clipboard
+
+let mapleader=','
+
+nnoremap <leader>sv :source ~/.ideavimrc<CR>                " Reload .ideavimrc
+nnoremap <leader>ev :action OpenFile ~/.ideavimrc<CR>       " Edit .ideavimrc
+nnoremap <leader>q :wq<CR>                                  " Save and close file
+inoremap nn <Esc>                                           " Escape
+
+
+nnoremap <leader>tt :action SaveDocument<CR>                " Save
+inoremap <leader>tt :action SaveDocument<CR>
+
+nnoremap H 0                                                " Beginning of line
+nnoremap L $                                                " End of line
+
+inoremap <leader>m <Esc>la                                  " Move right while in insert mode
+
+nnoremap <leader>run :action RunClass<CR>                   " Run current class/file
+inoremap <leader>run :action RunClass<CR>
+
+nnoremap <leader>comm :action CommentByLineComment<CR>      " Commenting
+inoremap <leader>comm :action CommentByLineComment<CR> 
+vnoremap <leader>comm :action CommentByLineComment<CR>
+
+nnoremap <leader>f :action CollapseBlock<CR>                " Folding
+nnoremap <leader>uf :action ExpandRegion<CR>

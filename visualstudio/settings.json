@@ -2,6 +2,7 @@
 // $USER/AppData/Roaming/Code/User
 // ~/.config/Code/User/
 {
+    "editor.lineNumbers": "relative",
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.easymotion": true,
@@ -22,7 +23,7 @@
     // Normal/VisualMode Bindings
     "vim.otherModesKeyBindingsNonRecursive": [
         {
-            "before": ["leader", "t"],
+            "before": ["leader", "t", "t"],
             "after": [],
             "commands": [
                 {
