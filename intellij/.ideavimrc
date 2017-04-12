@@ -6,6 +6,7 @@ set autoread
 set relativenumber                                          " Use relative line numbers
 set surround                                                " Enable vim-surround
 set clipboard=unamedplus,unamed                             " Integrate with system clipboard
+set backspace=indent,eol,start                              " Backspace can delete everything
 
 let mapleader=','
 
