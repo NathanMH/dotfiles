@@ -3,33 +3,34 @@
 set hlsearch
 set ignorecase
 set autoread
-set relativenumber                                          " Use relative line numbers
-set surround                                                " Enable vim-surround
-set clipboard=unamedplus,unamed                             " Integrate with system clipboard
-set backspace=indent,eol,start                              " Backspace can delete everything
+set relativenumber
+set surround
+set clipboard=unamedplus,unamed
+" set backspace=indent,eol,start                              " Backspace can delete everything
+set ttimeoutlen=100
 
 let mapleader=','
 
-nnoremap <leader>sv :source ~/.ideavimrc<CR>                " Reload .ideavimrc
-nnoremap <leader>ev :action OpenFile ~/.ideavimrc<CR>       " Edit .ideavimrc
-nnoremap <leader>q :wq<CR>                                  " Save and close file
-inoremap nn <Esc>                                           " Escape
+nnoremap <leader>sv :source C:\Users\natha\.ideavimrc<CR>
+nnoremap <leader>ev :action OpenFile C:\Users\natha\.ideavimrc<CR>
+nnoremap <leader>q :wq<CR>
+inoremap nn <Esc>
 
 
-nnoremap <leader>tt :action SaveDocument<CR>                " Save
+nnoremap <leader>tt :action SaveDocument<CR>
 inoremap <leader>tt :action SaveDocument<CR>
 
-nnoremap H 0                                                " Beginning of line
-nnoremap L $                                                " End of line
+nnoremap H ^
+nnoremap L $
 
-inoremap <leader>m <Esc>la                                  " Move right while in insert mode
+inoremap <leader>m <Esc>la
 
-nnoremap <leader>run :action RunClass<CR>                   " Run current class/file
+nnoremap <leader>run :action RunClass<CR>
 inoremap <leader>run :action RunClass<CR>
 
-nnoremap <leader>comm :action CommentByLineComment<CR>      " Commenting
+nnoremap <leader>comm :action CommentByLineComment<CR>
 inoremap <leader>comm :action CommentByLineComment<CR> 
 vnoremap <leader>comm :action CommentByLineComment<CR>
 
-nnoremap <leader>f :action CollapseBlock<CR>                " Folding
+nnoremap <leader>f :action CollapseBlock<CR>
 nnoremap <leader>uf :action ExpandRegion<CR>
