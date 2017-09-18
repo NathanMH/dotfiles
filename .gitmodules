@@ -40,3 +40,6 @@
 [submodule "linux/fonts/.fonts/source-code-pro"]
 	path = linux/fonts/.fonts/source-code-pro
 	url = https://github.com/adobe-fonts/source-code-pro
+[submodule "linux/fonts/.fonts/awesome-terminal-fonts"]
+	path = linux/fonts/.fonts/awesome-terminal-fonts
+	url = https://github.com/gabrielelana/awesome-terminal-fonts
