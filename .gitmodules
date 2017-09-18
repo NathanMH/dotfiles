@@ -31,3 +31,9 @@
 [submodule "linux/vim/.vim/pack/musicnate/start/vimwiki"]
 	path = linux/vim/.vim/pack/musicnate/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
+[submodule "linux/zsh/.zsh/zsh-syntax-highlighting"]
+	path = linux/zsh/.zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "linux/zsh/.zsh/zsh-autosuggestions"]
+	path = linux/zsh/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
