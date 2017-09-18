@@ -1,0 +1,33 @@
+[submodule "calendar.vim"]
+	path = calendar.vim
+	url = https://github.com/itchyny/calendar.vim
+[submodule "linux/vim/.vim/pack/musicnate/start/vim-commentary"]
+	path = linux/vim/.vim/pack/musicnate/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "linux/vim/.vim/pack/musicnate/start/delimitMate"]
+	path = linux/vim/.vim/pack/musicnate/start/delimitMate
+	url = https://github.com/Raimondi/delimitMate
+[submodule "linux/vim/.vim/pack/musicnate/start/vim-easymotion"]
+	path = linux/vim/.vim/pack/musicnate/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
+[submodule "linux/vim/.vim/pack/musicnate/start/indentLine"]
+	path = linux/vim/.vim/pack/musicnate/start/indentLine
+	url = https://github.com/Yggdroot/indentLine
+[submodule "linux/vim/.vim/pack/musicnate/start/lightline.vim"]
+	path = linux/vim/.vim/pack/musicnate/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "linux/vim/.vim/pack/musicnate/start/rainbow_parentheses.vim"]
+	path = linux/vim/.vim/pack/musicnate/start/rainbow_parentheses.vim
+	url = https://github.com/kien/rainbow_parentheses.vim
+[submodule "linux/vim/.vim/pack/musicnate/start/vim-startify"]
+	path = linux/vim/.vim/pack/musicnate/start/vim-startify
+	url = https://github.com/mhinz/vim-startify
+[submodule "linux/vim/.vim/pack/musicnate/start/vim-surround"]
+	path = linux/vim/.vim/pack/musicnate/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "linux/vim/.vim/pack/musicnate/start/syntastic"]
+	path = linux/vim/.vim/pack/musicnate/start/syntastic
+	url = https://github.com/vim-syntastic/syntastic
+[submodule "linux/vim/.vim/pack/musicnate/start/vimwiki"]
+	path = linux/vim/.vim/pack/musicnate/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki
