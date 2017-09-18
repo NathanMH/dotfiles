@@ -37,3 +37,6 @@
 [submodule "linux/zsh/.zsh/zsh-autosuggestions"]
 	path = linux/zsh/.zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "linux/fonts/.fonts/source-code-pro"]
+	path = linux/fonts/.fonts/source-code-pro
+	url = https://github.com/adobe-fonts/source-code-pro
