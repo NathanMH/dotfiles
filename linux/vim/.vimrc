@@ -3,9 +3,6 @@
 set nocompatible							" We don't need legacy right?
 filetype plugin on
 
-" Pathogen
-execute pathogen#infect()
-
 " General Settings
 set t_Co=256                                " Enable 256-colour mode
 set encoding=utf-8
