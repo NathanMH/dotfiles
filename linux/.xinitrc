@@ -1,3 +1,3 @@
 exec i3
-exec_always "setxbkmap -layout us -variant us"
+setxkbmap us colemak
 xmodmap ~/.Xmodmap-AcerC720
