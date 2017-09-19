@@ -155,15 +155,16 @@ workspace_layout tabbed
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/wallpaper.jpg
 exec --no-startup-id setxkbmap us colemak
 exec --no-startup-id xmodmap ~/.Xmodmap-AcerC720
+exec --no-startup-id xrdb ~/.Xresources
 bindsym Control+Shift+x [class="^.*"] border toggle
 
 bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888, border none
 assign[class="^Zeal"] 10
 assign[class="Recoll"] 10
-exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/zeal"
-exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/recoll"
-exec --no-startup-id i3-msg "workspace 9; exec urxvt -e cmus"
-exec --no-startup-id i3-msg "workspace 9; exec urxvt -e weechat"
+#exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/zeal"
+#exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/recoll"
+#exec --no-startup-id i3-msg "workspace 9; exec urxvt -e cmus"
+#exec --no-startup-id i3-msg "workspace 9; exec urxvt -e weechat"
 
 bindsym $mod+shift+o scratchpad show
 
