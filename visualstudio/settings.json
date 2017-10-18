@@ -8,6 +8,16 @@
     "vim.easymotion": true,
     "vim.leader": ",",
     
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors" : {
+        "normal": "#005f5f",
+        "insert": "#5f0000",
+        "visual": "#5f00af",
+        "visualline": "#005f87",
+        "visualblock": "#86592d",
+        "replace": "#000000"
+    },
+
     // Insert Mode Bindings
     "vim.insertModeKeyBindings": [
         {
@@ -51,7 +61,7 @@
             ]
         },
         {
-            "before": ["leader", "n"],
+            "before": ["leader", "n", "e"],
             "after": [],
             "commands": [
                 {
@@ -59,15 +69,19 @@
                     "args": []
                 }
             ]
+        },
+        {
+            "before": ["leader", "s"],
+            "after": ["leader", "leader", "s"]
         }
     ],
 
     // Terminal
-    "terminal.integrated.shell.linux": "zsh",
-    "terminal.external.linuxExec": "urxvt",
+    // "terminal.integrated.shell.linux": "zsh",
+    // "terminal.external.linuxExec": "urxvt",
 
     // Python
-    "python.pythonPath": "python3",
+    "python.pythonPath": "py",
     "python.terminal.executeInFileDir": true,
     "python.autoComplete.addBrackets": true,
     "workbench.activityBar.visible": true,
@@ -75,5 +89,17 @@
     "workbench.sideBar.location": "left",
 
     // Web Dev
-    "view-in-browser.customBrowser": "mozilla"
+    "view-in-browser.customBrowser": "mozilla",
+    "vim.disableAnnoyingNeovimMessage": true,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe",
+
+    "cSpell.language": "en-GB",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.minimap.enabled": false
 }
