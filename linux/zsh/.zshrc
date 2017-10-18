@@ -36,5 +36,3 @@ then
     ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=red'
     ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=red'
 fi
-
-eval "$(thefuck --alias fuck)"

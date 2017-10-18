@@ -1,6 +1,7 @@
 ! General
 urxvt*scrollBar: false
-urxvt*font: xft:SourceCodePro:size=12
+urxvt*font: xft:DejaVu Sans Mono:size=10
+urxvt*letterSpace: -1
 
 urxvt*transparent: true
 urxvt*shading: 13

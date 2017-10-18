@@ -16,7 +16,7 @@ new_window none
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt -e /bin/zsh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -153,15 +153,18 @@ client.urgent               #000000         $magenta        #000000         #000
 focus_follows_mouse no
 workspace_layout tabbed
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/wallpaper.jpg
+exec --no-startup-id setxkbmap us colemak
+exec --no-startup-id xmodmap ~/.Xmodmap-AcerC720
+exec --no-startup-id xrdb ~/.Xresources
 bindsym Control+Shift+x [class="^.*"] border toggle
 
 bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888, border none
 assign[class="^Zeal"] 10
 assign[class="Recoll"] 10
-exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/zeal"
-exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/recoll"
-exec --no-startup-id i3-msg "workspace 9; exec urxvt -e cmus"
-exec --no-startup-id i3-msg "workspace 9; exec urxvt -e weechat"
+#exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/zeal"
+#exec --no-startup-id i3-msg "workspace 10; exec /usr/bin/recoll"
+#exec --no-startup-id i3-msg "workspace 9; exec urxvt -e cmus"
+#exec --no-startup-id i3-msg "workspace 9; exec urxvt -e weechat"
 
 bindsym $mod+shift+o scratchpad show
 
