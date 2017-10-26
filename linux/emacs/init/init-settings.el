@@ -4,6 +4,9 @@
 
 ; Emacs Settings
 
+    (require 'soft-tab)
+    (require 'linum-relative)
+
 	; Allow y or n instead of yes or no
 		(defalias 'yes-or-no-p 'y-or-n-p)
     ; Auto complete ignore case
@@ -16,6 +19,9 @@
 		(setq compilation-save-buffers-predicate '(lambda () nil))
 	; Line numbers
 		(global-linum-mode t)
+        (linum-relative-on)
+        (setq linum-relative-current-symbol "")
+        (set-face-attribute 'linum nil :height 100)
 	; Highlight current line
 		(global-hl-line-mode t)
 	; Linewrap
@@ -32,10 +38,11 @@
 	; Scratch buffer
 		(setq initial-scratch-message nil)
 	; Make tab work/folding...
-                (define-globalized-minor-mode global-hs-minor-mode hs-minor-mode hs-minor-mode)
-                (global-hs-minor-mode 1)
-;		(global-set-key (kbd "TAB") 'self-insert-command)
-;		(global-set-key (kbd "<backspace>") 'backspace-soft-tab)
-;		(global-set-key (kbd "<deletechar>") 'delete-forward-soft-tab)
-;		(setq-default tab-width 4)
+        ;(define-globalized-minor-mode global-hs-minor-mode hs-minor-mode hs-minor-mode)
+        ;(global-hs-minor-mode 1)
+		(global-set-key (kbd "TAB") 'self-insert-command)
+		(global-set-key (kbd "<backspace>") 'backspace-soft-tab)
+		(global-set-key (kbd "<deletechar>") 'delete-forward-soft-tab)
+		(setq-default tab-width 4)
+
 (provide 'init-settings)

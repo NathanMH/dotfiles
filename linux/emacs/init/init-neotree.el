@@ -5,7 +5,7 @@
 ; Settings
 
 (define-key evil-normal-state-map (kbd ",ne") (lambda () (interactive) (neotree-dir "/home/musicnate/Documents/")))
-(define-key evil-normal-state-map (kbd ",s") #'neotree-enter-vertical-split)
+(define-key evil-normal-state-map (kbd "|") #'neotree-enter-vertical-split)
 (add-hook 'neotree-mode-hook
     (lambda ()
 	(define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)

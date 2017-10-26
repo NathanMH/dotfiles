@@ -16,6 +16,7 @@
                      neotree 
                      calfw 
                      powerline 
+                     helm
                      twittering-mode))
 
 ; List of repositories needed
@@ -65,13 +66,19 @@
 (require 'init-settings)
 (require 'init-hl-tags)
 (require 'init-latex-preview-pane)
-(require 'init-mu4e)
+(require 'init-org-wiki)
+(require 'init-helm)
+;(require 'init-mu4e)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files nil)
+ '(package-selected-packages
+   (quote
+	(twittering-mode rainbow-delimiters powerline neotree key-chord flycheck evil-terminal-cursor-changer evil-surround evil-org evil-nerd-commenter evil-leader company-jedi colemak-evil centered-cursor-mode calfw ace-jump-mode)))
  '(send-mail-function nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
