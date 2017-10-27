@@ -5,7 +5,8 @@
 ; Emacs Settings
 
     (require 'soft-tab)
-    (require 'linum-relative)
+    ;(require 'linum-relative)
+    (require 'nlinum-relative)
 
 	; Allow y or n instead of yes or no
 		(defalias 'yes-or-no-p 'y-or-n-p)
@@ -18,10 +19,17 @@
 		(setq compilation-ask-about-save nil)
 		(setq compilation-save-buffers-predicate '(lambda () nil))
 	; Line numbers
-		(global-linum-mode t)
-        (linum-relative-on)
-        (setq linum-relative-current-symbol "")
-        (set-face-attribute 'linum nil :height 100)
+        ; Uses linum
+		;(global-linum-mode t)
+        ;(linum-relative-on)
+        ;(setq linum-relative-current-symbol "")
+        ;(set-face-attribute 'linum nil :height 100)
+        ; Uses nlinum
+        (nlinum-relative-setup-evil)
+        (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+        (setq nlinum-relative-redisplay-delay 0.2)
+        (setq nlinum-relative-current-symbol "")
+        (setq nlinum-relative-offset 0)
 	; Highlight current line
 		(global-hl-line-mode t)
 	; Linewrap
