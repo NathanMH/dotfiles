@@ -6,7 +6,6 @@
                      evil-nerd-commenter 
                      evil-surround 
                      evil-terminal-cursor-changer 
-                     ace-jump-mode
                      centered-cursor-mode
                      key-chord
                      flycheck
@@ -17,7 +16,12 @@
                      calfw 
                      powerline 
                      helm
-                     twittering-mode))
+                     twittering-mode
+                     nlinum-relative
+                     avy
+                     ace-jump-buffer
+                     page-break-lines
+                     ))
 
 ; List of repositories needed
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
@@ -53,7 +57,6 @@
 (require 'init-calendar)
 (require 'init-centered)
 (require 'init-company)
-(require 'init-ace-jump)
 (require 'init-erc)
 (require 'init-keychord)
 (require 'init-neotree)
@@ -68,6 +71,9 @@
 (require 'init-latex-preview-pane)
 (require 'init-org-wiki)
 (require 'init-helm)
+(require 'init-avy)
+(require 'init-dashboard)
+;(require 'init-ace-jump)
 ;(require 'init-mu4e)
 
 (custom-set-variables

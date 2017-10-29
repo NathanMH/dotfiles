@@ -7,12 +7,14 @@
 
 (evil-leader/set-leader ",")
 (evil-leader/set-key
-    "b" 'ibuffer
     "q" 'delete-window
     "tt" 'save-buffer
     "k" 'kill-buffer-and-window
     "m" 'right-char
-    "," 'insert-comma)
+    "s" 'avy-goto-char
+    "l" 'avy-goto-line
+    "b" 'ace-jump-buffer
+    )
 
 (evil-leader/set-key
     "full" 'toggle-frame-fullscreen)
