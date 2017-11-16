@@ -15,12 +15,16 @@
                      neotree 
                      calfw 
                      powerline 
+                     powerline-evil
+                     org-bullets
+                     dashboard
                      helm
                      twittering-mode
                      nlinum-relative
                      avy
                      ace-jump-buffer
                      page-break-lines
+                     projectile
                      ))
 
 ; List of repositories needed
@@ -43,6 +47,7 @@
 (add-to-list 'custom-theme-load-path "/home/musicnate/.emacs.d/themes/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/init/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/")
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 
 ; Load Package Repos
 
@@ -73,15 +78,15 @@
 (require 'init-helm)
 (require 'init-avy)
 (require 'init-dashboard)
-;(require 'init-ace-jump)
-;(require 'init-mu4e)
+(require 'init-projectile)
+(require 'init-mu4e)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files nil)
+ '(org-agenda-files (quote ("~/Documents/org/todo.org")))
  '(package-selected-packages
    (quote
 	(twittering-mode rainbow-delimiters powerline neotree key-chord flycheck evil-terminal-cursor-changer evil-surround evil-org evil-nerd-commenter evil-leader company-jedi colemak-evil centered-cursor-mode calfw ace-jump-mode)))

@@ -1,9 +1,9 @@
 ; Org-Wiki
 
-    (require 'org-wiki)
+(require 'org-wiki)
 
 ; Settings
 
-    (setq org-wiki-location "~/Documents/org/wiki")
+(setq org-wiki-location "~/Documents/org/wiki")
 
-    (provide 'init-org-wiki)
+(provide 'init-org-wiki)

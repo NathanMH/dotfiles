@@ -18,7 +18,7 @@
 			(:from-or-to 	.  22)
 			(:subject		.  nil)))
 
-    (setq mu4e-maildir "/home/musicnate/mail/")    ; Set top-level mail directory
+    (setq mu4e-maildir "/home/musicnate/Documents/mail/")    ; Set top-level mail directory
 
     ; Default account
 	(setq

@@ -12,4 +12,7 @@
 (setq evil-normal-state-cursor '("green" box))
 (setq evil-insert-state-cursor '("red" bar))
 
+(add-hook 'org-mode-hook 'evil-org-mode)
+(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+
 (provide 'init-evil-addons)

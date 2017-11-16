@@ -13,4 +13,8 @@
 	(define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
 	(define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
+(setq neo-theme (if (display-graphic-p) 'arrow 'classic))
+(setq-default neo-show-hidden-files t)
+
+
 (provide 'init-neotree)
