@@ -25,6 +25,7 @@
                      ace-jump-buffer
                      page-break-lines
                      projectile
+                     fireplace
                      ))
 
 ; List of repositories needed
@@ -41,12 +42,12 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
 ; Load Paths
 
 (add-to-list 'custom-theme-load-path "/home/musicnate/.emacs.d/themes/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/init/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/")
+(add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/tabbar/")
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 
 ; Load Package Repos
@@ -80,6 +81,8 @@
 (require 'init-dashboard)
 (require 'init-projectile)
 (require 'init-mu4e)
+(require 'init-tabbar)
+(require 'init-speed-type)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
