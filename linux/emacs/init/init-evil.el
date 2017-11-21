@@ -6,10 +6,10 @@
 ; Settings
 
 ; Buffer Movement
-(define-key evil-normal-state-map (kbd "C-h") 'windmove-left)
-(define-key evil-normal-state-map (kbd "C-j") 'windmove-down)
-(define-key evil-normal-state-map (kbd "C-k") 'windmove-up)
-(define-key evil-normal-state-map (kbd "C-l") 'windmove-right)
+;(define-key evil-normal-state-map (kbd "C-h") 'windmove-left)
+;(define-key evil-normal-state-map (kbd "C-j") 'windmove-down)
+;(define-key evil-normal-state-map (kbd "C-k") 'windmove-up)
+;(define-key evil-normal-state-map (kbd "C-l") 'windmove-right)
 
 ; Move to begin/end of line
 (define-key evil-normal-state-map (kbd "H") "^")

@@ -26,6 +26,9 @@
                      page-break-lines
                      projectile
                      fireplace
+                     rainbow-mode
+                     tabbar
+                     speed-type
                      ))
 
 ; List of repositories needed
