@@ -14,13 +14,15 @@
                      company-jedi
                      neotree 
                      calfw 
+                     calfw-ical
+                     calfw-org
                      powerline 
                      powerline-evil
                      org-bullets
                      dashboard
                      helm
+                     latex-preview-pane
                      twittering-mode
-                     nlinum-relative
                      avy
                      ace-jump-buffer
                      page-break-lines
@@ -30,6 +32,8 @@
                      tabbar
                      speed-type
                      ))
+
+; Need to manually install hl-tags-mode, soft-tab, org-wiki
 
 ; List of repositories needed
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
@@ -50,9 +54,10 @@
 (add-to-list 'custom-theme-load-path "/home/musicnate/.emacs.d/themes/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/init/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/")
-(add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/tabbar/")
+(add-to-list 'load-path "/home/musicnate/.emacs.d/plugins")
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
-
+(let ((default-directory "~/.emacs.d/plugins/"))
+  (normal-top-level-add-subdirs-to-load-path))
 ; Load Package Repos
 
 (require 'package)

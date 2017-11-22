@@ -17,4 +17,9 @@
 
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
+; Autoload tabbar
+(define-globalized-minor-mode global-tabbar-minor-mode
+ tabbar-mode tabbar-mode)
+(global-tabbar-minor-mode)
+
 (provide 'init-tabbar)

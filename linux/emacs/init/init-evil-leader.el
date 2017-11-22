@@ -7,7 +7,8 @@
 
 (evil-leader/set-leader ",")
 (evil-leader/set-key
-    "q" 'delete-window
+    ;"q" 'delete-window
+    "q" 'kill-this-buffer
     "tt" 'save-buffer
     "k" 'kill-buffer-and-window
     "m" 'right-char
@@ -25,7 +26,7 @@
 
 ; Org-Wiki
 (evil-leader/set-key
-    "wiki" 'org-wiki
+    "wiki" 'org-wiki-index
  )
 
 ; Mail

@@ -29,7 +29,7 @@
 	; No startup splash/screen
 		(setq inhibit-startup-buffer-menu t)
 		(setq inhibit-startup-screen t)
-	; Remove toolbar/menu/tooltips
+	; Remove toolbar/menu/tooltips add tabs
 		(tool-bar-mode 0)
 		(menu-bar-mode 0)
 		(tooltip-mode 0)
