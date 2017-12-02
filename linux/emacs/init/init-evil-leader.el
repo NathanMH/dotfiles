@@ -15,6 +15,7 @@
     "s" 'avy-goto-char
     "l" 'avy-goto-line
     "b" 'ace-jump-buffer
+	"h" 'helm-buffers-list
     )
 
 (evil-leader/set-key

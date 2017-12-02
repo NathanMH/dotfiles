@@ -95,11 +95,20 @@
 (define-key ibuffer-mode-map (kbd "<up>") 'ibuffer-previous-line)
 (define-key ibuffer-mode-map (kbd "<down>") 'ibuffer-next-line)
 
+; Hide the ibuffer header to use tabbar
+(setq ibuffer-use-header-line nil)
+(defadvice ibuffer-update (around ibuffer-preserve-prev-header activate)
+  "Preserve line-header used before Ibuffer if it doesn't set one"
+  (let ((prev-line-header header-line-format))
+	ad-do-it
+	(unless header-line-format
+	  (setq header-line-format prev-line-header))))
+
 ; Hide empty filter groups
 (setq ibuffer-show-empty-filter-groups nil)
 (ad-activate 'ibuffer)
 
-(ibuffer)
+;(ibuffer)
 
 (provide 'init-ibuffer)
 

@@ -10,12 +10,24 @@
 (global-set-key (kbd "C-l") 'tabbar-forward)
 (global-set-key (kbd "C-h") 'tabbar-backward)
 
-(defun my-tabbar-buffer-groups ()
-  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-        ((eq major-mode 'dired-mode) "emacs")
-        (t "user"))))
-
-(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
+(setq tabbar-buffer-groups-function
+	  (lambda ()
+		(let ((dir (expand-file-name default-directory)))
+		  (cond ((member (buffer-name) '("*Completions*"
+										 "*scratch*"
+										 "*Messages*"
+										 "*Ediff Registry*"
+										 "*Flycheck error messages*"
+										 "*Help*"))
+				 (list "misc"))
+				((member (buffer-name) '("*dashboard*"
+										 "*buffer-selection*"
+										 "*Ibuffer*"
+										 "*helm buffers*"))
+				 (list "dashboard"))
+				((string-match-p "/org/" dir)
+				 (list "org"))
+				(t (list dir))))))
 
 ; Look and feel
 
@@ -29,10 +41,12 @@
  '(tabbar-highlight ((t (:underline t))))
  '(tabbar-selected ((t (:inherit tabbar-default :background "#090909" :foreground "#F92672"))))
 
- '(tabbar-separator ((t (:inherit tabbar-default))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
+ '(tabbar-unselected ((t (:inherit tabbar-default))))
+)
 
 ;; *** USE THIS TO ADJUST THE SPACES BETWEEN TABS ***
+(custom-set-variables
+ '(tabbar-separator (quote (1.2))))
 
 ; Autoload tabbar
 (define-globalized-minor-mode global-tabbar-minor-mode

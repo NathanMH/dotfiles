@@ -51,6 +51,9 @@
 
 ; Load Paths
 
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file 'no-error 'no-message)
+
 (add-to-list 'custom-theme-load-path "/home/musicnate/.emacs.d/themes/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/init/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/")
@@ -92,28 +95,5 @@
 (require 'init-tabbar)
 (require 'init-speed-type)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Documents/org/todo.org")))
- '(package-selected-packages
-   (quote
-	(twittering-mode rainbow-delimiters powerline neotree key-chord flycheck evil-terminal-cursor-changer evil-surround evil-org evil-nerd-commenter evil-leader company-jedi colemak-evil centered-cursor-mode calfw ace-jump-mode)))
- '(send-mail-function nil)
- '(tabbar-separator (quote (0.6))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(tabbar-button ((t (:inherit tabbar-default :foreground "gold"))))
- '(tabbar-button-highlight ((t (:inherit tabbar-default))))
- '(tabbar-default ((t (:inherit variable-pitch :background "black" :foreground "#FD971F" :weight bold))))
- '(tabbar-highlight ((t (:underline t))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#090909" :foreground "#F92672"))))
- '(tabbar-separator ((t (:inherit tabbar-default))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
-
+(ibuffer)
 

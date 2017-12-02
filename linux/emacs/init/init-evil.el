@@ -5,6 +5,9 @@
 
 ; Settings
 
+; Use evil mode in ibuffer
+(setq evil-emacs-states-modes (delq 'ibuffer-mode evil-emacs-state-modes))
+
 ; Buffer Movement
 ;(define-key evil-normal-state-map (kbd "C-h") 'windmove-left)
 ;(define-key evil-normal-state-map (kbd "C-j") 'windmove-down)
