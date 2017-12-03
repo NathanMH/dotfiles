@@ -1,7 +1,7 @@
 ; Helm
 
-    (require 'helm)
+(require 'helm)
 
 ; Settings
 
-    (provide 'init-helm)
+(provide 'init-helm)

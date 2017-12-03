@@ -24,7 +24,8 @@
 										 "*buffer-selection*"
 										 "*Ibuffer*"
 										 "*helm buffers*"
-										 "*helm find*"))
+										 "*helm find*"
+										 "*helm find files*"))
 				 (list "dashboard"))
 				((string-match-p "/org/" dir)
 				 (list "org"))
