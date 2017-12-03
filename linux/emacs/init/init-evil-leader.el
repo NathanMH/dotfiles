@@ -7,7 +7,6 @@
 
 (evil-leader/set-leader ",")
 (evil-leader/set-key
-    ;"q" 'delete-window
     "q" 'kill-this-buffer
     "tt" 'save-buffer
     "k" 'kill-buffer-and-window
@@ -15,7 +14,7 @@
     "s" 'avy-goto-char
     "l" 'avy-goto-line
     "b" 'ace-jump-buffer
-	"h" 'helm-buffers-list
+	"h" 'helm-find
     )
 
 (evil-leader/set-key

@@ -31,6 +31,8 @@
                      rainbow-mode
                      tabbar
                      speed-type
+                     impatient-mode
+					 which-key
                      ))
 
 ; Need to manually install hl-tags-mode, soft-tab, org-wiki
@@ -94,6 +96,8 @@
 (require 'init-mu4e)
 (require 'init-tabbar)
 (require 'init-speed-type)
+(require 'init-impatient)
+(require 'init-which-key)
 
 (ibuffer)
 

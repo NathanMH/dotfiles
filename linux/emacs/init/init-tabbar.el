@@ -23,7 +23,8 @@
 				((member (buffer-name) '("*dashboard*"
 										 "*buffer-selection*"
 										 "*Ibuffer*"
-										 "*helm buffers*"))
+										 "*helm buffers*"
+										 "*helm find*"))
 				 (list "dashboard"))
 				((string-match-p "/org/" dir)
 				 (list "org"))
