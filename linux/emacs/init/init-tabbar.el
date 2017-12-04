@@ -9,6 +9,9 @@
 
 (global-set-key (kbd "C-l") 'tabbar-forward)
 (global-set-key (kbd "C-h") 'tabbar-backward)
+(global-set-key (kbd "C-M-l") 'tabbar-forward-group)
+(global-set-key (kbd "C-M-h") 'tabbar-backward-group)
+(global-set-key (kbd "C-g") 'tabbar-press-home)
 
 (setq tabbar-buffer-groups-function
 	  (lambda ()
@@ -26,9 +29,11 @@
 										 "*helm buffers*"
 										 "*helm find*"
 										 "*helm find files*"))
-				 (list "dashboard"))
-				((string-match-p "/org/" dir)
+				 (list "buffers"))
+				((string-match-p "/org" dir)
 				 (list "org"))
+				((string-match-p ".el" (buffer-name))
+				 (list "emacs-init"))
 				(t (list dir))))))
 
 ; Look and feel

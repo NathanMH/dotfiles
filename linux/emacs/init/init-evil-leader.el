@@ -28,6 +28,10 @@
 (evil-leader/set-key
   "which" 'which-key-show-major-mode)
 
+; Term
+(evil-leader/set-key
+  "term" 'term-other-window)
+
 ; Nerd-Commenter
 (evil-leader/set-key
   "comm" 'evilnc-comment-or-uncomment-lines)

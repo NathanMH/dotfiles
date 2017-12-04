@@ -98,6 +98,7 @@
 (require 'init-speed-type)
 (require 'init-impatient)
 (require 'init-which-key)
+(require 'init-term)
 
 (ibuffer)
 
