@@ -30,7 +30,7 @@
 										 "*helm find*"
 										 "*helm find files*"))
 				 (list "buffers"))
-				((string-match-p "/org" dir)
+				((string-match-p ".org" (buffer-name))
 				 (list "org"))
 				((string-match-p ".el" (buffer-name))
 				 (list "emacs-init"))
