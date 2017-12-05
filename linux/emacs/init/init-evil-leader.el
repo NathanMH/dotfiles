@@ -14,7 +14,7 @@
     "m" 'right-char
     "s" 'avy-goto-char
     "l" 'avy-goto-line
-    "b" 'ace-jump-buffer
+    "b" 'helm-buffers-list
 	"h" 'helm-find
 	"|" 'split-window-right ; Split window vertically
 	"-" 'split-window-below ; Split window horizontally
