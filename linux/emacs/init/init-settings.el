@@ -1,6 +1,6 @@
 ; Theme
 
-	(load-theme 'monokai t)
+(load-theme 'monokai t)
 
 ; Emacs Settings
 
@@ -32,6 +32,9 @@
 (global-linum-mode t)
 
 ; Auto complete quotes and parens
+(setq electric-pair-preserve-balance t)
+(setq electric-pair-delete-adjacent-pairs t)
+(setq blink-matching-paren t)
 (electric-pair-mode 1)
 
 ; No startup splash/screen
