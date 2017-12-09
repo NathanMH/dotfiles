@@ -60,7 +60,6 @@
 (add-to-list 'load-path "/home/musicnate/.emacs.d/init/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/plugins")
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 (let ((default-directory "~/.emacs.d/plugins/"))
   (normal-top-level-add-subdirs-to-load-path))
 ; Load Package Repos
@@ -93,7 +92,6 @@
 (require 'init-avy)
 (require 'init-dashboard)
 (require 'init-projectile)
-(require 'init-mu4e)
 (require 'init-tabbar)
 (require 'init-speed-type)
 (require 'init-impatient)
