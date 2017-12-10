@@ -58,9 +58,9 @@
 (setq-default tab-width 4)
 
 ; Misc Keybindings
-(global-set-key (kbd "C-<right>") 'windmove-right)
-(global-set-key (kbd "C-<left>") 'windmove-left)
-(global-set-key (kbd "C-<up>") 'windmove-up)
-(global-set-key (kbd "C-<down>") 'windmove-down)
+(global-set-key (kbd "C-M-l") 'windmove-right)
+(global-set-key (kbd "C-M-h") 'windmove-left)
+(global-set-key (kbd "C-M-k") 'windmove-up)
+(global-set-key (kbd "C-M-j") 'windmove-down)
 
 (provide 'init-settings)

@@ -9,8 +9,8 @@
 
 (global-set-key (kbd "C-l") 'tabbar-forward)
 (global-set-key (kbd "C-h") 'tabbar-backward)
-(global-set-key (kbd "C-M-l") 'tabbar-forward-group)
-(global-set-key (kbd "C-M-h") 'tabbar-backward-group)
+(global-set-key (kbd "C-<right>") 'tabbar-forward-group)
+(global-set-key (kbd "C-<left>") 'tabbar-backward-group)
 (global-set-key (kbd "C-g") 'tabbar-press-home)
 
 (setq tabbar-buffer-groups-function

@@ -33,6 +33,7 @@
                      speed-type
                      impatient-mode
 					 which-key
+					 web-mode
                      ))
 
 ; Need to manually install hl-tags-mode, soft-tab, org-wiki
@@ -97,6 +98,7 @@
 (require 'init-impatient)
 (require 'init-which-key)
 (require 'init-term)
+(require 'init-webdev)
 
 (ibuffer)
 
