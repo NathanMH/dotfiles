@@ -41,6 +41,9 @@
 (setq inhibit-startup-buffer-menu t)
 (setq inhibit-startup-screen t)
 
+; Visual Bell
+(setq visible-bell t)
+
 ; Remove toolbar/menu/tooltips add tabs
 (tool-bar-mode 0)
 (menu-bar-mode 0)
