@@ -34,6 +34,7 @@
                      impatient-mode
 					 which-key
 					 web-mode
+					 helm-org-rifle
                      ))
 
 ; Need to manually install hl-tags-mode, soft-tab, org-wiki
@@ -79,7 +80,7 @@
 (require 'init-erc)
 (require 'init-keychord)
 (require 'init-neotree)
-(require 'init-rainbow-delimiters)
+(require 'init-rainbow)
 (require 'init-powerline)
 (require 'init-twittering)
 (require 'init-org)

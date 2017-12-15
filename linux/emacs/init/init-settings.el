@@ -44,6 +44,10 @@
 ; Visual Bell
 (setq visible-bell t)
 
+; Pretty Symbols (put a list of symbols here later...)
+(global-prettify-symbols-mode t)
+(setq prettify-symbols-unprettify-at-point t) ; Only in Emacs 25
+
 ; Remove toolbar/menu/tooltips add tabs
 (tool-bar-mode 0)
 (menu-bar-mode 0)

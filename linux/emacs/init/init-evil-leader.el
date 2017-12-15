@@ -18,6 +18,7 @@
 	"h" 'helm-find
 	"|" 'split-window-right ; Split window vertically
 	"-" 'split-window-below ; Split window horizontally
+	"o" 'org-open-at-point
     )
 
 ; Fulscreen (still usefull for WSL)
