@@ -35,6 +35,7 @@
 					 which-key
 					 web-mode
 					 helm-org-rifle
+					 annotate
                      ))
 
 ; Need to manually install hl-tags-mode, soft-tab, org-wiki
@@ -100,6 +101,7 @@
 (require 'init-which-key)
 (require 'init-term)
 (require 'init-webdev)
+(require 'init-annotate)
 
 (ibuffer)
 
