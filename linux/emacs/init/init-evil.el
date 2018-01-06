@@ -14,6 +14,15 @@
 ;(define-key evil-normal-state-map (kbd "C-k") 'windmove-up)
 ;(define-key evil-normal-state-map (kbd "C-l") 'windmove-right)
 
+(defun my-evil-doc-view-hook()
+  (turn-off-evil-mode)
+  (define-key doc-view-mode-map (kbd "j") 'doc-view-scroll-up-or-next-page)
+  (define-key doc-view-mode-map (kbd "k") 'doc-view-scroll-down-or-previous-page)
+  (define-key doc-view-mode-map (kbd "h") 'image-backward-hscroll)
+  (define-key doc-view-mode-map (kbd "l") 'image-forward-hscroll))
+
+(add-hook 'doc-view-mode-hook 'my-evil-doc-view-hook)
+
 ; Move to begin/end of line
 (define-key evil-normal-state-map (kbd "H") "^")
 (define-key evil-normal-state-map (kbd "L") "$")
