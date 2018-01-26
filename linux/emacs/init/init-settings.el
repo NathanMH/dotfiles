@@ -1,8 +1,10 @@
-; Theme
+;;; package --- Summary: Setup annotations
+;;; Commentary:
+; General Settings
+
+;;; Code:
 
 (load-theme 'monokai t)
-
-; Emacs Settings
 
 (require 'soft-tab)
 
@@ -71,3 +73,5 @@
 (global-set-key (kbd "C-M-j") 'windmove-down)
 
 (provide 'init-settings)
+
+;;; init-settings ends here

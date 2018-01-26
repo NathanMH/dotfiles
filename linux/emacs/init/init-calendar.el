@@ -1,14 +1,16 @@
-; Calendar
-	
-	(require 'calfw)
-	(require 'calfw-ical)
-	(require 'calfw-org)
+;;; package --- Summary: Setup calendar
+;;; Commentary:
+; TODO intergrate org mode
 
-; Settings
+(require 'calfw)
+(require 'calfw-ical)
+(require 'calfw-org)
 
-	(define-key evil-normal-state-map (kbd ",cal") (lambda () (interactive) (cfw:open-ical-calendar "https://calendar.google.com/calendar/ical/nathan.mador.house%40gmail.com/public/basic.ics")))
-	; (define-key evil-normal-state-map (kbd ",cal") (lambda () (interactive) (cfw:open-ical-calendar "/home/musicnate/.emacs.d/calendar/emacs-cal.ics")))
+;;; Code:
 
-	; TODO intergrate org mode
+(define-key evil-normal-state-map (kbd ",cal") (lambda () (interactive) (cfw:open-ical-calendar "https://calendar.google.com/calendar/ical/nathan.mador.house%40gmail.com/public/basic.ics")))
+; (define-key evil-normal-state-map (kbd ",cal") (lambda () (interactive) (cfw:open-ical-calendar "/home/musicnate/.emacs.d/calendar/emacs-cal.ics")))
 
 (provide 'init-calendar)
+
+;;; init-calendar ends here

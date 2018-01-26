@@ -1,11 +1,12 @@
-; Evil Addons
+;;; package --- Summary: Setup evil-addons
+;;; Commentary:
 
 (require 'evil-surround)
 (require 'evil-terminal-cursor-changer)
 (require 'evil-org)
 ;(require 'evil-mu4e)
 
-; Settings
+;;; Code:
 
 (setq evil-visual-state-cursor '("purple" hbar))
 (setq evil-normal-state-cursor '("green" box))
@@ -19,3 +20,5 @@
 (add-to-list 'evil-surround-pairs-alist '(?* . ("*" . "*")))
 
 (provide 'init-evil-addons)
+
+;;; init-evil-addons ends here

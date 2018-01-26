@@ -1,9 +1,10 @@
-; Evil
+;;; package --- Summary: Setup evil
+;;; Commentary:
 
 (require 'evil)
 (evil-mode 1)
 
-; Settings
+;;; Code:
 
 ; Use evil mode in ibuffer
 (setq evil-emacs-states-modes (delq 'ibuffer-mode evil-emacs-state-modes))
@@ -37,3 +38,5 @@
 (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
 
 (provide 'init-evil)
+
+;;; init-evil ends here

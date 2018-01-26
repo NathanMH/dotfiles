@@ -1,8 +1,9 @@
-; Key-chord
+;;; package --- Summary: Setup keychord
+;;; Commentary:
 
 (require 'key-chord)
 
-; Settings
+;;; Code:
 
 (key-chord-mode 1)
 (key-chord-define evil-insert-state-map (kbd "nn") 'evil-normal-state)
@@ -10,3 +11,5 @@
 (setq key-chord-delay 0.1)
 
 (provide 'init-keychord)
+
+;;; init-keychord ends here

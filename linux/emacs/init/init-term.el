@@ -1,3 +1,7 @@
+;;; package --- Summary: Setup term
+;;; Commentary:
+
+;;; Code:
 
 (setq explicit-shell-file-name "/bin/bash")
 
@@ -9,3 +13,5 @@
 	(switch-to-buffer-other-window buf)))
 
 (provide 'init-term)
+
+;;; init-term ends here

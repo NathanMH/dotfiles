@@ -1,9 +1,10 @@
-; iBuffer
+;;; package --- Summary: Setup ibuffer
+;;; Commentary:
 
 (require 'ibuffer)
 
-; Settings
-	
+;;; Code:
+
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
 (setq ibuffer-expert t)
 (autoload 'ibuffer "ibuffer" "List Buffers." t)
@@ -112,3 +113,4 @@
 
 (provide 'init-ibuffer)
 
+;;; init-ibuffer ends here

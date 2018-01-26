@@ -1,9 +1,10 @@
-; Rainbow-Delimiters
+;;; package --- Summary: Setup rainbow delimiters
+;;; Commentary:
 
 (require 'paren)
 (require 'rainbow-delimiters)
 
-; Settings
+;;; Code:
 
 ; Rainbow Parens
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
@@ -16,3 +17,5 @@
 (setq show-paren-delay 0)
 
 (provide 'init-rainbow)
+
+;;; init-rainbow ends here

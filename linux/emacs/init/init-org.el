@@ -1,9 +1,10 @@
-; Org Mode
+;;; package --- Summary: Setup org-mode
+;;; Commentary:
 
 (require 'org)
 (require 'org-bullets)
 
-; Settings
+;;; Code:
 
 ; Set location
 (setq org-directory "/home/musicnate/Documents/org")
@@ -19,3 +20,4 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (provide 'init-org)
+;;; init-org ends here

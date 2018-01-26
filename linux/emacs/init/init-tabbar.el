@@ -1,8 +1,9 @@
-; TabBar
+;;; package --- Summary: Setup tabbar
+;;; Commentary:
 
 (require 'tabbar)
 
-; Settings
+;;; Code:
 
 (setq tabbar-use-images t)
 (setq table-time-before-update 0.1)
@@ -61,3 +62,5 @@
 (global-tabbar-minor-mode)
 
 (provide 'init-tabbar)
+
+;;; init-tabbar ends here

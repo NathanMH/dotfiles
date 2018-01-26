@@ -1,7 +1,10 @@
-; Projectile 
+;;; package --- Summary: Setup projectile
+;;; Commentary:
 
 (require 'projectile)
 
-; Settings
+;;; Code:
 
 (provide 'init-projectile)
+
+;;; init-projectile ends here

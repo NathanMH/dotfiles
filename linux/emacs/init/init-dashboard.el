@@ -1,9 +1,10 @@
-; Dashboard
+;;; package --- Summary: Setup dashboard
+;;; Commentary:
 
 (require 'page-break-lines)
 (require 'dashboard)
 
-; Settings
+;;; Code:
 
 (dashboard-setup-startup-hook)
 
@@ -14,3 +15,4 @@
                         ))
 
 (provide 'init-dashboard)
+;;; init-dashboard ends here

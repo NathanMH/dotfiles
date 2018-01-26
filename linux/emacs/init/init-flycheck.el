@@ -1,9 +1,12 @@
-; Flycheck
+;;; package --- Summary: Setup flycheck
+;;; Commentary:
 
 (package-install 'flycheck)
 
-; Settings
+;;; Code:
 
 (global-flycheck-mode)
 
 (provide 'init-flycheck)
+
+;;; init-flycheck ends here

@@ -1,7 +1,10 @@
-; Evil Leader
+;;; package --- Summary: Setup evil-leader
+;;; Commentary:
 
 (require 'evil-leader)
 (require 'evil-nerd-commenter)
+
+;;; Code:
 
 (global-evil-leader-mode)
 
@@ -55,3 +58,5 @@
     "fetch" 'mu4e-get-mail-command)
 
 (provide 'init-evil-leader)
+
+;;; init-evil-leader ends here

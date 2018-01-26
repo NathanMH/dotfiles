@@ -1,9 +1,12 @@
-; Centered Mode
+;;; package --- Summary: Setup centered
+;;; Commentary:
 
-	(require 'centered-cursor-mode)
+(require 'centered-cursor-mode)
 
-; Settings
+;;; Code:
 
-	(global-centered-cursor-mode 1)
+(global-centered-cursor-mode 1)
 
 (provide 'init-centered)
+
+;;; init-centered ends here

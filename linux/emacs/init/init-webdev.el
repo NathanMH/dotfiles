@@ -1,6 +1,9 @@
+;;; package --- Summary: Setup annotations
+;;; Commentary:
+
 (require 'web-mode)
 
-; Settings
+;;; Code:
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -9,6 +12,7 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . visual-line-mode))
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
@@ -19,3 +23,5 @@
 (setq web-mode-auto-close-style 2)
 
 (provide 'init-webdev)
+
+;;; init-webdev ends here
