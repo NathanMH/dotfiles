@@ -32,10 +32,12 @@
                      tabbar
                      speed-type
                      impatient-mode
+					 pelican-mode
 					 which-key
 					 web-mode
 					 helm-org-rifle
 					 annotate
+					 markdown-mode
                      ))
 
 ; Need to manually install hl-tags-mode, soft-tab, org-wiki
@@ -63,6 +65,7 @@
 (add-to-list 'load-path "/home/musicnate/.emacs.d/init/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/elpa/")
 (add-to-list 'load-path "/home/musicnate/.emacs.d/plugins")
+
 (let ((default-directory "~/.emacs.d/plugins/"))
   (normal-top-level-add-subdirs-to-load-path))
 ; Load Package Repos

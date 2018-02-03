@@ -1,7 +1,10 @@
 ;;; package --- Summary: Setup annotations
 ;;; Commentary:
 
+(require 'ox-publish)
 (require 'web-mode)
+(require 'pelican-mode)
+(require 'org-pelican)
 
 ;;; Code:
 
