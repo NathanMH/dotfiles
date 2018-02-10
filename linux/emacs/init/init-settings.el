@@ -66,11 +66,49 @@
 (global-set-key (kbd "<deletechar>") 'delete-forward-soft-tab)
 (setq-default tab-width 4)
 
+; Sort Dired buffers
+(defun mydired-sort ()
+ (save-excursion
+  (let (buffer-read-only)
+   (forward-line 2)
+   (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max)))
+  (set-buffer-modified-p nil)))
+
+(defadvice dired-readin
+ (after dired-after-updating-hook first () activate)
+ (mydired-sort))
+
 ; Misc Keybindings
 (global-set-key (kbd "C-M-l") 'windmove-right)
 (global-set-key (kbd "C-M-h") 'windmove-left)
 (global-set-key (kbd "C-M-k") 'windmove-up)
 (global-set-key (kbd "C-M-j") 'windmove-down)
+
+(defun dired-do-command (command)
+  "Run COMMAND on marked files. Any files not already open will be opened.
+After this command has been run, any buffers it's modified will remain
+open and unsaved."
+  (interactive
+   (list
+    (let ((print-level nil)
+          (minibuffer-history-position 0)
+          (minibuffer-history-sexp-flag (1+ (minibuffer-depth))))
+      (unwind-protect
+          (read-from-minibuffer
+           "Command: " (prin1-to-string (nth 0 command-history))
+           read-expression-map t
+           (cons 'command-history 0))
+
+        ;; If command was added to command-history as a
+        ;; string, get rid of that.  We want only
+        ;; evaluable expressions there.
+        (if (stringp (car command-history))
+            (setq command-history (cdr command-history)))))))
+  (dolist (filename (dired-get-marked-files))
+    (with-current-buffer (find-file-noselect filename)
+      (if (symbolp command)
+          (call-interactively command)
+        (eval command)))))
 
 (provide 'init-settings)
 
