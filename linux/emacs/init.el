@@ -38,6 +38,7 @@
 					 helm-org-rifle
 					 annotate
 					 markdown-mode
+					 elpy
                      ))
 
 ; Need to manually install hl-tags-mode, soft-tab, org-wiki
@@ -105,6 +106,7 @@
 (require 'init-term)
 (require 'init-webdev)
 (require 'init-annotate)
+(require 'init-python)
 
 (ibuffer)
 

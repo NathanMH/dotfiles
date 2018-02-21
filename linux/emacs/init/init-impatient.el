@@ -1,7 +1,6 @@
-; Impatient (HTML preview)
-
 ;;; package --- Summary: Setup impatient
 ;;; Commentary:
+;;; Impatient (HTML preview)
 
 (require 'impatient-mode)
 
