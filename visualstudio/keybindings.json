@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Place your key bindings in this file to overwrite the defaults
 [
     {
@@ -53,7 +52,7 @@
     },
     {
         "key": "alt+z",
-        "command": "workbench.action.toggleZenMode",
+        "command": "workbench.action.toggleZenMode"
     },
     {
         "key": "alt+r",
@@ -75,38 +74,4 @@
         "key": "ctrl+k f",
         "command": "-workbench.action.closeFolder"
     }
-=======
-// Place your key bindings in this file to overwrite the defaults
-[
-    {"key": "ctrl+l",           "command": "workbench.action.nextEditor"},
-    {"key": "ctrl+h",           "command": "workbench.action.previousEditor"},
-    {"key": "alt+t",            "command": "workbench.action.terminal.toggleTerminal"},
-
-    // File explorer
-    {"key": "alt+n alt+e",      "command": "macros.openExplorer",       "when": "!focusFilesExplorer"},
-    {"key": "alt+n alt+e",      "command": "macros.closeExplorer",      "when": "listFocus"},
-
-    // Debug
-    {"key": "alt+b",            "command": "macros.openDebug",          "when": "editorFocus"},
-    {"key": "alt+b",            "command": "macros.closeDebug",         "when": "inDebugRepl"},
-    {"key": "alt+b",            "command": "macros.openDebug",          "when": "terminalFocus"},
-
-    // Shell / Term
-    {"key": "alt+k",            "command": "shellLauncher.launch"},
-
-    // Other
-    {"key": "ctrl+enter",       "command": "-list.select",              "when": "listFocus && !inputFocus"},
-    {"key": "tab",              "command": "list.select",               "when": "listFocus && !inputFocus"},
-    {"key": "alt+o",            "command": "workbench.action.files.openFolder"},
-    {"key": "alt+r",            "command": "python.execInTerminal"},
-    {"key": "alt+w",            "command": "workbench.action.closeActiveEditor"},
-    {"key": "ctrl+w",           "command": "-workbench.action.closeActiveEditor"},
-    {"key": "ctrl+alt+l",       "command": "workbench.action.focusNextGroup"},
-    {"key": "ctrl+k ctrl+right","command": "-workbench.action.focusNextGroup"},
-    {"key": "ctrl+alt+h",       "command": "workbench.action.focusPreviousGroup"},
-    {"key": "ctrl+k ctrl+left", "command": "-workbench.action.focusPreviousGroup"},
-    {"key": "ctrl+oem_3",     "command": "-workbench.action.terminal.toggleTerminal"},
-    {"key": "alt+p",            "command": "workbench.action.showCommands"},
-    {"key": "ctrl+shift+p",     "command": "-workbench.action.showCommands"}
->>>>>>> 79b44249a2492af4de5a90c8b2273397046c3812
 ]
