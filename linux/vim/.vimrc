@@ -98,11 +98,11 @@ let g:netrw_winsize = 25
 let g:netrw_browse_split = 4
 
 " Rainbow Parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-au Syntax * RainbowParenthesesLoadChevrons
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+" au Syntax * RainbowParenthesesLoadChevrons
 
 " Lightline/Airline/Powerline - Keep this simple (no patched fonts)
 let g:lightline = {
@@ -121,26 +121,26 @@ let g:lightline = {
     \}
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 4
-let g:syntastic_vim_checkers = ['vint']
-let g:syntastic_python_checkers = ['pylint', 'flake8']
-let g:syntastic_python_python_exec = '/usr/bin/python3.4'
-let g:syntastic_python_pylint_rcfile='~/.pylintrc'
-let g:syntastic_c_compiler="gcc"
-let g:syntastic_error_symbol = '!'
-let g:syntastic_warning_symbol = '>'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_loc_list_height = 4
+" let g:syntastic_vim_checkers = ['vint']
+" let g:syntastic_python_checkers = ['pylint', 'flake8']
+" let g:syntastic_python_python_exec = '/usr/bin/python3.4'
+" let g:syntastic_python_pylint_rcfile='~/.pylintrc'
+" let g:syntastic_c_compiler="gcc"
+" let g:syntastic_error_symbol = '!'
+" let g:syntastic_warning_symbol = '>'
 
 " YouCompleteMe
-let g:ycm_seed_identifiers_with_syntax = 1        
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:ycm_seed_identifiers_with_syntax = 1        
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " Indent Line
 let g:indentLine_color_term = 098

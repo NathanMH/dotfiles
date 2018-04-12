@@ -1,4 +1,7 @@
-; Company
+;;; package --- Summary: Setup company
+;;; Commentary:
+
+;;; Code:
 
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -8,3 +11,5 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
 (provide 'init-company)
+
+;;; init-company ends here
