@@ -1,15 +1,43 @@
-// Place your settings in this file to overwrite the default settings
-// $USER/AppData/Roaming/Code/User
-// ~/.config/Code/User/
 {
-    "editor.lineNumbers": "relative",
-    "vim.useSystemClipboard": true,
-    "vim.hlsearch": true,
+    // General
+    "git.ignoreMissingGitWarning": true,
+    "update.channel": "none",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.minimap.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.feedback.visible": false,
+    "window.openFilesInNewWindow": "on",
+    "window.openFoldersInNewWindow": "on",
+    "editor.insertSpaces": true,
+
+    "workbench.colorTheme": "Dark (Molokai)",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+
+    // Plugins
+    "vsicons.dontShowNewVersionMessage": true,
+    "scrolloff.alwaysCenter": true,
+    "projectManager.projectsLocation": "C:\\Users\\natha\\Google Drive\\VSCodePortable\\Data\\code\\User",
+
+    // Vim
+
     "vim.easymotion": true,
+    "vim.easymotionKeys": "hklyuiopnm,wertxcvbasdgjf",
+    "vim.easymotionMarkerBackgroundColor": "#859e0c",
     "vim.leader": ",",
-    
+    "vim.useSystemClipboard": true,
+    "vim.cmdLineInitialColon": true,
+    "vim.cursorStylePerMode": {
+        "normal": "block-outline",
+        "insert": "line-thin",
+        "replace": "underline"
+    },
     "vim.statusBarColorControl": true,
-    "vim.statusBarColors" : {
+    "vim.statusBarColors": {
         "normal": "#005f5f",
         "insert": "#5f0000",
         "visual": "#5f00af",
@@ -17,21 +45,35 @@
         "visualblock": "#86592d",
         "replace": "#000000"
     },
+    "vim.surround": true,
+    "vim.foldfix": false,
 
-    // Insert Mode Bindings
+    // Vim Keybindings
+
     "vim.insertModeKeyBindings": [
         {
             "before": ["n", "n"],
-            "after": ["<Esc>"]
+            "after": ["<Esc>", "l"]
         },
         {
             "before": ["leader", "m"],
-            "after": ["<Esc>", "a"]
-        }
+            "after": ["<Esc>", "l", "a"]
+        }  
     ],
 
-    // Normal/VisualMode Bindings
     "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["leader", "s"],
+            "after": ["leader", "leader", "s"]
+        },
         {
             "before": ["leader", "t", "t"],
             "after": [],
@@ -43,63 +85,16 @@
             ]
         },
         {
-            "before": ["H"],
-            "after": ["^"]
-        },
-        {
-            "before": ["L"],
-            "after": ["$"]
-        },
-        {
-            "before": ["leader", "q"],
+            "before": ["leader", "h"],
             "after": [],
             "commands": [
                 {
-                    "command": "workbench.action.closeActiveEditor",
+                    "command": "workbench.action.quickOpen",
                     "args": []
                 }
             ]
         },
-        {
-            "before": ["leader", "n", "e"],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.toggleSidebarVisibility",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": ["leader", "s"],
-            "after": ["leader", "leader", "s"]
-        }
     ],
-
-    // Terminal
-    // "terminal.integrated.shell.linux": "zsh",
-    // "terminal.external.linuxExec": "urxvt",
-
-    // Python
-    "python.pythonPath": "py",
-    "python.terminal.executeInFileDir": true,
-    "python.autoComplete.addBrackets": true,
-    "workbench.activityBar.visible": true,
-    "workbench.statusBar.visible": true,
-    "workbench.sideBar.location": "left",
-
-    // Web Dev
-    "view-in-browser.customBrowser": "mozilla",
-    "vim.disableAnnoyingNeovimMessage": true,
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
-    },
-    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe",
-
-    "cSpell.language": "en-GB",
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.minimap.enabled": false
+    "window.zoomLevel": 0,
+    "git.autofetch": true
 }
