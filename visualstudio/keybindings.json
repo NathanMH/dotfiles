@@ -52,7 +52,11 @@
     },
     {
         "key": "alt+z",
+<<<<<<< HEAD
         "command": "workbench.action.toggleZenMode",
+=======
+        "command": "workbench.action.toggleZenMode"
+>>>>>>> bb4b9b6e82877d88e6dfb30cf7f48054a5018920
     },
     {
         "key": "alt+r",
@@ -63,6 +67,7 @@
         "command": "workbench.action.terminal.clear"
     },
     {
+<<<<<<< HEAD
         "key": "alt+m",
         "command": "workbench.output.action.clearOutput"
     },
@@ -75,3 +80,17 @@
         "command": "workbench.action.splitEditor"
     }
 ]
+=======
+        "key": "alt+s",
+        "command": "vim.easymotion"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.closeFolder"
+    },
+    {
+        "key": "ctrl+k f",
+        "command": "-workbench.action.closeFolder"
+    }
+]
+>>>>>>> bb4b9b6e82877d88e6dfb30cf7f48054a5018920
