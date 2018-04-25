@@ -1,33 +1,77 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    {"key": "ctrl+l",           "command": "workbench.action.nextEditor"},
-    {"key": "ctrl+h",           "command": "workbench.action.previousEditor"},
-    {"key": "alt+t",            "command": "workbench.action.terminal.toggleTerminal"},
-
-    // File explorer
-    {"key": "alt+n alt+e",      "command": "macros.openExplorer",       "when": "!focusFilesExplorer"},
-    {"key": "alt+n alt+e",      "command": "macros.closeExplorer",      "when": "listFocus"},
-
-    // Debug
-    {"key": "alt+b",            "command": "macros.openDebug",          "when": "editorFocus"},
-    {"key": "alt+b",            "command": "macros.closeDebug",         "when": "inDebugRepl"},
-    {"key": "alt+b",            "command": "macros.openDebug",          "when": "terminalFocus"},
-
-    // Shell / Term
-    {"key": "alt+k",            "command": "shellLauncher.launch"},
-
-    // Other
-    {"key": "ctrl+enter",       "command": "-list.select",              "when": "listFocus && !inputFocus"},
-    {"key": "tab",              "command": "list.select",               "when": "listFocus && !inputFocus"},
-    {"key": "alt+o",            "command": "workbench.action.files.openFolder"},
-    {"key": "alt+r",            "command": "python.execInTerminal"},
-    {"key": "alt+w",            "command": "workbench.action.closeActiveEditor"},
-    {"key": "ctrl+w",           "command": "-workbench.action.closeActiveEditor"},
-    {"key": "ctrl+alt+l",       "command": "workbench.action.focusNextGroup"},
-    {"key": "ctrl+k ctrl+right","command": "-workbench.action.focusNextGroup"},
-    {"key": "ctrl+alt+h",       "command": "workbench.action.focusPreviousGroup"},
-    {"key": "ctrl+k ctrl+left", "command": "-workbench.action.focusPreviousGroup"},
-    {"key": "ctrl+oem_3",     "command": "-workbench.action.terminal.toggleTerminal"},
-    {"key": "alt+p",            "command": "workbench.action.showCommands"},
-    {"key": "ctrl+shift+p",     "command": "-workbench.action.showCommands"}
+    {
+        "key": "alt+n alt+e",
+        "command": "workbench.view.explorer",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+n alt+e",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+t",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "alt+s",
+        "command": "shellLauncher.launch",
+    },
+    {
+        "key": "tab",
+        "command": "list.select",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "alt+o",
+        "command": "workbench.action.files.openFolder",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "workbench.action.focusNextGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+h",
+        "command": "workbench.action.focusPreviousGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "alt+z",
+        "command": "workbench.action.toggleZenMode",
+    },
+    {
+        "key": "alt+r",
+        "command": "python.execInTerminal"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.terminal.clear"
+    },
+    {
+        "key": "alt+m",
+        "command": "workbench.output.action.clearOutput"
+    },
+    {
+        "key": "alt+u",
+        "command": "workbench.action.output.toggleOutput"
+    },
+    {
+        "key": "alt+\\",
+        "command": "workbench.action.splitEditor"
+    }
 ]

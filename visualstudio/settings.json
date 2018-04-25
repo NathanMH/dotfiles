@@ -1,86 +1,71 @@
 {
+    // General
     "git.ignoreMissingGitWarning": true,
     "update.channel": "none",
     "workbench.iconTheme": "vscode-icons",
     "editor.minimap.enabled": false,
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
-    },
-    "vsicons.dontShowNewVersionMessage": true,
-    "workbench.startupEditor": "newUntitledFile",
     "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.feedback.visible": false,
+    "window.openFilesInNewWindow": "on",
+    "window.openFoldersInNewWindow": "on",
+    "editor.insertSpaces": true,
     "workbench.colorTheme": "Dark (Molokai)",
-    // "workbench.statusBar.feedback.visible": false, // Not yet released feature
-
-    // Scrolloff
-    "scrolloff.scrolloff": 25,
-
-    // Shell / Term
-    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe",
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-    "shellLauncher.shells.windows": [
-       {
-            "shell": "C:\\Windows\\System32\\bash.exe",
-            "label": "WSL Bash"
-        },
-        {
-            "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-            "label": "PowerShell"
-        }
-    ],
 
     // Python
-    "python.autoComplete.addBrackets": true,
-    "python.pythonPath": "C:\\Users\\natha\\Documents\\scripts\\py_env_switch.bat",
-    "python.linting.pylintPath": "C:\\Users\\natha\\AppData\\Local\\Programs\\Python\\Python36\\Scripts\\pylint.exe",
-
-    // Macros
-    "macros": {
-        "openExplorer": [
-            "workbench.view.explorer",
-            "workbench.files.action.focusFilesExplorer"
-        ],
-        "closeExplorer": [
-            "workbench.action.focusFirstEditorGroup",
-            "workbench.action.toggleSidebarVisibility"
-        ],
-        "openDebug": [
-            "workbench.view.debug",
-            "workbench.debug.action.focusRepl"
-        ],
-        "closeDebug": [
-            "workbench.action.toggleSidebarVisibility",
-            "workbench.action.closePanel"
-        ]
-    },
+    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.unittestArgs": [
+        "-s test",
+        ".",
+        "-p",
+        "*test*.py"
+    ],
+    
+    // Plugins
+    "vsicons.dontShowNewVersionMessage": true,
+    "scrolloff.alwaysCenter": true,
+    "projectManager.projectsLocation": "C:\\Users\\natha\\Google Drive\\VSCodePortable\\Data\\code\\User",
+    "git.enableSmartCommit": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "lualatex",
+            "tools": [
+                "lualatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
 
     // Vim
+
     "vim.easymotion": true,
-    "vim.easymotionKeys": "hklyuiopnm,wertxcvbasdgjf",
-    "vim.easymotionMarkerBackgroundColor": "#859e0c",
+    "vim.easymotionKeys": "hklyuiopnmertxcvbasdgjf",
+    "vim.easymotionMarkerBackgroundColor": "#000",
+    "vim.easymotionMarkerForegroundColorOneChar": "#fff",
     "vim.leader": ",",
-    "vim.useSystemClipboard": false,
+    "vim.useSystemClipboard": true,
     "vim.cmdLineInitialColon": true,
     "vim.cursorStylePerMode": {
         "normal": "block-outline",
         "insert": "line-thin",
         "replace": "underline"
     },
-    "vim.statusBarColorControl": true,
-    "vim.statusBarColors": {
-        "normal": "#005f5f",
-        "insert": "#5f0000",
-        "visual": "#5f00af",
-        "visualline": "#005f87",
-        "visualblock": "#86592d",
-        "replace": "#000000"
-    },
+    "vim.statusBarColorControl": false,
     "vim.surround": true,
     "vim.foldfix": false,
 
     // Vim Keybindings
+
     "vim.insertModeKeyBindings": [
         {
             "before": ["n", "n"],
@@ -116,7 +101,17 @@
             ]
         },
         {
-            "before": ["leader", "q"],
+            "before": ["leader", "h"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader", "w"],
             "after": [],
             "commands": [
                 {
@@ -124,6 +119,25 @@
                     "args": []
                 }
             ]
-        }
+        },
+        {
+            "before": ["leader", "q"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeWindow",
+                    "args": []
+                }
+            ]
+        },
     ],
+    "window.zoomLevel": 0,
+    "git.autofetch": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "explorer.confirmDelete": false,
+    "latex-workshop.message.update.show": false,
 }
