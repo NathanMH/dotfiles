@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     // General
     "git.ignoreMissingGitWarning": true,
@@ -12,6 +11,8 @@
     "window.openFoldersInNewWindow": "on",
     "editor.insertSpaces": true,
     "workbench.colorTheme": "Dark (Molokai)",
+    "editor.fontFamily": "Hack, Consolas, 'Courier New', monospace",
+    "editor.formatOnSave": true,
 
     // Python
     "python.unitTest.unittestEnabled": true,
@@ -25,7 +26,7 @@
     // Plugins
     "vsicons.dontShowNewVersionMessage": true,
     "scrolloff.alwaysCenter": true,
-    "projectManager.projectsLocation": "C:\\Users\\natha\\Google Drive\\VSCodePortable\\Data\\code\\User",
+    "projectManager.projectsLocation": "C:\\Users\\natha\\Documents\\Computer Tools\\VSCodePortable\\Data\\code\\User",
     "git.enableSmartCommit": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.tools": [
@@ -141,238 +142,6 @@
     },
     "explorer.confirmDelete": false,
     "latex-workshop.message.update.show": false,
+    "python.pythonPath": "C:\\Users\\natha\\Anaconda3\\python.exe",
+    "jupyter.appendResults": false,
 }
-=======
-<<<<<<< HEAD
-{
-    // General
-    "git.ignoreMissingGitWarning": true,
-    "update.channel": "none",
-    "workbench.iconTheme": "vscode-icons",
-    "editor.minimap.enabled": false,
-    "workbench.editor.enablePreview": false,
-    "workbench.startupEditor": "none",
-    "workbench.statusBar.feedback.visible": false,
-    "window.openFilesInNewWindow": "on",
-    "window.openFoldersInNewWindow": "on",
-    "editor.insertSpaces": true,
-
-    "workbench.colorTheme": "Dark (Molokai)",
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
-    },
-
-    // Plugins
-    "vsicons.dontShowNewVersionMessage": true,
-    "scrolloff.alwaysCenter": true,
-    "projectManager.projectsLocation": "C:\\Users\\natha\\Google Drive\\VSCodePortable\\Data\\code\\User",
-
-    // Vim
-
-    "vim.easymotion": true,
-    "vim.easymotionKeys": "hklyuiopnm,wertxcvbasdgjf",
-    "vim.easymotionMarkerBackgroundColor": "#859e0c",
-    "vim.leader": ",",
-    "vim.useSystemClipboard": true,
-    "vim.cmdLineInitialColon": true,
-    "vim.cursorStylePerMode": {
-        "normal": "block-outline",
-        "insert": "line-thin",
-        "replace": "underline"
-    },
-    "vim.statusBarColorControl": true,
-    "vim.statusBarColors": {
-        "normal": "#005f5f",
-        "insert": "#5f0000",
-        "visual": "#5f00af",
-        "visualline": "#005f87",
-        "visualblock": "#86592d",
-        "replace": "#000000"
-    },
-    "vim.surround": true,
-    "vim.foldfix": false,
-
-    // Vim Keybindings
-
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["n", "n"],
-            "after": ["<Esc>", "l"]
-        },
-        {
-            "before": ["leader", "m"],
-            "after": ["<Esc>", "l", "a"]
-        }  
-    ],
-
-    "vim.otherModesKeyBindingsNonRecursive": [
-        {
-            "before": ["H"],
-            "after": ["^"]
-        },
-        {
-            "before": ["L"],
-            "after": ["$"]
-        },
-        {
-            "before": ["leader", "s"],
-            "after": ["leader", "leader", "s"]
-        },
-        {
-            "before": ["leader", "t", "t"],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.files.save",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": ["leader", "h"],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.quickOpen",
-                    "args": []
-                }
-            ]
-        },
-    ],
-    "window.zoomLevel": 0,
-    "git.autofetch": true
-}
-=======
-{
-    "git.ignoreMissingGitWarning": true,
-    "update.channel": "none",
-    "workbench.iconTheme": "vscode-icons",
-    "editor.minimap.enabled": false,
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
-    },
-    "vsicons.dontShowNewVersionMessage": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.editor.enablePreview": false,
-    "workbench.colorTheme": "Dark (Molokai)",
-    // "workbench.statusBar.feedback.visible": false, // Not yet released feature
-
-    // Scrolloff
-    "scrolloff.scrolloff": 25,
-
-    // Shell / Term
-    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe",
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-    "shellLauncher.shells.windows": [
-       {
-            "shell": "C:\\Windows\\System32\\bash.exe",
-            "label": "WSL Bash"
-        },
-        {
-            "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-            "label": "PowerShell"
-        }
-    ],
-
-    // Python
-    "python.autoComplete.addBrackets": true,
-    "python.pythonPath": "C:\\Users\\natha\\Documents\\scripts\\py_env_switch.bat",
-    "python.linting.pylintPath": "C:\\Users\\natha\\AppData\\Local\\Programs\\Python\\Python36\\Scripts\\pylint.exe",
-
-    // Macros
-    "macros": {
-        "openExplorer": [
-            "workbench.view.explorer",
-            "workbench.files.action.focusFilesExplorer"
-        ],
-        "closeExplorer": [
-            "workbench.action.focusFirstEditorGroup",
-            "workbench.action.toggleSidebarVisibility"
-        ],
-        "openDebug": [
-            "workbench.view.debug",
-            "workbench.debug.action.focusRepl"
-        ],
-        "closeDebug": [
-            "workbench.action.toggleSidebarVisibility",
-            "workbench.action.closePanel"
-        ]
-    },
-
-    // Vim
-    "vim.easymotion": true,
-    "vim.easymotionKeys": "hklyuiopnm,wertxcvbasdgjf",
-    "vim.easymotionMarkerBackgroundColor": "#859e0c",
-    "vim.leader": ",",
-    "vim.useSystemClipboard": false,
-    "vim.cmdLineInitialColon": true,
-    "vim.cursorStylePerMode": {
-        "normal": "block-outline",
-        "insert": "line-thin",
-        "replace": "underline"
-    },
-    "vim.statusBarColorControl": true,
-    "vim.statusBarColors": {
-        "normal": "#005f5f",
-        "insert": "#5f0000",
-        "visual": "#5f00af",
-        "visualline": "#005f87",
-        "visualblock": "#86592d",
-        "replace": "#000000"
-    },
-    "vim.surround": true,
-    "vim.foldfix": false,
-
-    // Vim Keybindings
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["n", "n"],
-            "after": ["<Esc>", "l"]
-        },
-        {
-            "before": ["leader", "m"],
-            "after": ["<Esc>", "l", "a"]
-        }  
-    ],
-
-    "vim.otherModesKeyBindingsNonRecursive": [
-        {
-            "before": ["H"],
-            "after": ["^"]
-        },
-        {
-            "before": ["L"],
-            "after": ["$"]
-        },
-        {
-            "before": ["leader", "s"],
-            "after": ["leader", "leader", "s"]
-        },
-        {
-            "before": ["leader", "t", "t"],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.files.save",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": ["leader", "q"],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.closeActiveEditor",
-                    "args": []
-                }
-            ]
-        }
-    ],
-}
->>>>>>> 79b44249a2492af4de5a90c8b2273397046c3812
->>>>>>> bb4b9b6e82877d88e6dfb30cf7f48054a5018920

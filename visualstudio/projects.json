@@ -1,7 +1,19 @@
 [
 	{
-		"name": "positivity-check",
-		"rootPath": "c:\\Users\\natha\\Documents\\positivity-check\\",
+		"name": "positivity_check",
+		"rootPath": "c:\\Users\\natha\\Documents\\positivity_check",
+		"paths": [],
+		"group": ""
+	},
+	{
+		"name": "org",
+		"rootPath": "c:\\Users\\natha\\Documents\\org",
+		"paths": [],
+		"group": ""
+	},
+	{
+		"name": "org-personal",
+		"rootPath": "c:\\Users\\natha\\Documents\\org-personal",
 		"paths": [],
 		"group": ""
 	}
