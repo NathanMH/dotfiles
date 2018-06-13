@@ -13,7 +13,6 @@
     "workbench.colorTheme": "Dark (Molokai)",
     "editor.fontFamily": "Hack, Consolas, 'Courier New', monospace",
     "editor.formatOnSave": true,
-
     // Python
     "python.unitTest.unittestEnabled": true,
     "python.unitTest.unittestArgs": [
@@ -22,7 +21,6 @@
         "-p",
         "*test*.py"
     ],
-    
     // Plugins
     "vsicons.dontShowNewVersionMessage": true,
     "scrolloff.alwaysCenter": true,
@@ -47,9 +45,7 @@
         }
     ],
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
-
     // Vim
-
     "vim.easymotion": true,
     "vim.easymotionKeys": "hklyuiopnmertxcvbasdgjf",
     "vim.easymotionMarkerBackgroundColor": "#000",
@@ -65,35 +61,64 @@
     "vim.statusBarColorControl": false,
     "vim.surround": true,
     "vim.foldfix": false,
-
     // Vim Keybindings
-
     "vim.insertModeKeyBindings": [
         {
-            "before": ["n", "n"],
-            "after": ["<Esc>", "l"]
+            "before": [
+                "n",
+                "n"
+            ],
+            "after": [
+                "<Esc>",
+                "l"
+            ]
         },
         {
-            "before": ["leader", "m"],
-            "after": ["<Esc>", "l", "a"]
-        }  
+            "before": [
+                "leader",
+                "m"
+            ],
+            "after": [
+                "<Esc>",
+                "l",
+                "a"
+            ]
+        }
     ],
-
     "vim.otherModesKeyBindingsNonRecursive": [
         {
-            "before": ["H"],
-            "after": ["^"]
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
         },
         {
-            "before": ["L"],
-            "after": ["$"]
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
         },
         {
-            "before": ["leader", "s"],
-            "after": ["leader", "leader", "s"]
+            "before": [
+                "leader",
+                "s"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "s"
+            ]
         },
         {
-            "before": ["leader", "t", "t"],
+            "before": [
+                "leader",
+                "t",
+                "t"
+            ],
             "after": [],
             "commands": [
                 {
@@ -103,7 +128,10 @@
             ]
         },
         {
-            "before": ["leader", "h"],
+            "before": [
+                "leader",
+                "h"
+            ],
             "after": [],
             "commands": [
                 {
@@ -113,7 +141,10 @@
             ]
         },
         {
-            "before": ["leader", "w"],
+            "before": [
+                "leader",
+                "w"
+            ],
             "after": [],
             "commands": [
                 {
@@ -123,7 +154,10 @@
             ]
         },
         {
-            "before": ["leader", "q"],
+            "before": [
+                "leader",
+                "q"
+            ],
             "after": [],
             "commands": [
                 {
@@ -138,7 +172,8 @@
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
+        "statusBar.debuggingBackground": "#005f5f",
+        "editorIndentGuide.activeBackground": "#ff0000",
     },
     "explorer.confirmDelete": false,
     "latex-workshop.message.update.show": false,
