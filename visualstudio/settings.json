@@ -1,18 +1,21 @@
 {
     // General
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
     "git.ignoreMissingGitWarning": true,
     "update.channel": "none",
     "workbench.iconTheme": "vscode-icons",
     "editor.minimap.enabled": false,
     "workbench.editor.enablePreview": false,
-    "workbench.startupEditor": "none",
+    "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.feedback.visible": false,
-    "window.openFilesInNewWindow": "on",
+    "window.openFilesInNewWindow": "off",
     "window.openFoldersInNewWindow": "on",
     "editor.insertSpaces": true,
     "workbench.colorTheme": "Dark (Molokai)",
     "editor.fontFamily": "Hack, Consolas, 'Courier New', monospace",
     "editor.formatOnSave": true,
+    "window.titleBarStyle": "custom",
     // Python
     "python.unitTest.unittestEnabled": true,
     "python.unitTest.unittestArgs": [
@@ -27,24 +30,16 @@
     "projectManager.projectsLocation": "C:\\Users\\natha\\Documents\\Computer Tools\\VSCodePortable\\Data\\code\\User",
     "git.enableSmartCommit": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.latex.tools": [
-        {
-            "name": "lualatex",
-            "command": "lualatex",
-            "args": [
-                "%DOC%"
-            ]
-        }
-    ],
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
+    "latex-workshop.latex.clean.enabled": true,
     "latex-workshop.latex.recipes": [
         {
-            "name": "lualatex",
+            "name": "pdflatex",
             "tools": [
-                "lualatex"
+                "pdflatex",
             ]
         }
     ],
-    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
     // Vim
     "vim.easymotion": true,
     "vim.easymotionKeys": "hklyuiopnmertxcvbasdgjf",
@@ -60,8 +55,24 @@
     },
     "vim.statusBarColorControl": false,
     "vim.surround": true,
-    "vim.foldfix": false,
+    "vim.foldfix": true,
+    "vim.hlsearch": true,
+    "vim.searchHighlightColor": "#75715E",
     // Vim Keybindings
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "leader",
+                "c",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                }
+            ]
+        },
+    ],
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -85,13 +96,13 @@
             ]
         }
     ],
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindings": [
         {
             "before": [
                 "H"
             ],
             "after": [
-                "^"
+                "0"
             ]
         },
         {
@@ -166,6 +177,128 @@
                 }
             ]
         },
+        {
+            "before": [
+                "leader",
+                "n",
+                "e"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleSidebarVisibility"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.fold"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "u"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.unfold"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "c",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "z",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleFullScreen"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "p",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "o",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.openFile"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.openFolder"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "r",
+                "e",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.rename"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "i",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.previewDeclaration"
+                }
+            ]
+        },
     ],
     "window.zoomLevel": 0,
     "git.autofetch": true,
@@ -179,4 +312,6 @@
     "latex-workshop.message.update.show": false,
     "python.pythonPath": "C:\\Users\\natha\\Anaconda3\\python.exe",
     "jupyter.appendResults": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "python.formatting.provider": "black",
 }
