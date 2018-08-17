@@ -20,11 +20,12 @@ source ~/.zsh/exports.zsh
 source ~/.zsh/prompt.zsh
 source ~/.zsh/colors.zsh
 source ~/.zsh/zle.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [ -f ~/Documents/dotfiles/linux/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
 then
+
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     # OLD source ~/Documents/dotfiles/linux/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)

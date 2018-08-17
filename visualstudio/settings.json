@@ -26,7 +26,6 @@
     ],
     // Plugins
     "vsicons.dontShowNewVersionMessage": true,
-    "scrolloff.alwaysCenter": false,
     "projectManager.projectsLocation": "C:\\Users\\natha\\Documents\\Computer Tools\\VSCodePortable\\Data\\code\\User",
     "git.enableSmartCommit": true,
     "latex-workshop.message.update.show": false,
@@ -299,7 +298,6 @@
                 }
             ]
         },
-<<<<<<< HEAD
         {
             "before": [
                 "leader",
@@ -311,9 +309,19 @@
                     "command": "jupyter.execCurrentCell"
                 }
             ]
+        },
+        {
+            "before": [
+                "leader",
+                "<space>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "code-runner.run"
+                }
+            ]
         }
-=======
->>>>>>> 29be4feaa2b24967151070e525a1c46c46227ff3
     ],
     "window.zoomLevel": 0,
     "git.autofetch": true,
@@ -326,9 +334,6 @@
     "explorer.confirmDelete": false,
     "jupyter.appendResults": false,
     "liveServer.settings.donotShowInfoMsg": true,
-<<<<<<< HEAD
     "python.pythonPath": "C:\\Users\\natha\\Anaconda3\\python.exe",
-=======
->>>>>>> 29be4feaa2b24967151070e525a1c46c46227ff3
     "python.formatting.provider": "black",
 }
