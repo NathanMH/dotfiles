@@ -88,5 +88,9 @@
         "key": "ctrl+shift+enter",
         "command": "-editor.action.insertLineBefore",
         "when": "editorTextFocus && !editorReadonly"
+<<<<<<< HEAD
     },
+=======
+    }
+>>>>>>> 29be4feaa2b24967151070e525a1c46c46227ff3
 ]
