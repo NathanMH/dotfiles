@@ -1,19 +1,21 @@
 {
     // General
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
     "git.ignoreMissingGitWarning": true,
     "update.channel": "none",
     "workbench.iconTheme": "vscode-icons",
     "editor.minimap.enabled": false,
     "workbench.editor.enablePreview": false,
-    "workbench.startupEditor": "none",
+    "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.feedback.visible": false,
-    "window.openFilesInNewWindow": "on",
+    "window.openFilesInNewWindow": "off",
     "window.openFoldersInNewWindow": "on",
     "editor.insertSpaces": true,
     "workbench.colorTheme": "Dark (Molokai)",
     "editor.fontFamily": "Hack, Consolas, 'Courier New', monospace",
     "editor.formatOnSave": true,
-
+    "window.titleBarStyle": "custom",
     // Python
     "python.unitTest.unittestEnabled": true,
     "python.unitTest.unittestArgs": [
@@ -22,41 +24,30 @@
         "-p",
         "*test*.py"
     ],
-    
     // Plugins
     "vsicons.dontShowNewVersionMessage": true,
-    "scrolloff.alwaysCenter": true,
+    "scrolloff.alwaysCenter": false,
     "projectManager.projectsLocation": "C:\\Users\\natha\\Documents\\Computer Tools\\VSCodePortable\\Data\\code\\User",
     "git.enableSmartCommit": true,
+    "latex-workshop.message.update.show": false,
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.latex.tools": [
-        {
-            "name": "lualatex",
-            "command": "lualatex",
-            "args": [
-                "%DOC%"
-            ]
-        }
-    ],
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
+    "latex-workshop.latex.clean.enabled": true,
     "latex-workshop.latex.recipes": [
         {
-            "name": "lualatex",
+            "name": "pdflatex",
             "tools": [
-                "lualatex"
+                "pdflatex",
             ]
         }
     ],
-    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
-
     // Vim
-
     "vim.easymotion": true,
     "vim.easymotionKeys": "hklyuiopnmertxcvbasdgjf",
     "vim.easymotionMarkerBackgroundColor": "#000",
     "vim.easymotionMarkerForegroundColorOneChar": "#fff",
     "vim.leader": ",",
     "vim.useSystemClipboard": true,
-    "vim.cmdLineInitialColon": true,
     "vim.cursorStylePerMode": {
         "normal": "block-outline",
         "insert": "line-thin",
@@ -64,36 +55,81 @@
     },
     "vim.statusBarColorControl": false,
     "vim.surround": true,
-    "vim.foldfix": false,
-
+    "vim.foldfix": true,
+    "vim.hlsearch": true,
+    "vim.searchHighlightColor": "#75715E",
     // Vim Keybindings
-
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "leader",
+                "c",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                }
+            ]
+        },
+    ],
     "vim.insertModeKeyBindings": [
         {
-            "before": ["n", "n"],
-            "after": ["<Esc>", "l"]
+            "before": [
+                "n",
+                "n"
+            ],
+            "after": [
+                "<Esc>",
+                "l"
+            ]
         },
         {
-            "before": ["leader", "m"],
-            "after": ["<Esc>", "l", "a"]
-        }  
+            "before": [
+                "leader",
+                "m"
+            ],
+            "after": [
+                "<Esc>",
+                "l",
+                "a"
+            ]
+        }
     ],
-
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindings": [
         {
-            "before": ["H"],
-            "after": ["^"]
+            "before": [
+                "H"
+            ],
+            "after": [
+                "0"
+            ]
         },
         {
-            "before": ["L"],
-            "after": ["$"]
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
         },
         {
-            "before": ["leader", "s"],
-            "after": ["leader", "leader", "s"]
+            "before": [
+                "leader",
+                "s"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "s"
+            ]
         },
         {
-            "before": ["leader", "t", "t"],
+            "before": [
+                "leader",
+                "t",
+                "t"
+            ],
             "after": [],
             "commands": [
                 {
@@ -103,7 +139,10 @@
             ]
         },
         {
-            "before": ["leader", "h"],
+            "before": [
+                "leader",
+                "h"
+            ],
             "after": [],
             "commands": [
                 {
@@ -113,7 +152,10 @@
             ]
         },
         {
-            "before": ["leader", "w"],
+            "before": [
+                "leader",
+                "w"
+            ],
             "after": [],
             "commands": [
                 {
@@ -123,7 +165,10 @@
             ]
         },
         {
-            "before": ["leader", "q"],
+            "before": [
+                "leader",
+                "q"
+            ],
             "after": [],
             "commands": [
                 {
@@ -132,16 +177,152 @@
                 }
             ]
         },
+        {
+            "before": [
+                "leader",
+                "n",
+                "e"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleSidebarVisibility"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.fold"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "u"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.unfold"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "c",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "z",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleFullScreen"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "p",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "o",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.openFile"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.openFolder"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "r",
+                "e",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.rename"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "i",
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.previewDeclaration"
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "<CR>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "jupyter.execCurrentCell"
+                }
+            ]
+        }
     ],
     "window.zoomLevel": 0,
     "git.autofetch": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
+        "statusBar.debuggingBackground": "#005f5f",
+        "editorIndentGuide.activeBackground": "#ff0000",
     },
     "explorer.confirmDelete": false,
-    "latex-workshop.message.update.show": false,
-    "python.pythonPath": "C:\\Users\\natha\\Anaconda3\\python.exe",
     "jupyter.appendResults": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "python.pythonPath": "C:\\Users\\natha\\Anaconda3\\python.exe",
+    "python.formatting.provider": "black",
 }
