@@ -134,3 +134,4 @@ alias ......="cd ../../../../.."
 alias grep='grep --color=auto'
 alias sl='ls'
 alias cd..='cd ..'
+zsh
