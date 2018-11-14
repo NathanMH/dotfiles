@@ -1,1 +1,1 @@
-/home/natha/Documents/dotfiles/linux/zsh/.zsh
+C:/home/natha/Documents/dotfiles/linux/zsh/.zsh
