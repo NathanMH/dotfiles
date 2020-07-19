@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -56,12 +56,13 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+#PS1="\[\e[00;34m\]\w"
+#PS1="\w"
+#PS1=" \[\e[1;34m\]λ [\e[49m]]\w \[\e[0m\]"
+
+PS1="\[\e[38;5;14m\]\w\[\e[1;31m\]> \[\e[0m\]"
+
+#PS1=" \[\e[00;34m\]λ \W \[\e[0m\]"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -75,7 +76,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto --human-readable --group-directories-first -1'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -86,6 +87,11 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -113,6 +119,11 @@ fi
 
 # My Additions
 
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+#export DISPLAY=$(/sbin/ip route | awk '/default/ { print $3 }'):0
+export LIBGL_ALWAYS_INDIRECT=1
+
+bind 'set completion-ignore-case on'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -134,4 +145,8 @@ alias ......="cd ../../../../.."
 alias grep='grep --color=auto'
 alias sl='ls'
 alias cd..='cd ..'
-zsh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
+bind -x '"\C-p": vim $(fzf);'
