@@ -46,7 +46,8 @@
 					 "\\*Compile-Log" "\\*Echo Area" "\\*helm" "\\*helm-mode" "\\*epc con" "\\*Minibuf"
 					 "\\*emacsql" "\\*which-key" "\\*code-conversion" "\\*Completions" "*\\/tmp/"
 					 "\\*httpd" "\\*tip" "\\*pdf" "\\tq-temp" "\\*epdfinfo" "\\*http melpa" "\\*org-src"
-					 "\\*org-roam" "\\*Flymake*" "\\*elpy-rpc*" "\\Python-font-lock")))
+					 "\\*org-roam" "\\*Flymake*" "\\*elpy-rpc*" "\\Python-font-lock" "\\*WoMan-Log*"
+					 "\\*Calendar*" "\\*Agenda Commands*")))
 
 (use-package helm-org-rifle
   :config
@@ -107,14 +108,16 @@
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t)))
-  (setq org-src-fontify-natively t
+  (setq org-want-todo-bindings t
+	org-src-fontify-natively t
 	org-src-tab-acts-natively t
 	org-src-window-setup 'current-window
 	org-src-strip-leading-and-trailing-blank-lines t
 	org-src-preserve-indentation t
 	org-babel-python-command "python3"
 	org-startup-with-inline-images t
-	org-image-actual-width '(600)) ; Allows for resizing inline images
+	org-image-actual-width '(600) ; Allows for resizing inline images
+	org-agenda-files '("/home/natha/Documents/notes/"))
   (setq org-roam-capture-templates
 	'(("d" "default" plain (function org-roam--capture-get-point)
 	   "%?"
@@ -130,6 +133,7 @@
   (org-mode . (lambda () (define-key org-mode-map (kbd "C-j") nil))) ; unbind C-j and C-k so windmove works
   (org-mode . (lambda () (define-key org-mode-map (kbd "C-k") nil)))
   )
+
 (use-package org-roam
   :hook
   (after-init . org-roam-mode)
@@ -220,6 +224,7 @@
     "l" 'avy-goto-line
     "b" 'helm-mini
     "r" 'org-roam
+    "a" 'org-todo-list
     "h" 'find-file-from-home
     "|" 'split-window-right ; Split window vertically
     "-" 'split-window-below ; Split window horizontally
@@ -232,6 +237,7 @@
     "term" 'term-other-window
     "comm" 'comment-line
     "note" 'org-roam-find-file
+    "time" 'org-time-stamp
     "i" 'org-roam-jump-to-index
     "cc" 'org-toggle-checkbox
     "cn" 'org-insert-todo-heading
