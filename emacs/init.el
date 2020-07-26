@@ -72,6 +72,10 @@
   (let ((default-directory "~"))
     (call-interactively 'fzf)))
 
+(use-package dired-sidebar
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar))
+
 					; Python
 (use-package flycheck
   :ensure t
@@ -273,7 +277,20 @@
   )
 (centered-point-mode 1)
 
-					; Web Dev Preview Mode
+					; Web Dev 
+(use-package web-mode
+  :mode ("\\.html$" . web-mode)
+  :init
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq js-indent-level 2)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-auto-expanding t)
+  (setq web-mode-enable-css-colorization t)
+  (add-hook 'web-mode-hook 'electric-pair-mode))
+
+					; Preview Mode
 (defun my-html-mode-hook ()
 					; Starts the `simple-httpd' server if it is not already running
 					; Turns on `impatient-mode' for the current buffer."
