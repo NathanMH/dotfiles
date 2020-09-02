@@ -4,9 +4,15 @@
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-					; Paths
-(add-to-list 'custom-theme-load-path "/home/natha/.emacs.d/themes/")
-(load-theme 'monokai t)
+					; Theme
+; Favourite themes:
+; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night, doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-acario-dark t))
+;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -47,7 +53,7 @@
 					 "\\*emacsql" "\\*which-key" "\\*code-conversion" "\\*Completions" "*\\/tmp/"
 					 "\\*httpd" "\\*tip" "\\*pdf" "\\tq-temp" "\\*epdfinfo" "\\*http melpa" "\\*org-src"
 					 "\\*org-roam" "\\*Flymake*" "\\*elpy-rpc*" "\\Python-font-lock" "\\*WoMan-Log*"
-					 "\\*Calendar*" "\\*Agenda Commands*")))
+					 "\\*Calendar*" "\\*Agenda Commands*" "\\*Backtrace*" )))
 
 (use-package helm-org-rifle
   :config
@@ -76,6 +82,9 @@
   :ensure t
   :commands (dired-sidebar-toggle-sidebar))
 
+; Yaml
+(use-package yaml-mode)
+
 					; Python
 (use-package flycheck
   :ensure t
@@ -91,6 +100,7 @@
 	python-shell-prompt-detect-failure-warning nil
 	python-shell-completion-native-enable nil)
   (elpy-enable))
+(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1))) ; Disable elpy indent highlights
 
 (use-package blacken
   :hook (python-mode . blacken-mode))
@@ -170,10 +180,18 @@
   :hook ((html-mode css-mode xml-mode text-mode) . rainbow-mode))
 
 (use-package telephone-line ; Powerline status bar
-  :config (telephone-line-mode 1))
+  :config
+    (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
+	telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
+	telephone-line-primary-right-separator 'telephone-line-cubed-right
+	telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
+  (telephone-line-mode 1))
 
 (use-package highlight-indent-guides
-  :hook ((prog-mode) . highlight-indent-guides-mode))
+  :hook
+  ((prog-mode python-mode) . highlight-indent-guides-mode)
+  :config
+  (setq highlight-indent-guides-method 'character))
 
 					; EVIL
 (use-package evil
@@ -224,6 +242,7 @@
     "d" 'delete-window
     "tt" 'save-buffer
     "m" 'bookmark-set
+    "ne" 'dired-sidebar-toggle-sidebar
     "s" 'avy-goto-char
     "l" 'avy-goto-line
     "b" 'helm-mini
@@ -236,6 +255,7 @@
     "]" 'ace-swap-window ; window-swap-state messes up pdf evil bindings so use ace-window instead
     "=" 'balance-windows
     "fl" 'font-lock-mode
+    "tl" 'toggle-truncate-lines
     "full" 'toggle-frame-fullscreen
     "which" 'which-key-show-major-mode
     "term" 'term-other-window
@@ -275,7 +295,7 @@
 (defun line-change ()
   (recenter)
   )
-(centered-point-mode 1)
+;(centered-point-mode 1)
 
 					; Web Dev 
 (use-package web-mode
@@ -371,7 +391,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
+    (yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

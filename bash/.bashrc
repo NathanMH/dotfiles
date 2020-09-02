@@ -145,8 +145,30 @@ alias ......="cd ../../../../.."
 alias grep='grep --color=auto'
 alias sl='ls'
 alias cd..='cd ..'
+alias emacs='(emacs &) && exit'
+alias eamcs='emacs'
+alias wall='wal -i /mnt/z/PortableApps/Wallpapers/'
+#wallt() { wal --backend $1 -i /mnt/z/PortableApps/Wallpapers/; }
+wallc() {
+    #local backend="$1"
+    local gr="$(grep -oP '(?<="wallpaper": ").*?[^\\](?=",)' ~/.cache/wal/colors.json)"
+    if [ $1 = "c" ]; then
+	echo "using colorz"
+	wal --backend colorz -i ${gr}
+    elif [ $1 = "t" ]; then
+	echo "using colorthief"
+	wal --backend colorthief -i ${gr}
+    else
+	echo "using wal"
+	wal --backend wal -i ${gr}
+    fi 
+}
+alias tr='mv -t ~/.trash'
+alias rm='rm -i'
+alias qk='fc -s'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
 bind -x '"\C-p": vim $(fzf);'
+cd ~
