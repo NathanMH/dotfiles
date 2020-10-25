@@ -148,6 +148,7 @@ alias cd..='cd ..'
 alias emacs='(emacs &) && exit'
 alias eamcs='emacs'
 alias wall='wal -i /mnt/z/PortableApps/Wallpapers/'
+alias wallnsfw='wal -i /mnt/z/PortableApps/Wallpapers/NSFW/'
 #wallt() { wal --backend $1 -i /mnt/z/PortableApps/Wallpapers/; }
 wallc() {
     #local backend="$1"
@@ -166,6 +167,7 @@ wallc() {
 alias tr='mv -t ~/.trash'
 alias rm='rm -i'
 alias qk='fc -s'
+alias keybindings='~/Documents/dotfiles/other/rofi-shortcuts.sh'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
