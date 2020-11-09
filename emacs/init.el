@@ -244,7 +244,6 @@
     "m" 'bookmark-set
     "ne" 'dired-sidebar-toggle-sidebar
     "s" 'avy-goto-char
-    "l" 'avy-goto-line
     "b" 'helm-mini
     "r" 'org-roam
     "a" 'org-todo-list
@@ -267,6 +266,7 @@
     "cn" 'org-insert-todo-heading
     "obs" 'org-insert-structure-template
     "j" 'json-pretty-print-buffer
+    "log" 'org-roam-dailies-today
     )
   )
 
@@ -343,7 +343,7 @@
 (setq-default shell-file-name "/bin/bash")
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-tye 'relative)
 (global-display-line-numbers-mode 1)
 (global-hl-line-mode t)
 (set-default-coding-systems 'utf-8)
@@ -383,6 +383,14 @@
 	  (set-window-buffer (next-window) next-win-buffer)
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
+
+(setq org-roam-dailies-capture-templates
+      (quote (("t" "Table" table-line (function org-roam--capture-get-point)
+	       "\n| screen time  | %?0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n"
+               :file-name "journal/%(format-time-string \"%Y-%m-%d\" (current-time) t)"
+               ;:file-name "%(format-time-string \"%Y%-%m-%d-journal\" (current-time) t)"
+               :head "#+TITLE: %(format-time-string \"%Y-%m-%d\" (current-time) t)\n#+ROAM_TAGS: journal\n"
+	       ))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
