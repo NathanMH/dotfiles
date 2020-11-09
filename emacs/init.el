@@ -386,7 +386,7 @@
 
 (setq org-roam-dailies-capture-templates
       (quote (("t" "Table" table-line (function org-roam--capture-get-point)
-	       "\n| screen time  | %?0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n"
+	       "\n| screen time  | %?0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n\nNotes: "
                :file-name "journal/%(format-time-string \"%Y-%m-%d\" (current-time) t)"
                ;:file-name "%(format-time-string \"%Y%-%m-%d-journal\" (current-time) t)"
                :head "#+TITLE: %(format-time-string \"%Y-%m-%d\" (current-time) t)\n#+ROAM_TAGS: journal\n"
