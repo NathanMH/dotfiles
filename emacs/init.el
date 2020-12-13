@@ -5,13 +5,13 @@
 (package-initialize)
 
 					; Theme
-; Favourite themes:
-; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night, doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
+					; Favourite themes:
+					; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night, doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
 (use-package doom-themes
   :ensure t
   :config
   (load-theme 'doom-acario-dark t))
-;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
+					;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
 (unless (package-installed-p 'use-package)
@@ -48,14 +48,15 @@
   (setq helm-mini-default-sources '(helm-source-buffers-list
 				    helm-source-recentf
 				    helm-source-bookmarks))
-  (setq helm-boring-buffer-regexp-list '("\\*Messages" "\\*Help" "\\*Shell Command Output" "\\*Flycheck error message"
-					 "\\*Compile-Log" "\\*Echo Area" "\\*helm" "\\*helm-mode" "\\*epc con" "\\*Minibuf"
-					 "\\*emacsql" "\\*which-key" "\\*code-conversion" "\\*Completions" "*\\/tmp/"
-					 "\\*httpd" "\\*tip" "\\*pdf" "\\tq-temp" "\\*epdfinfo" "\\*http melpa" "\\*org-src"
-					 "\\*org-roam" "\\*Flymake*" "\\*elpy-rpc*" "\\Python-font-lock" "\\*WoMan-Log*"
-					 "\\*Calendar*" "\\*Agenda Commands*" "\\*Backtrace*" )))
+  (setq helm-boring-buffer-regexp-list '("\\` " "\\*.+\\*"))
+;;   (setq helm-boring-buffer-regexp-list '("\\*Messages" "\\*Help" "\\*Shell Command Output" "\\*Flycheck error message"
+;; 					 "\\*Compile-Log" "\\*Echo Area" "\\*helm" "\\*helm-mode" "\\*epc con" "\\*Minibuf"
+;; 					 "\\*emacsql" "\\*which-key" "\\*code-conversion" "\\*Completions" "*\\/tmp/"
+;; 					 "\\*httpd" "\\*tip" "\\*pdf" "\\tq-temp" "\\*epdfinfo" "\\*http melpa" "\\*org-src"
+;; 					 "\\*org-roam" "\\*Flymake*" "\\*elpy-rpc*" "\\Python-font-lock" "\\*WoMan-Log*"
+;; 					 "\\*Calendar*" "\\*Agenda Commands*" "\\*Backtrace*" "*mspyls*" "")))
 
-(use-package helm-org-rifle
+;; (use-package helm-org-rifle
   :config
   (setq helm-org-rifle-show-path t)
   )
@@ -75,14 +76,24 @@
 					; Set default directory for fzf to ~/
 (defun find-file-from-home ()
   (interactive)
-  (let ((default-directory "~"))
+  (let ((default-directory "~/"))
     (call-interactively 'fzf)))
+
+(defun sidebar-ms ()
+  (interactive)
+  (dired-sidebar-toggle-sidebar "/mnt/c/Users/natha/Documents"))
 
 (use-package dired-sidebar
   :ensure t
+  :config
+  (setq dired-sidebar-close-sidebar-on-file-open 't
+	dired-sidebar-pop-to-sidebar-on-toggle-open 't)
+  (setq dired-sidebar-one-instance-p 1) ; Only keep one buffer for sidebar
+  (define-key dired-sidebar-mode-map (kbd "RET") 'dired-find-alternate-file)
+  (define-key dired-sidebar-mode-map (kbd "^") 'dired-sidebar-up-directory)
   :commands (dired-sidebar-toggle-sidebar))
 
-; Yaml
+					; Yaml
 (use-package yaml-mode)
 
 					; Python
@@ -90,20 +101,34 @@
   :ensure t
   :init (global-flycheck-mode))
 
-(use-package elpy
-  :ensure t
-  :init
-  :config
-  (setq elpy-rpc-python-command "python3"
-	python-shell-interpreter "python3"
-	python-shell-interpreter-args "console --simple-prompt"
-	python-shell-prompt-detect-failure-warning nil
-	python-shell-completion-native-enable nil)
-  (elpy-enable))
-(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1))) ; Disable elpy indent highlights
-
 (use-package blacken
   :hook (python-mode . blacken-mode))
+
+(setq gud-pdb-command-name "python -m pdb")
+(setq compilation-ask-about-save nil)
+
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+			 (require 'lsp-python-ms)
+			 (lsp))))
+
+(use-package lsp-mode
+  :ensure t
+  :config
+
+  (use-package lsp-ui
+    :ensure t
+    :config
+    (setq lsp-ui-sideline-ignore-duplicate t)
+    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+  (use-package company-lsp
+    :config
+    (push 'company-capf company-backends))
+  )
+					; PDF
 
 (use-package pdf-tools
   :mode (("\\.pdf\\'" . pdf-view-mode))
@@ -117,6 +142,7 @@
   :config
   (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
 
+(use-package csv-mode)
 					; Org
 (use-package org
   :config
@@ -181,7 +207,7 @@
 
 (use-package telephone-line ; Powerline status bar
   :config
-    (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
+  (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
 	telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
 	telephone-line-primary-right-separator 'telephone-line-cubed-right
 	telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
@@ -242,8 +268,10 @@
     "d" 'delete-window
     "tt" 'save-buffer
     "m" 'bookmark-set
-    "ne" 'dired-sidebar-toggle-sidebar
+    ;"ne" 'dired-sidebar-toggle-sidebar
+    "ne" 'sidebar-ms
     "s" 'avy-goto-char
+    "l" 'avy-goto-line
     "b" 'helm-mini
     "r" 'org-roam
     "a" 'org-todo-list
@@ -266,7 +294,7 @@
     "cn" 'org-insert-todo-heading
     "obs" 'org-insert-structure-template
     "j" 'json-pretty-print-buffer
-    "log" 'org-roam-dailies-today
+    "p" 'compile
     )
   )
 
@@ -295,7 +323,7 @@
 (defun line-change ()
   (recenter)
   )
-;(centered-point-mode 1)
+					;(centered-point-mode 1)
 
 					; Web Dev 
 (use-package web-mode
@@ -328,8 +356,7 @@
 (global-set-key (kbd "C-l") 'windmove-right)
 
 					; Parens
-(show-paren-mode 1)
-(setq show-paren-delay 0)
+(use-package highlight-parentheses) ; Use this instead of show-paren-mode due to highlight font
 
 					; Default Emacs settings
 (blink-cursor-mode 1)
@@ -342,8 +369,10 @@
 (setq-default explicit-shell-file-name "/bin/bash")
 (setq-default shell-file-name "/bin/bash")
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 
-(setq display-line-numbers-tye 'relative)
+(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 (global-hl-line-mode t)
 (set-default-coding-systems 'utf-8)
@@ -383,14 +412,6 @@
 	  (set-window-buffer (next-window) next-win-buffer)
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
-
-(setq org-roam-dailies-capture-templates
-      (quote (("t" "Table" table-line (function org-roam--capture-get-point)
-	       "\n| screen time  | %?0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n\nNotes: "
-               :file-name "journal/%(format-time-string \"%Y-%m-%d\" (current-time) t)"
-               ;:file-name "%(format-time-string \"%Y%-%m-%d-journal\" (current-time) t)"
-               :head "#+TITLE: %(format-time-string \"%Y-%m-%d\" (current-time) t)\n#+ROAM_TAGS: journal\n"
-	       ))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
