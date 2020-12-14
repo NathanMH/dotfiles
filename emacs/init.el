@@ -49,17 +49,11 @@
 				    helm-source-recentf
 				    helm-source-bookmarks))
   (setq helm-boring-buffer-regexp-list '("\\` " "\\*.+\\*"))
-;;   (setq helm-boring-buffer-regexp-list '("\\*Messages" "\\*Help" "\\*Shell Command Output" "\\*Flycheck error message"
-;; 					 "\\*Compile-Log" "\\*Echo Area" "\\*helm" "\\*helm-mode" "\\*epc con" "\\*Minibuf"
-;; 					 "\\*emacsql" "\\*which-key" "\\*code-conversion" "\\*Completions" "*\\/tmp/"
-;; 					 "\\*httpd" "\\*tip" "\\*pdf" "\\tq-temp" "\\*epdfinfo" "\\*http melpa" "\\*org-src"
-;; 					 "\\*org-roam" "\\*Flymake*" "\\*elpy-rpc*" "\\Python-font-lock" "\\*WoMan-Log*"
-;; 					 "\\*Calendar*" "\\*Agenda Commands*" "\\*Backtrace*" "*mspyls*" "")))
 
-;; (use-package helm-org-rifle
-  :config
-  (setq helm-org-rifle-show-path t)
-  )
+  (use-package helm-org-rifle
+    :config
+    (setq helm-org-rifle-show-path t)
+  ))
 
 (use-package avy
   :config
@@ -191,7 +185,14 @@
 	org-roam-server-label-truncate-length 60
 	org-roam-server-label-wrap-length 20))
 
-(use-package org-drill)
+
+(setq org-roam-dailies-capture-templates
+      (quote (("t" "Table" table-line (function org-roam--capture-get-point)
+               :file-name "journal/%(format-time-string \"%Y-%m-%d\" (current-time) t)"
+               :head "#+TITLE: %(format-time-string \"%Y-%m-%d\" (current-time) t)\n#+ROAM_TAGS: journal
+	       \n| screen time  | 0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n\nNotes: "
+	       ))))
+
 (use-package interleave
   :config (setq interleave-disable-narrowing t))
 
@@ -271,7 +272,6 @@
     ;"ne" 'dired-sidebar-toggle-sidebar
     "ne" 'sidebar-ms
     "s" 'avy-goto-char
-    "l" 'avy-goto-line
     "b" 'helm-mini
     "r" 'org-roam
     "a" 'org-todo-list
@@ -295,6 +295,7 @@
     "obs" 'org-insert-structure-template
     "j" 'json-pretty-print-buffer
     "p" 'compile
+    "log" 'org-roam-dailies-find-today
     )
   )
 
@@ -359,6 +360,9 @@
 (use-package highlight-parentheses) ; Use this instead of show-paren-mode due to highlight font
 
 					; Default Emacs settings
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+(set-face-attribute 'show-paren-match nil :foreground "black" :background "grey")
 (blink-cursor-mode 1)
 (electric-pair-mode 1)
 (menu-bar-mode -1) 
@@ -388,36 +392,12 @@
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 
-(defun toggle-window-split () ; Swap vertical/horizontal split
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-	     (next-win-buffer (window-buffer (next-window)))
-	     (this-win-edges (window-edges (selected-window)))
-	     (next-win-edges (window-edges (next-window)))
-	     (this-win-2nd (not (and (<= (car this-win-edges)
-					 (car next-win-edges))
-				     (<= (cadr this-win-edges)
-					 (cadr next-win-edges)))))
-	     (splitter
-	      (if (= (car this-win-edges)
-		     (car (window-edges (next-window))))
-		  'split-window-horizontally
-		'split-window-vertically)))
-	(delete-other-windows)
-	(let ((first-win (selected-window)))
-	  (funcall splitter)
-	  (if this-win-2nd (other-window 1))
-	  (set-window-buffer (selected-window) this-win-buffer)
-	  (set-window-buffer (next-window) next-win-buffer)
-	  (select-window first-win)
-	  (if this-win-2nd (other-window 1))))))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
    (quote
     (yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
