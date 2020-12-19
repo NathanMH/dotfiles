@@ -4,15 +4,20 @@
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-					; Theme
-					; Favourite themes:
-					; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night, doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
+;;;;; Speed Enhancements
+(setq gc-cons-threshold (* 50 1000 1000))
+
+;;; Theme/Font
+; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
+; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
 (use-package doom-themes
   :ensure t
   :config
   (load-theme 'doom-acario-dark t))
 					;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
+
+;;; Use-Package
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -22,24 +27,28 @@
   (require 'use-package))
 (setq use-package-always-ensure t)
 
-					; Navigation / Tips / General
+;;; Navigation / Tips / General
+;;;; Which Key
 (use-package which-key
+  ;;;; Which Key
   :diminish
   :config
   (which-key-mode)
   (which-key-setup-side-window-bottom)
   (setq which-key-idle-delay 0.05))
 
+;;;; Company
 (use-package company
   :hook((org-mode . company-mode)
 	(c++-mode . company-mode)
 	(python-mode . company-mode)))
 
 (use-package company-org-roam
+  :defer t
   :config
   (push 'company-org-roam company-backends))
 
-
+;;;; Helm
 (use-package helm
   :config
   (helm-mode)
@@ -55,6 +64,7 @@
     (setq helm-org-rifle-show-path t)
   ))
 
+;;;; Avy and Ace-Window
 (use-package avy
   :config
   (setq avy-keys '(?t ?n ?s ?e ?f ?u ?d ?h ?r ?i))
@@ -62,10 +72,12 @@
 
 (use-package ace-window) ; Used only for ace-swap-window since built in is not good
 
+;;;; FZF
 (use-package fzf
   :init
-  (setenv "FZF_DEFAULT_COMMAND" "fd --type f --hidden")
-  (setq fzf/window-height 30))
+  ;; (setenv "FZF_DEFAULT_COMMAND" "fd --type f --hidden")
+  (setenv "FZF_DEFAULT_COMMAND" "rg --files --no-ignore --hidden --follow")
+  (setq fzf/window-height 90))
 
 					; Set default directory for fzf to ~/
 (defun find-file-from-home ()
@@ -77,6 +89,7 @@
   (interactive)
   (dired-sidebar-toggle-sidebar "/mnt/c/Users/natha/Documents"))
 
+;;;; Dired-Sidebar
 (use-package dired-sidebar
   :ensure t
   :config
@@ -87,10 +100,26 @@
   (define-key dired-sidebar-mode-map (kbd "^") 'dired-sidebar-up-directory)
   :commands (dired-sidebar-toggle-sidebar))
 
-					; Yaml
+;;;; Outshine Folding (for init.el)
+(use-package outshine
+  ;; Easier navigation, headlines for source code files
+  :bind (:map outshine-mode-map
+	      ("<S-iso-lefttab>" . outshine-kbd-TAB)
+	      )
+  :hook (emacs-lisp-mode . outshine-mode)
+  :config (setq outshine-cycle-emulate-tab t)
+  )
+
+;;; Programming Modes
+;;;; Yaml
 (use-package yaml-mode)
 
-					; Python
+;;;; Python
+;;;;; General
+(setq python-shell-interpreter "python3")
+(setq gud-pdb-command-name "python -m pdb")
+
+;;;;; Formatting
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
@@ -98,31 +127,38 @@
 (use-package blacken
   :hook (python-mode . blacken-mode))
 
-(setq gud-pdb-command-name "python -m pdb")
-(setq compilation-ask-about-save nil)
 
+;;;;; Python LSP
 (use-package lsp-python-ms
   :ensure t
   :init (setq lsp-python-ms-auto-install-server t)
-  :hook (python-mode . (lambda ()
-			 (require 'lsp-python-ms)
-			 (lsp))))
+  :hook (python-mode . lsp)
+  :defer t
+  :config (setq lsp-python-ms-python-executable-cmd python-shell-interpreter)
+  )
 
 (use-package lsp-mode
   :ensure t
+  :defer t
   :config
 
   (use-package lsp-ui
     :ensure t
+    :defer t
     :config
     (setq lsp-ui-sideline-ignore-duplicate t)
     (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
   (use-package company-lsp
+    :defer t
     :config
     (push 'company-capf company-backends))
   )
-					; PDF
+
+;;;; CSV
+(use-package csv-mode)
+
+;;; PDF
 
 (use-package pdf-tools
   :mode (("\\.pdf\\'" . pdf-view-mode))
@@ -136,8 +172,8 @@
   :config
   (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
 
-(use-package csv-mode)
-					; Org
+;;; Org
+;;;; General
 (use-package org
   :config
   (org-babel-do-load-languages
@@ -168,6 +204,7 @@
   (org-mode . (lambda () (define-key org-mode-map (kbd "C-k") nil)))
   )
 
+;;;; Roam
 (use-package org-roam
   :hook
   (after-init . org-roam-mode)
@@ -185,7 +222,6 @@
 	org-roam-server-label-truncate-length 60
 	org-roam-server-label-wrap-length 20))
 
-
 (setq org-roam-dailies-capture-templates
       (quote (("t" "Table" table-line (function org-roam--capture-get-point)
                :file-name "journal/%(format-time-string \"%Y-%m-%d\" (current-time) t)"
@@ -193,19 +229,25 @@
 	       \n| screen time  | 0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n\nNotes: "
 	       ))))
 
+;;;; Addons
 (use-package interleave
-  :config (setq interleave-disable-narrowing t))
+  ;; For pdf annotations
+  :config (setq interleave-disable-narrowing t)
+  :defer t)
 
 (use-package org-bullets
   :hook ((org-mode) . org-bullets-mode))
 
-					; Aesthetics
+;;; Aesthetics
+;;;; Rainbow Delimiters
 (use-package rainbow-delimiters
   :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
 
+;;;; HTML Rainbow Colours
 (use-package rainbow-mode
   :hook ((html-mode css-mode xml-mode text-mode) . rainbow-mode))
 
+;;;; Telephone Line (Powerline)
 (use-package telephone-line ; Powerline status bar
   :config
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
@@ -214,23 +256,28 @@
 	telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
   (telephone-line-mode 1))
 
+;;;; Highlight Indent
 (use-package highlight-indent-guides
   :hook
   ((prog-mode python-mode) . highlight-indent-guides-mode)
   :config
   (setq highlight-indent-guides-method 'character))
 
-					; EVIL
+;;; EVIL
+;;;; General
 (use-package evil
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+  (setq evil-undo-system 'undo-tree)
+  (setq evil-want-fine-undo 'fine)
   :config
   (evil-mode 1)
   (define-key evil-normal-state-map (kbd ",O") 'show-all)
   (define-key evil-normal-state-map (kbd "H") "^")
   (define-key evil-normal-state-map (kbd "L") "$")
   (define-key evil-normal-state-map (kbd "RET") 'org-open-at-point)
+  (define-key evil-normal-state-map (kbd "TAB") 'hs-toggle-hiding)
 
   (defun minibuffer-keyboard-quit ()  ;; Esc quits everything
     (interactive)
@@ -248,17 +295,20 @@
   (global-set-key [escape] 'evil-exit-emacs-state)
   )
 
+;;;; Surround
 (use-package evil-surround
   :ensure t
   :config
   (global-evil-surround-mode 1))
 
+;;;; Evil-Collection
 (use-package evil-collection
   :after evil
   :ensure t
   :config
   (evil-collection-init))
 
+;;;; Leader
 (use-package evil-leader
   :config
   (global-evil-leader-mode)
@@ -299,6 +349,7 @@
     )
   )
 
+;;;; Escape
 (use-package evil-escape
   :config
   (evil-escape-mode 1)
@@ -307,14 +358,15 @@
   (setq-default evil-escape-delay 0.2)
   )
 
+;;;; Evil Org
 (use-package evil-org
   :hook ((org-mode-hook) . evil-org-mode)
   :config
   (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
   )
 
-					; Custom modes
-					; Centered Cursor
+;;; Custom Modes
+;;;; Centered Cursor
 (define-minor-mode centered-point-mode
   "Always center the cursor in the middle of the screen."
   :lighter "..."
@@ -324,9 +376,9 @@
 (defun line-change ()
   (recenter)
   )
-					;(centered-point-mode 1)
+;;(centered-point-mode 1)
 
-					; Web Dev 
+;;;; Web Dev 
 (use-package web-mode
   :mode ("\\.html$" . web-mode)
   :init
@@ -339,27 +391,34 @@
   (setq web-mode-enable-css-colorization t)
   (add-hook 'web-mode-hook 'electric-pair-mode))
 
-					; Preview Mode
+;;;; HTML Preview Mode
+;; Starts the `simple-httpd' server if it is not already running
+;; Turns on `impatient-mode' for the current buffer."
 (defun my-html-mode-hook ()
-					; Starts the `simple-httpd' server if it is not already running
-					; Turns on `impatient-mode' for the current buffer."
   (unless (get-process "httpd")
     (message "starting httpd server...")
     (httpd-start))
   (impatient-mode))
 (add-hook #'html-mode-hook #'my-html-mode-hook)
 
-					; General Settings
-					; Extra Keybindings
+;;; Emacs Settings
+;;;; Extra Keybindings
 (global-set-key (kbd "C-h") 'windmove-left)
 (global-set-key (kbd "C-j") 'windmove-down)
 (global-set-key (kbd "C-k") 'windmove-up)
 (global-set-key (kbd "C-l") 'windmove-right)
 
-					; Parens
+;;;; Parens
 (use-package highlight-parentheses) ; Use this instead of show-paren-mode due to highlight font
 
-					; Default Emacs settings
+;;;; Undo/Redo compat with EVIL
+(global-undo-tree-mode 1)
+(use-package undo-tree
+  :init
+  (undo-tree-mode))
+
+;;;; General Settings
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 (set-face-attribute 'show-paren-match nil :foreground "black" :background "grey")
@@ -380,18 +439,22 @@
 (global-display-line-numbers-mode 1)
 (global-hl-line-mode t)
 (set-default-coding-systems 'utf-8)
+(setq compilation-ask-about-save nil)
 
-					; Remember cursor location for files
+;; Remember cursor location for files
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
 (require 'saveplace)
 
-(setq recentf-exclude '("\.svg$")) ; Remove svg files made from org-roam from the recent files list
+;; Remove svg files made from org-roam from the recent files list
+(setq recentf-exclude '("\.svg$")) 
 
-					; No backups please
+;; No backups please
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 
+
+;;; Custom-set-variables
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -407,3 +470,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; Post speedup enhancements
+(setq gc-cons-threshold (* 2 1000 1000))
