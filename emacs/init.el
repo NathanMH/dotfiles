@@ -4,7 +4,7 @@
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-;;;;; Speed Enhancements
+;;; Speed Enhancements
 (setq gc-cons-threshold (* 50 1000 1000))
 
 ;;; Theme/Font
@@ -223,13 +223,13 @@
 	org-roam-server-label-wrap-length 20))
 
 (setq org-roam-dailies-capture-templates
-      (quote (("t" "Table" table-line (function org-roam--capture-get-point)
-               :file-name "journal/%(format-time-string \"%Y-%m-%d\" (current-time) t)"
-               :head "#+TITLE: %(format-time-string \"%Y-%m-%d\" (current-time) t)\n#+ROAM_TAGS: journal
-	       \n| screen time  | 0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n\nNotes: "
-	       ))))
+      '(("d" "default" plain
+         (function org-roam-capture--get-point)
+         :file-name "journal/%<%Y-%m-%d>"
+         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: journal\n\n| screen time  | 0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n\nNotes: "
+         :unnarrowed t)))
 
-;;;; Addons
+;; ;;;; Addons
 (use-package interleave
   ;; For pdf annotations
   :config (setq interleave-disable-narrowing t)
@@ -345,7 +345,7 @@
     "obs" 'org-insert-structure-template
     "j" 'json-pretty-print-buffer
     "p" 'compile
-    "log" 'org-roam-dailies-find-today
+    "log" 'org-roam-dailies-capture-today
     )
   )
 
@@ -412,10 +412,10 @@
 (use-package highlight-parentheses) ; Use this instead of show-paren-mode due to highlight font
 
 ;;;; Undo/Redo compat with EVIL
-(global-undo-tree-mode 1)
 (use-package undo-tree
   :init
   (undo-tree-mode))
+(global-undo-tree-mode)
 
 ;;;; General Settings
 (add-hook 'prog-mode-hook 'hs-minor-mode)
@@ -443,7 +443,7 @@
 
 ;; Remember cursor location for files
 (setq save-place-file "~/.emacs.d/saveplace")
-(setq-default save-place t)
+(setq-default save-place-mode 1)
 (require 'saveplace)
 
 ;; Remove svg files made from org-roam from the recent files list
@@ -462,8 +462,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   (quote
-    (yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
+   '(yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
