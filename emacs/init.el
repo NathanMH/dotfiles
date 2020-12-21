@@ -4,10 +4,10 @@
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-;;; Speed Enhancements
+;;; STARTUP SPEED ENHANCEMENTS
 (setq gc-cons-threshold (* 50 1000 1000))
 
-;;; Theme/Font
+;;; THEME/FONT
 ; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
 ; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
 (use-package doom-themes
@@ -17,7 +17,7 @@
 					;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
-;;; Use-Package
+;;; USE-PACKAGE
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -27,8 +27,8 @@
   (require 'use-package))
 (setq use-package-always-ensure t)
 
-;;; Navigation / Tips / General
-;;;; Which Key
+;;; NAVIGATION / TIPS
+;;;; WHICH KEY
 (use-package which-key
   ;;;; Which Key
   :diminish
@@ -37,7 +37,7 @@
   (which-key-setup-side-window-bottom)
   (setq which-key-idle-delay 0.05))
 
-;;;; Company
+;;;; COMPANY
 (use-package company
   :hook((org-mode . company-mode)
 	(c++-mode . company-mode)
@@ -48,7 +48,7 @@
   :config
   (push 'company-org-roam company-backends))
 
-;;;; Helm
+;;;; HELM
 (use-package helm
   :config
   (helm-mode)
@@ -64,7 +64,7 @@
     (setq helm-org-rifle-show-path t)
   ))
 
-;;;; Avy and Ace-Window
+;;;; AVY / ACE-WINDOW
 (use-package avy
   :config
   (setq avy-keys '(?t ?n ?s ?e ?f ?u ?d ?h ?r ?i))
@@ -89,7 +89,7 @@
   (interactive)
   (dired-sidebar-toggle-sidebar "/mnt/c/Users/natha/Documents"))
 
-;;;; Dired-Sidebar
+;;;; DIRED-SIDEBAR
 (use-package dired-sidebar
   :ensure t
   :config
@@ -100,26 +100,29 @@
   (define-key dired-sidebar-mode-map (kbd "^") 'dired-sidebar-up-directory)
   :commands (dired-sidebar-toggle-sidebar))
 
-;;;; Outshine Folding (for init.el)
+;;;; OUTSHINE FOLDING 
 (use-package outshine
   ;; Easier navigation, headlines for source code files
   :bind (:map outshine-mode-map
 	      ("<S-iso-lefttab>" . outshine-kbd-TAB)
 	      )
   :hook (emacs-lisp-mode . outshine-mode)
-  :config (setq outshine-cycle-emulate-tab t)
+  :config
+  (setq outshine-cycle-emulate-tab t)
+  (setq outshine-startup-folded-p 1)
   )
 
-;;; Programming Modes
-;;;; Yaml
+;;; PROGRAMMING MODES
+;;;; YAML
 (use-package yaml-mode)
 
-;;;; Python
-;;;;; General
+;;;; PYTHON
+;;;;; GENERAL
 (setq python-shell-interpreter "python3")
 (setq gud-pdb-command-name "python -m pdb")
-
-;;;;; Formatting
+(eval-after-load 'python
+		'(define-key python-mode-map [(tab)] 'hs-toggle-hiding))
+;;;;; FORMATTING
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
@@ -128,7 +131,7 @@
   :hook (python-mode . blacken-mode))
 
 
-;;;;; Python LSP
+;;;;; PYTHON LSP
 (use-package lsp-python-ms
   :ensure t
   :init (setq lsp-python-ms-auto-install-server t)
@@ -155,11 +158,33 @@
     (push 'company-capf company-backends))
   )
 
+;;;; WEB DEV 
+(use-package web-mode
+  :mode ("\\.html$" . web-mode)
+  :init
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq js-indent-level 2)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-auto-expanding t)
+  (setq web-mode-enable-css-colorization t)
+  (add-hook 'web-mode-hook 'electric-pair-mode))
+
+;;;; HTML PREVIEW MODE
+;; Starts the `simple-httpd' server if it is not already running
+;; Turns on `impatient-mode' for the current buffer."
+(defun my-html-mode-hook ()
+  (unless (get-process "httpd")
+    (message "starting httpd server...")
+    (httpd-start))
+  (impatient-mode))
+(add-hook #'html-mode-hook #'my-html-mode-hook)
+
 ;;;; CSV
 (use-package csv-mode)
 
 ;;; PDF
-
 (use-package pdf-tools
   :mode (("\\.pdf\\'" . pdf-view-mode))
   :config
@@ -172,8 +197,8 @@
   :config
   (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
 
-;;; Org
-;;;; General
+;;; ORG
+;;;; GENERAL
 (use-package org
   :config
   (org-babel-do-load-languages
@@ -204,7 +229,7 @@
   (org-mode . (lambda () (define-key org-mode-map (kbd "C-k") nil)))
   )
 
-;;;; Roam
+;;;; ROAM
 (use-package org-roam
   :hook
   (after-init . org-roam-mode)
@@ -238,16 +263,12 @@
 (use-package org-bullets
   :hook ((org-mode) . org-bullets-mode))
 
-;;; Aesthetics
-;;;; Rainbow Delimiters
-(use-package rainbow-delimiters
-  :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
-
-;;;; HTML Rainbow Colours
+;;; CODE AESTHETICS
+;;;; HTML RAINBOW COLOURS
 (use-package rainbow-mode
   :hook ((html-mode css-mode xml-mode text-mode) . rainbow-mode))
 
-;;;; Telephone Line (Powerline)
+;;;; TELEPHONE LINE (POWERLINE)
 (use-package telephone-line ; Powerline status bar
   :config
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
@@ -256,15 +277,22 @@
 	telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
   (telephone-line-mode 1))
 
-;;;; Highlight Indent
+;;;; HIGHLIGHT INDENT
 (use-package highlight-indent-guides
   :hook
   ((prog-mode python-mode) . highlight-indent-guides-mode)
   :config
   (setq highlight-indent-guides-method 'character))
 
+;;;; PARENS
+(use-package highlight-parentheses) ; Use this instead of show-paren-mode due to highlight font
+
+;;;; RAINBOW DELIMITERS
+(use-package rainbow-delimiters
+  :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
+
 ;;; EVIL
-;;;; General
+;;;; GENERAL
 (use-package evil
   :init
   (setq evil-want-integration t)
@@ -277,7 +305,7 @@
   (define-key evil-normal-state-map (kbd "H") "^")
   (define-key evil-normal-state-map (kbd "L") "$")
   (define-key evil-normal-state-map (kbd "RET") 'org-open-at-point)
-  (define-key evil-normal-state-map (kbd "TAB") 'hs-toggle-hiding)
+  ;; (define-key evil-normal-state-map (kbd "TAB") 'hs-toggle-hiding)
 
   (defun minibuffer-keyboard-quit ()  ;; Esc quits everything
     (interactive)
@@ -295,20 +323,20 @@
   (global-set-key [escape] 'evil-exit-emacs-state)
   )
 
-;;;; Surround
+;;;; SURROUND
 (use-package evil-surround
   :ensure t
   :config
   (global-evil-surround-mode 1))
 
-;;;; Evil-Collection
+;;;; EVIL-COLLECTION
 (use-package evil-collection
   :after evil
   :ensure t
   :config
   (evil-collection-init))
 
-;;;; Leader
+;;;; LEADER
 (use-package evil-leader
   :config
   (global-evil-leader-mode)
@@ -349,7 +377,7 @@
     )
   )
 
-;;;; Escape
+;;;; ESCAPE
 (use-package evil-escape
   :config
   (evil-escape-mode 1)
@@ -358,15 +386,15 @@
   (setq-default evil-escape-delay 0.2)
   )
 
-;;;; Evil Org
+;;;; EVIL ORG
 (use-package evil-org
   :hook ((org-mode-hook) . evil-org-mode)
   :config
   (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
   )
 
-;;; Custom Modes
-;;;; Centered Cursor
+;;; CUSTOM MODES
+;;;; CENTERED CURSOR
 (define-minor-mode centered-point-mode
   "Always center the cursor in the middle of the screen."
   :lighter "..."
@@ -378,46 +406,21 @@
   )
 ;;(centered-point-mode 1)
 
-;;;; Web Dev 
-(use-package web-mode
-  :mode ("\\.html$" . web-mode)
-  :init
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq js-indent-level 2)
-  (setq web-mode-enable-auto-pairing t)
-  (setq web-mode-enable-auto-expanding t)
-  (setq web-mode-enable-css-colorization t)
-  (add-hook 'web-mode-hook 'electric-pair-mode))
-
-;;;; HTML Preview Mode
-;; Starts the `simple-httpd' server if it is not already running
-;; Turns on `impatient-mode' for the current buffer."
-(defun my-html-mode-hook ()
-  (unless (get-process "httpd")
-    (message "starting httpd server...")
-    (httpd-start))
-  (impatient-mode))
-(add-hook #'html-mode-hook #'my-html-mode-hook)
-
-;;; Emacs Settings
-;;;; Extra Keybindings
+;;; EMACS SETTINGS
+;;;; EXTRA KEYBINDINGS
 (global-set-key (kbd "C-h") 'windmove-left)
 (global-set-key (kbd "C-j") 'windmove-down)
 (global-set-key (kbd "C-k") 'windmove-up)
 (global-set-key (kbd "C-l") 'windmove-right)
-
-;;;; Parens
-(use-package highlight-parentheses) ; Use this instead of show-paren-mode due to highlight font
-
-;;;; Undo/Redo compat with EVIL
+(add-hook 'emacs-lisp-)
+(eval-after-load 'emacs-lisp-mode-hook
+		(lambda () (local-set-key (kbd "TAB") #'outshine-kbd-TAB)))
 (use-package undo-tree
   :init
   (undo-tree-mode))
 (global-undo-tree-mode)
 
-;;;; General Settings
+;;;; GENERAL SETTINGS
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 (show-paren-mode 1)
 (setq show-paren-delay 0)
@@ -449,12 +452,13 @@
 ;; Remove svg files made from org-roam from the recent files list
 (setq recentf-exclude '("\.svg$")) 
 
-;; No backups please
-(setq create-lockfiles nil)
-(setq make-backup-files nil)
+;; Store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
-
-;;; Custom-set-variables
+;;; CUSTOM-SET-VARIABLES
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -470,5 +474,5 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;; Post speedup enhancements
+;;; POST STARTUP SPEED ENHANCEMENTS
 (setq gc-cons-threshold (* 2 1000 1000))
