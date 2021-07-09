@@ -124,7 +124,7 @@ bar {
 
     # New Statusbar
     # i3bar_command i3bar -t
-    status_command i3blocks
+    # status_command i3blocks
 
     colors {
         separator #66D9EF
@@ -158,14 +158,8 @@ focus_follows_mouse no
 #workspace_layout tabbed
 #exec --no-startup-id feh --bg-fill ~/Documents/wallpapers/wallpaper.jpg
 #exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id wal --backend colorz -i ~/Documents/Wallpapers/
+exec --no-startup-id wal --backend colorz -i /mnt/z/PortableApps/Wallpapers/
 exec --no-startup-id xrdb ~/.Xresources
 
 bindsym $mod+Shift+y floating toggle; sticky toggle; resize set 960 520; move position 1605 888, border none
 bindsym $mod+Shift+s exec ~/Documents/dotfiles/other/rofi-shortcuts.sh
-
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 10%-
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 10%+
-
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20

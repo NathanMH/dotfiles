@@ -149,6 +149,9 @@ alias emacs='(emacs &) && exit'
 alias eamcs='emacs'
 alias wall='wal -i /mnt/z/PortableApps/Wallpapers/'
 alias wallnsfw='wal -i /mnt/z/PortableApps/Wallpapers/NSFW/'
+alias wallfav='wal -i /mnt/z/PortableApps/Wallpapers/NSFW/fav1.jpg'
+alias wakechez='/usr/bin/wakeonlan d4:3d:7e:f6:01:7e'
+alias sshchez='ssh musicnate@192.168.0.30'
 #wallt() { wal --backend $1 -i /mnt/z/PortableApps/Wallpapers/; }
 wallc() {
     #local backend="$1"
