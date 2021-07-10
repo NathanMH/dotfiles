@@ -7,16 +7,6 @@
 ;;; STARTUP SPEED ENHANCEMENTS
 (setq gc-cons-threshold (* 50 1000 1000))
 
-;;; THEME/FONT
-; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
-; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
-(use-package doom-themes
-  :ensure t
-  :config
-  (load-theme 'doom-acario-dark t))
-					;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
-
 ;;; USE-PACKAGE
 
 (unless (package-installed-p 'use-package)
@@ -27,10 +17,19 @@
   (require 'use-package))
 (setq use-package-always-ensure t)
 
+;;; THEME/FONT
+; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
+; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-acario-dark t))
+;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
+
 ;;; NAVIGATION / TIPS
 ;;;; WHICH KEY
 (use-package which-key
-  ;;;; Which Key
   :diminish
   :config
   (which-key-mode)
@@ -42,11 +41,6 @@
   :hook((org-mode . company-mode)
 	(c++-mode . company-mode)
 	(python-mode . company-mode)))
-
-(use-package company-org-roam
-  :defer t
-  :config
-  (push 'company-org-roam company-backends))
 
 ;;;; HELM
 (use-package helm
@@ -85,32 +79,23 @@
   (let ((default-directory "~/"))
     (call-interactively 'fzf)))
 
-(defun sidebar-ms ()
-  (interactive)
-  (dired-sidebar-toggle-sidebar "/mnt/c/Users/natha/Documents"))
-
-;;;; DIRED-SIDEBAR
-(use-package dired-sidebar
+;;;; TREEMACS SIDEBAR
+(use-package treemacs
   :ensure t
+  :defer t
   :config
-  (setq dired-sidebar-close-sidebar-on-file-open 't
-	dired-sidebar-pop-to-sidebar-on-toggle-open 't)
-  (setq dired-sidebar-one-instance-p 1) ; Only keep one buffer for sidebar
-  (define-key dired-sidebar-mode-map (kbd "RET") 'dired-find-alternate-file)
-  (define-key dired-sidebar-mode-map (kbd "^") 'dired-sidebar-up-directory)
-  :commands (dired-sidebar-toggle-sidebar))
+  (setq treemacs-follow-mode 't
+	treemacs-filewatch-mode 't
+	treeview-display-in-side-window 't))
 
-;;;; OUTSHINE FOLDING 
-(use-package outshine
-  ;; Easier navigation, headlines for source code files
-  :bind (:map outshine-mode-map
-	      ("<S-iso-lefttab>" . outshine-kbd-TAB)
-	      )
-  :hook (emacs-lisp-mode . outshine-mode)
-  :config
-  (setq outshine-cycle-emulate-tab t)
-  (setq outshine-startup-folded-p 1)
-  )
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after (treemacs dired)
+  :ensure t
+  :config (treemacs-icons-dired-mode))
 
 ;;; PROGRAMMING MODES
 ;;;; YAML
@@ -120,8 +105,11 @@
 ;;;;; GENERAL
 (setq python-shell-interpreter "python3")
 (setq gud-pdb-command-name "python -m pdb")
-(eval-after-load 'python
-		'(define-key python-mode-map [(tab)] 'hs-toggle-hiding))
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'compile-command)
+		 (concat "python3 " buffer-file-name))))
+
 ;;;;; FORMATTING
 (use-package flycheck
   :ensure t
@@ -129,7 +117,6 @@
 
 (use-package blacken
   :hook (python-mode . blacken-mode))
-
 
 ;;;;; PYTHON LSP
 (use-package lsp-python-ms
@@ -174,6 +161,11 @@
 ;;;; HTML PREVIEW MODE
 ;; Starts the `simple-httpd' server if it is not already running
 ;; Turns on `impatient-mode' for the current buffer."
+
+(use-package impatient-mode
+  :ensure t
+  :defer t)
+
 (defun my-html-mode-hook ()
   (unless (get-process "httpd")
     (message "starting httpd server...")
@@ -212,7 +204,10 @@
 	org-babel-python-command "python3"
 	org-startup-with-inline-images t
 	org-image-actual-width '(600) ; Allows for resizing inline images
-	org-agenda-files '("/home/natha/Documents/notes/"))
+	org-agenda-files '("/home/natha/Documents/notes/")
+	org-startup-indented t
+	left-margin-width 2
+	right-margin-width 2)
   (setq org-roam-capture-templates
 	'(("d" "default" plain (function org-roam--capture-get-point)
 	   "%?"
@@ -223,13 +218,46 @@
 #+STARTUP: showall
 #+ROAM_TAGS: "
 	   :unnarrowed t)))
+
+  (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
+  (set-face-attribute 'fixed-pitch nil :family "DejaVu Sans Mono")
+  (set-face-attribute 'variable-pitch nil :family "LiberationSerif-Bold")
+  (set-face-attribute 'org-level-1 nil :height 170 :family "DejaVu Serif")
+  (set-face-attribute 'org-level-2 nil :height 160 :family "DejaVu Serif")
+  (set-face-attribute 'org-level-3 nil :height 150 :family "DejaVu Serif")
+  (set-face-attribute 'org-level-4 nil :height 140 :family "DejaVu Serif")
+  (set-face-attribute 'org-level-5 nil :height 130 :family "DejaVu Serif")
+  (set-face-attribute 'org-level-6 nil :height 120 :family "DejaVu Serif")
+  (set-face-attribute 'org-level-7 nil :height 120 :family "DejaVu Serif")
+  (set-face-attribute 'org-level-8 nil :height 120 :family "DejaVu Serif")
+  (set-face-attribute 'org-document-title nil :height 220 :family "DejaVu Serif")
+  
+  ; Makes code blocks and tables use fixed-pitch (mono spaced) font
+  (defun my-adjoin-to-list-or-symbol (element list-or-symbol)
+    (let ((list (if (not (listp list-or-symbol))
+		    (list list-or-symbol)
+                list-or-symbol)))
+      (require 'cl-lib)
+      (cl-adjoin element list)))
+
+  (eval-after-load "org"
+    '(mapc
+      (lambda (face)
+	(set-face-attribute
+	 face nil
+	 :inherit
+	 (my-adjoin-to-list-or-symbol
+	  'fixed-pitch
+	  (face-attribute face :inherit))))
+      (list 'org-code 'org-block 'org-table ))) 
+
   :hook
+  (org-mode . variable-pitch-mode)
+  (org-mode . visual-line-mode)
   (org-babel-after-execute . org-redisplay-inline-images)
   (org-mode . (lambda () (define-key org-mode-map (kbd "C-j") nil))) ; unbind C-j and C-k so windmove works
-  (org-mode . (lambda () (define-key org-mode-map (kbd "C-k") nil)))
-  )
+  (org-mode . (lambda () (define-key org-mode-map (kbd "C-k") nil))))
 
-;;;; ROAM
 (use-package org-roam
   :hook
   (after-init . org-roam-mode)
@@ -247,18 +275,12 @@
 	org-roam-server-label-truncate-length 60
 	org-roam-server-label-wrap-length 20))
 
-(setq org-roam-dailies-capture-templates
-      '(("d" "default" plain
-         (function org-roam-capture--get-point)
-         :file-name "journal/%<%Y-%m-%d>"
-         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: journal\n\n| screen time  | 0 |\n| sleep        | 0 |\n| alcohol      | 0 |\n| caffeine     | 0 |\n| exercise     | 0 |\n| stress level | 0 |\n| hydration    | 0 |\n| advil        | 0 |\n| anxiety meds | 0 |\n| outside      | 0 |\n| reading      | 0 |\n| shower       | 0 |\n\nNotes: "
-         :unnarrowed t)))
+;;;;; ADDONS
 
-;; ;;;; Addons
-(use-package interleave
-  ;; For pdf annotations
-  :config (setq interleave-disable-narrowing t)
-  :defer t)
+(use-package org-noter
+  :ensure t
+  :defer t
+  :config)
 
 (use-package org-bullets
   :hook ((org-mode) . org-bullets-mode))
@@ -305,7 +327,7 @@
   (define-key evil-normal-state-map (kbd "H") "^")
   (define-key evil-normal-state-map (kbd "L") "$")
   (define-key evil-normal-state-map (kbd "RET") 'org-open-at-point)
-  ;; (define-key evil-normal-state-map (kbd "TAB") 'hs-toggle-hiding)
+  (define-key evil-normal-state-map (kbd "TAB") 'hs-toggle-hiding)
 
   (defun minibuffer-keyboard-quit ()  ;; Esc quits everything
     (interactive)
@@ -348,7 +370,7 @@
     "tt" 'save-buffer
     "m" 'bookmark-set
     ;"ne" 'dired-sidebar-toggle-sidebar
-    "ne" 'sidebar-ms
+    "ne" 'treemacs
     "s" 'avy-goto-char
     "b" 'helm-mini
     "r" 'org-roam
@@ -393,7 +415,14 @@
   (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
   )
 
-;;; CUSTOM MODES
+;;; OTHER PACKAGES
+
+;;;; UNDO TREE
+(use-package undo-tree
+  :init
+  (undo-tree-mode))
+(global-undo-tree-mode)
+
 ;;;; CENTERED CURSOR
 (define-minor-mode centered-point-mode
   "Always center the cursor in the middle of the screen."
@@ -412,13 +441,6 @@
 (global-set-key (kbd "C-j") 'windmove-down)
 (global-set-key (kbd "C-k") 'windmove-up)
 (global-set-key (kbd "C-l") 'windmove-right)
-(add-hook 'emacs-lisp-)
-(eval-after-load 'emacs-lisp-mode-hook
-		(lambda () (local-set-key (kbd "TAB") #'outshine-kbd-TAB)))
-(use-package undo-tree
-  :init
-  (undo-tree-mode))
-(global-undo-tree-mode)
 
 ;;;; GENERAL SETTINGS
 (add-hook 'prog-mode-hook 'hs-minor-mode)
@@ -438,8 +460,9 @@
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 
-(setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode 1)
+;(setq display-line-numbers-type 'relative)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+;(global-display-line-numbers-mode 1)
 (global-hl-line-mode t)
 (set-default-coding-systems 'utf-8)
 (setq compilation-ask-about-save nil)
@@ -466,7 +489,8 @@
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy)))
+   (quote
+    (yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
