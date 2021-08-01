@@ -20,6 +20,37 @@
 ;;; THEME/FONT
 ; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
 ; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
+; doom-one-light
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-acario-dark t))
+;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
+
+;;; NAVIGATION / TIPS(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(package-initialize)
+
+;;; STARTUP SPEED ENHANCEMENTS
+(setq gc-cons-threshold (* 50 1000 1000))
+
+;;; USE-PACKAGE
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)
+
+;;; THEME/FONT
+; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
+; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
+; doom-one-light
 (use-package doom-themes
   :ensure t
   :config
@@ -28,6 +59,129 @@
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
 ;;; NAVIGATION / TIPS
+;;;; WHICH KEY
+(use-package which-key
+  :diminish
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-bottom)
+  (setq which-key-idle-delay 0.05))
+
+;;;; COMPANY
+(use-package company
+  :hook((org-mode . company-mode)
+	(c++-mode . company-mode)
+	(python-mode . company-mode)))
+
+;;;; HELM
+(use-package helm
+  :config
+  (helm-mode)
+  (setq helm-buffers-fuzzy-matching t)
+  (setq helm-ff-skip-boring-files t)
+  (setq helm-mini-default-sources '(helm-source-buffers-list
+				    helm-source-recentf
+				    helm-source-bookmarks))
+  (setq helm-boring-buffer-regexp-list '("\\` " "\\*.+\\*"))
+
+  (use-package helm-org-rifle
+    :config
+    (setq helm-org-rifle-show-path t)
+  ))
+
+;;;; AVY / ACE-WINDOW
+(use-package avy
+  :config
+  (setq avy-keys '(?t ?n ?s ?e ?f ?u ?d ?h ?r ?i))
+  )
+
+(use-package ace-window) ; Used only for ace-swap-window since built in is not good
+
+;;;; FZF
+(use-package fzf
+  :init
+  ;; (setenv "FZF_DEFAULT_COMMAND" "fd --type f --hidden")
+  (setenv "FZF_DEFAULT_COMMAND" "rg --files --no-ignore --hidden --follow")
+  (setq fzf/window-height 90))
+
+					; Set default directory for fzf to ~/
+(defun find-file-from-home ()
+  (interactive)
+  (let ((default-directory "~/"))
+    (call-interactively 'fzf)))
+
+;;;; TREEMACS SIDEBAR
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  (setq treemacs-follow-mode 't
+	treemacs-filewatch-mode 't
+	treeview-display-in-side-window 't))
+
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after (treemacs dired)
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+;;; PROGRAMMING MODES
+;;;; YAML
+(use-package yaml-mode)
+
+;;;; PYTHON
+;;;;; GENERAL
+(setq python-shell-interpreter "python3")
+(setq gud-pdb-command-name "python -m pdb")
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'compile-command)
+		 (concat "python3 " buffer-file-name))))
+
+;;;;; FORMATTING
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package blacken
+  :hook (python-mode . blacken-mode))
+
+;;;;; PYTHON LSP
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . lsp)
+  :defer t
+  :config 
+  (setq lsp-python-ms-python-executable-cmd python-shell-interpreter)
+  )
+
+(use-package lsp-mode
+  :ensure t
+  :defer t
+  :config
+
+  (use-package lsp-ui
+    :ensure t
+    :defer t
+    :config
+    (setq lsp-ui-sideline-ignore-duplicate t)
+    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+  )
+
+;;;; WEB DEV 
+(use-package web-mode
+  :mode ("\\.html$" . web-mode)
+  :init
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+)
+
 ;;;; WHICH KEY
 (use-package which-key
   :diminish
@@ -139,10 +293,6 @@
     (setq lsp-ui-sideline-ignore-duplicate t)
     (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
-  (use-package company-lsp
-    :defer t
-    :config
-    (push 'company-capf company-backends))
   )
 
 ;;;; WEB DEV 
@@ -208,16 +358,15 @@
 	org-startup-indented t
 	left-margin-width 2
 	right-margin-width 2)
-  (setq org-roam-capture-templates
-	'(("d" "default" plain (function org-roam--capture-get-point)
-	   "%?"
-	   :file-name "${slug}"
-	   :head "#+TITLE: ${title}
-#+ROAM_ALIAS: 
+
+(setq org-roam-capture-templates
+      '(("d" "default" plain
+	 "%?"
+         :if-new (file+head "test.org"
+			    "#+TITLE: ${title}
 #+AUTHOR: Nathan Mador-House
-#+STARTUP: showall
-#+ROAM_TAGS: "
-	   :unnarrowed t)))
+#+STARTUP: showall")
+         :unnarrowed t)))
 
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
   (set-face-attribute 'fixed-pitch nil :family "DejaVu Sans Mono")
@@ -259,21 +408,14 @@
   (org-mode . (lambda () (define-key org-mode-map (kbd "C-k") nil))))
 
 (use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  (setq org-roam-node-display-template "${title:*} ${tags:*}")
   :hook
   (after-init . org-roam-mode)
   :custom
   (org-roam-directory "/home/natha/Documents/notes/"))
-
-(use-package org-roam-server ; For visualizing note connections
-  :ensure t
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-	org-roam-server-port 8080
-	org-roam-server-export-inline-images t
-	org-roam-server-authenticate nil
-	org-roam-server-label-truncate t
-	org-roam-server-label-truncate-length 60
-	org-roam-server-label-wrap-length 20))
 
 ;;;;; ADDONS
 
@@ -373,7 +515,7 @@
     "ne" 'treemacs
     "s" 'avy-goto-char
     "b" 'helm-mini
-    "r" 'org-roam
+    "r" 'org-roam-buffer-toggle
     "a" 'org-todo-list
     "h" 'find-file-from-home
     "|" 'split-window-right ; Split window vertically
@@ -387,7 +529,7 @@
     "which" 'which-key-show-major-mode
     "term" 'term-other-window
     "comm" 'comment-line
-    "note" 'org-roam-find-file
+    "note" 'org-roam-node-find
     "time" 'org-time-stamp
     "i" 'org-roam-jump-to-index
     "cc" 'org-toggle-checkbox
@@ -490,7 +632,7 @@
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
    (quote
-    (yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
+    (company-lsp lsp-ui yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
