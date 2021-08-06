@@ -19,38 +19,7 @@
 
 ;;; THEME/FONT
 ; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
-; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
-; doom-one-light
-(use-package doom-themes
-  :ensure t
-  :config
-  (load-theme 'doom-acario-dark t))
-;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
-
-;;; NAVIGATION / TIPS(require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(package-initialize)
-
-;;; STARTUP SPEED ENHANCEMENTS
-(setq gc-cons-threshold (* 50 1000 1000))
-
-;;; USE-PACKAGE
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package))
-(setq use-package-always-ensure t)
-
-;;; THEME/FONT
-; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
-; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight
-; doom-one-light
+; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight, doom-one-light
 (use-package doom-themes
   :ensure t
   :config
@@ -59,36 +28,6 @@
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
 ;;; NAVIGATION / TIPS
-;;;; WHICH KEY
-(use-package which-key
-  :diminish
-  :config
-  (which-key-mode)
-  (which-key-setup-side-window-bottom)
-  (setq which-key-idle-delay 0.05))
-
-;;;; COMPANY
-(use-package company
-  :hook((org-mode . company-mode)
-	(c++-mode . company-mode)
-	(python-mode . company-mode)))
-
-;;;; HELM
-(use-package helm
-  :config
-  (helm-mode)
-  (setq helm-buffers-fuzzy-matching t)
-  (setq helm-ff-skip-boring-files t)
-  (setq helm-mini-default-sources '(helm-source-buffers-list
-				    helm-source-recentf
-				    helm-source-bookmarks))
-  (setq helm-boring-buffer-regexp-list '("\\` " "\\*.+\\*"))
-
-  (use-package helm-org-rifle
-    :config
-    (setq helm-org-rifle-show-path t)
-  ))
-
 ;;;; AVY / ACE-WINDOW
 (use-package avy
   :config
@@ -104,12 +43,13 @@
   (setenv "FZF_DEFAULT_COMMAND" "rg --files --no-ignore --hidden --follow")
   (setq fzf/window-height 90))
 
-					; Set default directory for fzf to ~/
+;; Set default directory for fzf to ~/
 (defun find-file-from-home ()
   (interactive)
   (let ((default-directory "~/"))
     (call-interactively 'fzf)))
 
+(setq evil-want-keybinding nil)
 ;;;; TREEMACS SIDEBAR
 (use-package treemacs
   :ensure t
@@ -128,23 +68,22 @@
   :ensure t
   :config (treemacs-icons-dired-mode))
 
+;;;;; FORMATTING
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 ;;; PROGRAMMING MODES
 ;;;; YAML
 (use-package yaml-mode)
 
 ;;;; PYTHON
-;;;;; GENERAL
 (setq python-shell-interpreter "python3")
 (setq gud-pdb-command-name "python -m pdb")
 (add-hook 'python-mode-hook
 	  (lambda ()
 	    (set (make-local-variable 'compile-command)
 		 (concat "python3 " buffer-file-name))))
-
-;;;;; FORMATTING
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
 
 (use-package blacken
   :hook (python-mode . blacken-mode))
@@ -156,8 +95,7 @@
   :hook (python-mode . lsp)
   :defer t
   :config 
-  (setq lsp-python-ms-python-executable-cmd python-shell-interpreter)
-  )
+  (setq lsp-python-ms-python-executable-cmd python-shell-interpreter))
 
 (use-package lsp-mode
   :ensure t
@@ -169,9 +107,7 @@
     :defer t
     :config
     (setq lsp-ui-sideline-ignore-duplicate t)
-    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-
-  )
+    (add-hook 'lsp-mode-hook 'lsp-ui-mode)))
 
 ;;;; WEB DEV 
 (use-package web-mode
@@ -181,132 +117,6 @@
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
 )
-
-;;;; WHICH KEY
-(use-package which-key
-  :diminish
-  :config
-  (which-key-mode)
-  (which-key-setup-side-window-bottom)
-  (setq which-key-idle-delay 0.05))
-
-;;;; COMPANY
-(use-package company
-  :hook((org-mode . company-mode)
-	(c++-mode . company-mode)
-	(python-mode . company-mode)))
-
-;;;; HELM
-(use-package helm
-  :config
-  (helm-mode)
-  (setq helm-buffers-fuzzy-matching t)
-  (setq helm-ff-skip-boring-files t)
-  (setq helm-mini-default-sources '(helm-source-buffers-list
-				    helm-source-recentf
-				    helm-source-bookmarks))
-  (setq helm-boring-buffer-regexp-list '("\\` " "\\*.+\\*"))
-
-  (use-package helm-org-rifle
-    :config
-    (setq helm-org-rifle-show-path t)
-  ))
-
-;;;; AVY / ACE-WINDOW
-(use-package avy
-  :config
-  (setq avy-keys '(?t ?n ?s ?e ?f ?u ?d ?h ?r ?i))
-  )
-
-(use-package ace-window) ; Used only for ace-swap-window since built in is not good
-
-;;;; FZF
-(use-package fzf
-  :init
-  ;; (setenv "FZF_DEFAULT_COMMAND" "fd --type f --hidden")
-  (setenv "FZF_DEFAULT_COMMAND" "rg --files --no-ignore --hidden --follow")
-  (setq fzf/window-height 90))
-
-					; Set default directory for fzf to ~/
-(defun find-file-from-home ()
-  (interactive)
-  (let ((default-directory "~/"))
-    (call-interactively 'fzf)))
-
-;;;; TREEMACS SIDEBAR
-(use-package treemacs
-  :ensure t
-  :defer t
-  :config
-  (setq treemacs-follow-mode 't
-	treemacs-filewatch-mode 't
-	treeview-display-in-side-window 't))
-
-(use-package treemacs-evil
-  :after (treemacs evil)
-  :ensure t)
-
-(use-package treemacs-icons-dired
-  :after (treemacs dired)
-  :ensure t
-  :config (treemacs-icons-dired-mode))
-
-;;; PROGRAMMING MODES
-;;;; YAML
-(use-package yaml-mode)
-
-;;;; PYTHON
-;;;;; GENERAL
-(setq python-shell-interpreter "python3")
-(setq gud-pdb-command-name "python -m pdb")
-(add-hook 'python-mode-hook
-	  (lambda ()
-	    (set (make-local-variable 'compile-command)
-		 (concat "python3 " buffer-file-name))))
-
-;;;;; FORMATTING
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
-
-(use-package blacken
-  :hook (python-mode . blacken-mode))
-
-;;;;; PYTHON LSP
-(use-package lsp-python-ms
-  :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
-  :hook (python-mode . lsp)
-  :defer t
-  :config (setq lsp-python-ms-python-executable-cmd python-shell-interpreter)
-  )
-
-(use-package lsp-mode
-  :ensure t
-  :defer t
-  :config
-
-  (use-package lsp-ui
-    :ensure t
-    :defer t
-    :config
-    (setq lsp-ui-sideline-ignore-duplicate t)
-    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-
-  )
-
-;;;; WEB DEV 
-(use-package web-mode
-  :mode ("\\.html$" . web-mode)
-  :init
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq js-indent-level 2)
-  (setq web-mode-enable-auto-pairing t)
-  (setq web-mode-enable-auto-expanding t)
-  (setq web-mode-enable-css-colorization t)
-  (add-hook 'web-mode-hook 'electric-pair-mode))
 
 ;;;; HTML PREVIEW MODE
 ;; Starts the `simple-httpd' server if it is not already running
@@ -325,6 +135,38 @@
 
 ;;;; CSV
 (use-package csv-mode)
+
+;;;; WHICH KEY
+(use-package which-key
+  :diminish
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-bottom)
+  (setq which-key-idle-delay 0.05))
+
+;;;; COMPANY
+(use-package company
+  :hook ((org-mode . company-mode)
+	(c++-mode . company-mode)
+	(python-mode . company-mode))
+  :config
+  (setq company-backends '(company-capf)))
+
+;;;; HELM
+(use-package helm
+  :config
+  (helm-mode)
+  (setq helm-buffers-fuzzy-matching t)
+  (setq helm-ff-skip-boring-files t)
+  (setq helm-mini-default-sources '(helm-source-buffers-list
+				    helm-source-recentf
+				    helm-source-bookmarks))
+  (setq helm-boring-buffer-regexp-list '("\\` " "\\*.+\\*"))
+
+  (use-package helm-org-rifle
+    :config
+    (setq helm-org-rifle-show-path t)
+  ))
 
 ;;; PDF
 (use-package pdf-tools
@@ -411,7 +253,9 @@
   :ensure t
   :init
   (setq org-roam-v2-ack t)
-  (setq org-roam-node-display-template "${title:*} ${tags:*}")
+  (setq org-roam-completion-everywhere t)
+  (setq org-roam-node-display-template "${title:50} ${tags:*}")
+  (add-hook 'completion-at-point-functions 'org-roam-complete-at-point nil)
   :hook
   (after-init . org-roam-mode)
   :custom
@@ -456,11 +300,50 @@
   :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
 
 ;;; EVIL
+;;;; LEADER (needs to be before Evil)
+(use-package evil-leader
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader ",")
+  (evil-leader/set-key
+    "q" 'kill-this-buffer
+    "k" 'kill-buffer-and-window
+    "d" 'delete-window
+    "tt" 'save-buffer
+    "m" 'bookmark-set
+    "ne" 'treemacs
+    "s" 'avy-goto-char
+    "b" 'helm-mini
+    "r" 'org-roam-buffer-toggle
+    "a" 'org-todo-list
+    "h" 'find-file-from-home
+    "|" 'split-window-right ; Split window vertically
+    "-" 'split-window-below ; Split window horizontally
+    "[" 'toggle-window-split
+    "]" 'ace-swap-window ; window-swap-state messes up pdf evil bindings so use ace-window instead
+    "=" 'balance-windows
+    "fl" 'font-lock-mode
+    "tl" 'toggle-truncate-lines
+    "full" 'toggle-frame-fullscreen
+    "which" 'which-key-show-major-mode
+    "term" 'term-other-window
+    "comm" 'comment-line
+    "note" 'org-roam-node-find
+    "time" 'org-time-stamp
+    "i" 'org-roam-jump-to-index
+    "cc" 'org-toggle-checkbox
+    "cn" 'org-insert-todo-heading
+    "obs" 'org-insert-structure-template
+    "j" 'json-pretty-print-buffer
+    "p" 'compile
+    "log" 'org-roam-dailies-capture-today
+    )
+  )
+
 ;;;; GENERAL
 (use-package evil
   :init
   (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
   (setq evil-undo-system 'undo-tree)
   (setq evil-want-fine-undo 'fine)
   :config
@@ -499,47 +382,6 @@
   :ensure t
   :config
   (evil-collection-init))
-
-;;;; LEADER
-(use-package evil-leader
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader ",")
-  (evil-leader/set-key
-    "q" 'kill-this-buffer
-    "k" 'kill-buffer-and-window
-    "d" 'delete-window
-    "tt" 'save-buffer
-    "m" 'bookmark-set
-    ;"ne" 'dired-sidebar-toggle-sidebar
-    "ne" 'treemacs
-    "s" 'avy-goto-char
-    "b" 'helm-mini
-    "r" 'org-roam-buffer-toggle
-    "a" 'org-todo-list
-    "h" 'find-file-from-home
-    "|" 'split-window-right ; Split window vertically
-    "-" 'split-window-below ; Split window horizontally
-    "[" 'toggle-window-split
-    "]" 'ace-swap-window ; window-swap-state messes up pdf evil bindings so use ace-window instead
-    "=" 'balance-windows
-    "fl" 'font-lock-mode
-    "tl" 'toggle-truncate-lines
-    "full" 'toggle-frame-fullscreen
-    "which" 'which-key-show-major-mode
-    "term" 'term-other-window
-    "comm" 'comment-line
-    "note" 'org-roam-node-find
-    "time" 'org-time-stamp
-    "i" 'org-roam-jump-to-index
-    "cc" 'org-toggle-checkbox
-    "cn" 'org-insert-todo-heading
-    "obs" 'org-insert-structure-template
-    "j" 'json-pretty-print-buffer
-    "p" 'compile
-    "log" 'org-roam-dailies-capture-today
-    )
-  )
 
 ;;;; ESCAPE
 (use-package evil-escape
