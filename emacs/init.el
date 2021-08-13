@@ -196,7 +196,7 @@
 	org-babel-python-command "python3"
 	org-startup-with-inline-images t
 	org-image-actual-width '(600) ; Allows for resizing inline images
-	org-agenda-files '("/home/natha/Documents/notes/")
+	org-agenda-files '("/home/natha/Documents/notes/todo.org")
 	org-startup-indented t
 	left-margin-width 2
 	right-margin-width 2)
@@ -204,10 +204,11 @@
 (setq org-roam-capture-templates
       '(("d" "default" plain
 	 "%?"
-         :if-new (file+head "test.org"
+         :if-new (file+head "${title}.org"
 			    "#+TITLE: ${title}
 #+AUTHOR: Nathan Mador-House
-#+STARTUP: showall")
+#+STARTUP: showall
+#+filetags: ")
          :unnarrowed t)))
 
   (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
