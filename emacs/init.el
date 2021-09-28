@@ -18,21 +18,13 @@
 (setq use-package-always-ensure t)
 
 ;;; THEME/FONT
-;(use-package doom-themes
-;  :ensure t
-;  :config
-;  (load-theme 'doom-acario-dark t))
-
-(use-package modus-themes
-  :ensure
-  :init
-  ;; Load the theme files before enabling a theme
-  (modus-themes-load-themes)
+; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
+; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight, doom-one-light
+(use-package doom-themes
+  :ensure t
   :config
-  ;; Load the theme of your choice:
-  (modus-themes-load-operandi)
-  )
-
+  (load-theme 'doom-acario-dark t))
+;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
 ;;; NAVIGATION / TIPS
@@ -44,8 +36,20 @@
 
 (use-package ace-window) ; Used only for ace-swap-window since built in is not good
 
-(setq evil-want-keybinding nil) ; Needs to be placed early in init
+;;;; FZF
+(use-package fzf
+  :init
+  ;; (setenv "FZF_DEFAULT_COMMAND" "fd --type f --hidden")
+  (setenv "FZF_DEFAULT_COMMAND" "rg --files --no-ignore --hidden --follow")
+  (setq fzf/window-height 90))
 
+;; Set default directory for fzf to ~/
+(defun find-file-from-home ()
+  (interactive)
+  (let ((default-directory "~/"))
+    (call-interactively 'fzf)))
+
+(setq evil-want-keybinding nil)
 ;;;; TREEMACS SIDEBAR
 (use-package treemacs
   :ensure t
@@ -81,7 +85,6 @@
 	    (set (make-local-variable 'compile-command)
 		 (concat "python3 " buffer-file-name))))
 
-(use-package pyvenv)
 (use-package blacken
   :hook (python-mode . blacken-mode))
 
@@ -314,7 +317,7 @@
     "b" 'helm-mini
     "r" 'org-roam-buffer-toggle
     "a" 'org-todo-list
-    "h" 'helm-find-files
+    "h" 'find-file-from-home
     "|" 'split-window-right ; Split window vertically
     "-" 'split-window-below ; Split window horizontally
     "[" 'toggle-window-split
@@ -417,11 +420,6 @@
   )
 ;;(centered-point-mode 1)
 
-;;;; REPLACE SCRATCH FILE
-(let ((filename "~/Documents/notes/startup.org"))
-  (when (file-exists-p filename)
-    (setq initial-buffer-choice filename)))
-
 ;;; EMACS SETTINGS
 ;;;; EXTRA KEYBINDINGS
 (global-set-key (kbd "C-h") 'windmove-left)
@@ -454,7 +452,6 @@
 (set-default-coding-systems 'utf-8)
 (setq compilation-ask-about-save nil)
 
-
 ;; Remember cursor location for files
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place-mode 1)
@@ -475,9 +472,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-'(helm-minibuffer-history-key "M-p")
+ '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(company-lsp lsp-ui yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy)))
+   (quote
+    (company-lsp lsp-ui yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
