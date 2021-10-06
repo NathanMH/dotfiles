@@ -18,14 +18,16 @@
 (setq use-package-always-ensure t)
 
 ;;; THEME/FONT
-; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night,
-; doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight, doom-one-light
+
+;; (add-to-list 'default-frame-alist '((font . "DejaVu Sans Mono-12")))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(set-frame-font "DejaVu Sans Mono-12" nil t)
+
+; doom-vibrant, doom-molokai, ample-theme, doom-tomorrow-night, doom-dark+, doom-acario-dark, doom-Iosvkem, doom-moonlight, doom-one-light
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-acario-dark t))
-;(add-to-list 'default-frame-alist '(font . "Iosevka Sparkle"))
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
+  (load-theme 'doom-monokai-pro))
 
 ;;; NAVIGATION / TIPS
 ;;;; AVY / ACE-WINDOW
@@ -35,19 +37,6 @@
   )
 
 (use-package ace-window) ; Used only for ace-swap-window since built in is not good
-
-;;;; FZF
-(use-package fzf
-  :init
-  ;; (setenv "FZF_DEFAULT_COMMAND" "fd --type f --hidden")
-  (setenv "FZF_DEFAULT_COMMAND" "rg --files --no-ignore --hidden --follow")
-  (setq fzf/window-height 90))
-
-;; Set default directory for fzf to ~/
-(defun find-file-from-home ()
-  (interactive)
-  (let ((default-directory "~/"))
-    (call-interactively 'fzf)))
 
 (setq evil-want-keybinding nil)
 ;;;; TREEMACS SIDEBAR
@@ -167,6 +156,8 @@
     :config
     (setq helm-org-rifle-show-path t)
   ))
+
+(use-package helm-themes)
 
 ;;; PDF
 (use-package pdf-tools
@@ -293,9 +284,6 @@
   :config
   (setq highlight-indent-guides-method 'character))
 
-;;;; PARENS
-(use-package highlight-parentheses) ; Use this instead of show-paren-mode due to highlight font
-
 ;;;; RAINBOW DELIMITERS
 (use-package rainbow-delimiters
   :hook ((prog-mode text-mode) . rainbow-delimiters-mode))
@@ -317,7 +305,7 @@
     "b" 'helm-mini
     "r" 'org-roam-buffer-toggle
     "a" 'org-todo-list
-    "h" 'find-file-from-home
+    "h" 'helm-find-files
     "|" 'split-window-right ; Split window vertically
     "-" 'split-window-below ; Split window horizontally
     "[" 'toggle-window-split
@@ -431,7 +419,7 @@
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 (show-paren-mode 1)
 (setq show-paren-delay 0)
-(set-face-attribute 'show-paren-match nil :foreground "black" :background "grey")
+(set-face-attribute 'show-paren-match nil :foreground "black" :background "orange")
 (blink-cursor-mode 1)
 (electric-pair-mode 1)
 (menu-bar-mode -1) 
@@ -441,7 +429,6 @@
 (setq inhibit-splash-screen t)
 (setq-default explicit-shell-file-name "/bin/bash")
 (setq-default shell-file-name "/bin/bash")
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 
@@ -465,23 +452,6 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-
-;;; CUSTOM-SET-VARIABLES
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(helm-minibuffer-history-key "M-p")
- '(package-selected-packages
-   (quote
-    (company-lsp lsp-ui yaml-mode org-drill which-key use-package telephone-line rainbow-mode rainbow-delimiters powerline org-sticky-header org-bullets markdown-mode impatient-mode helm-org-rifle fzf evil-surround evil-org evil-leader evil-escape dashboard avy))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;;; POST STARTUP SPEED ENHANCEMENTS
 (setq gc-cons-threshold (* 2 1000 1000))
